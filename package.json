@@ -16,10 +16,12 @@
     "vanta": "^0.5.24"
   },
   "devDependencies": {
+    "@svgr/webpack": "^6.3.1",
     "autoprefixer": "^10.4.12",
     "eslint": "8.23.1",
     "eslint-config-next": "12.3.1",
     "postcss": "^8.4.16",
-    "tailwindcss": "^3.1.8"
+    "tailwindcss": "^3.1.8",
+    "tailwindcss-text-fill-stroke": "^1.1.2"
   }
 }

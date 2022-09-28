@@ -31,18 +31,10 @@ const Intro = () => {
       className="h-screen w-full flex items-center justify-center"
       ref={vantaRef}
     >
-        <div className="block-inline z-[1] text-center  text-white ">
-            <h6 className="text-7xl md:text-[120px] lg:text-[142px] font-bold">DEVESH MEENA</h6>
-            <h4 className="text-1xl lg:text-3xl font-semibold font-roboto">STUDENT , FULL STACK DEVELOPER  </h4>
+        <div className="block-inline z-[1] text-center  text-white  ">
+            <h6 className="text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold drop-shadow-2xl max-w-[90vw]">DEVESH MEENA</h6>
+            <h4 className="text-1xl lg:text-3xl font-semibold font-roboto drop-shadow-2xl">STUDENT , FULL STACK DEVELOPER  </h4>
         </div>
-      {/* <div className="text-white z-[1] drop-shadow-2xl inline-block ">
-        <div className="font-bold text-5xl sm:text-2xl md:text-[142px] ">
-          <p>DEVESH MEENA</p>
-        </div>
-        <div className="md:text-2xl font-medium  font-roboto ">
-          <p>STUDENT , FULL STACK DEVELOPER.</p>
-        </div>
-      </div> */}
     </div>
   );
 };
