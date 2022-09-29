@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const ContactForm = () => {
   return (
-    <div className="space-y-2 font-roboto font-semibold w-full">
+    <div className="space-y-1 font-roboto font-semibold w-full">
       <p className="opacity-40">{"<a>"}</p>
       <div className="flex space-x-2">
         <img

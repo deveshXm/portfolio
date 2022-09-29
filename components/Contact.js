@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+import map from "../public/map.png"
 import ContactForm from "./SubComponents/ContactForm";
 
 const subhead =
@@ -8,16 +10,20 @@ const Contact = () => {
   return (
     <div className="bg-black h-fit p-12 text-white space-y-10">
       <div className="space-y-6">
-        <h1 className="text-4xl font-bold ">Contact Me</h1>
-        <div
-          className="font-roboto text-sm font-normal"
-          dangerouslySetInnerHTML={{ __html: subhead }}
-        />
+        <h1 className="text-6xl font-bold md:text-8xl">Contact Me</h1>
       </div>
-      <div className="md:flex md:space-x-10">
-        <ContactForm />
-        <div className="inline-block overflow-hidden border-gray-500 border-2">
-          <img src="/map.png" className=" scale-[2.0] md:scale-100" />
+      <div className="lg:flex ">
+        <div className="space-y-2 bg-[#27282c] flex items-center justify-center px-10 py-5">
+          <div>
+            <div
+              className="font-roboto text-sm font-normal"
+              dangerouslySetInnerHTML={{ __html: subhead }}
+            />
+            <ContactForm />
+          </div>
+        </div>
+        <div className="inline-block overflow-hidden">
+          <Image src={map} alt="map" className=" scale-[2.0] md:scale-100 " />
         </div>
       </div>
     </div>
