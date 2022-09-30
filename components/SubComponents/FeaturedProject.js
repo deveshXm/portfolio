@@ -1,8 +1,5 @@
 import React from "react";
-import Image from "next/image";
-import matinee from "../../public/images/matinee.jpg";
 import Data from "../../data.json";
-import { data } from "autoprefixer";
 import ProjectCard from "./ProjectCard";
 
 const FeaturedProject = () => {
@@ -11,7 +8,7 @@ const FeaturedProject = () => {
   };
   return (
     <div className="border-gray-200 border-2 border-opacity-20 p-10  space-y-10 xl:space-x-10 lg:flex ">
-      <ProjectCard Data={Data} />
+      <ProjectCard item = {Data.Featured[0]} />
       <div className="flex items-center md:py-10">
         <div className="h-fit sm:ml-10 ">
           <div className="space-y-4 font-roboto text-sm xl:text-md text-center sm:text-left font-normal">
