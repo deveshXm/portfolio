@@ -25,7 +25,7 @@ const ExperienceCard = ({ item }) => {
       </div>
       <div
         ref={contentEl}
-        className={`bg-[#241d41] text-white rounded-mdw-[90vw] md:w-[60vw] font-normal transition-height ease-in-out overflow-hidden duration-300${
+        className={`bg-[#241d41] text-white rounded-md w-[90vw] md:w-[60vw] font-normal transition-height ease-in-out overflow-hidden duration-300${
           drop ? "" : ""
         }`}
         style={
