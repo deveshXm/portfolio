@@ -25,7 +25,7 @@ const Card = ({ item }) => {
         <Image src={item.logo} height={50} width={50} alt="logo" />
         <div className="text-2xl sm:text-lg md:text-base xl:text-[1.7rem] font-bold">
           <div>
-            <p className="-mb-3 xl:-mb-[0.4rem] z-[3]">{item.title1}</p>
+            <p className="-mb-2 xl:-mb-[0.3rem] z-[3]">{item.title1}</p>
             <p className={`w-[70%] text-left h-1.5 ${color}` }></p>
           </div>
           <p>{item.title2}</p>
