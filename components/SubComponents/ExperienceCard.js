@@ -1,15 +1,18 @@
-import { useState, React } from "react";
+import { useState, React, useRef } from "react";
 
 const ExperienceCard = ({ item }) => {
   const [drop, setDrop] = useState(false);
+  const contentEl = useRef();
 
   const handleClick = () => {
     setDrop(!drop);
   };
   return (
-    <div className="space-y-4 text-sm md:text-md">
+    <div className="space-y-4 text-sm md:text-md mb-4">
       <div
-        className="w-[90vw] md:w-[60vw] bg-purple-600 h-12 flex items-center justify-between rounded-md text-white font-medium px-2 sm:px-6 hover:cursor-pointer"
+        className={`w-[90vw] md:w-[60vw] transform duration-300 ${
+          drop ? "bg-purple-900" : "bg-purple-600"
+        } h-12 flex items-center justify-between rounded-md text-white font-medium px-2 sm:px-6 hover:cursor-pointer`}
         onClick={handleClick}
       >
         <div>{item.title}</div>
@@ -20,10 +23,16 @@ const ExperienceCard = ({ item }) => {
           </div>
         </div>
       </div>
-      {drop && (
-        <div
-          className={`bg-[#241d41] text-white rounded-md p-4 w-[90vw] md:w-[60vw] font-normal `}
-        >
+      <div
+        ref={contentEl}
+        className={`bg-[#241d41] text-white rounded-mdw-[90vw] md:w-[60vw] font-normal transition-height ease-in-out overflow-hidden duration-300${
+          drop ? "" : ""
+        }`}
+        style={
+          drop ? { height: contentEl.current.scrollHeight } : { height: "0px" }
+        }
+      >
+        <div className="p-4">
           <div>{item.about}</div>
           <div className="flex space-x-2 mt-4">
             {item.stack.map((tech) => (
@@ -36,7 +45,7 @@ const ExperienceCard = ({ item }) => {
             ))}
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
