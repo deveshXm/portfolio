@@ -8,7 +8,7 @@ const ExperienceCard = ({ item }) => {
     setDrop(!drop);
   };
   return (
-    <div className="space-y-4 text-sm md:text-md mb-4">
+    <div className="space-y-4 text-sm md:text-sm mb-4">
       <div
         className={`w-[90vw] md:w-[60vw] transform duration-300 ${
           drop ? "bg-purple-900" : "bg-purple-600"
