@@ -4,9 +4,9 @@ import data from "../data";
 import Card from "./SubComponents/Card";
 import gojo from "../public/gojo.png";
 
-const item = () => {
+const item = ({scroll}) => {
   return (
-    <div className="bg-gradient-to-b from-[#15212c] via-[#1a191d] to-[#1a191d] flex items-center justify-center">
+    <div ref={scroll} className="bg-gradient-to-b from-[#15212c] via-[#1a191d] to-[#1a191d] flex items-center justify-center">
       <div className="text-white pt-10 sm:pt-32">
         <h1 className="font-bold text-4xl sm:text-7xl text-center ">
           My Expertise

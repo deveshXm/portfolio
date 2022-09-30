@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
-const NavBar = () => {
+const NavBar = ({
+  handleHome,
+  handleExpertise,
+  handleWork,
+  handleExperience,
+  handleContact,
+}) => {
+  const css =
+    "hover:text-[#66d9ed] px-5 hover:cursor-pointer transform duration-300 ease-in-out";
   return (
-    <div className="fixed h-[8vh] backdrop-blur-xl z-[10] w-full flex items-center justify-center gap-5 text-white text-xs font-medium font-roboto tracking-tighter">
-      <div> home </div>
-      <div> expertise</div>
-      <div> work</div>
-      <div> experience</div>
-      <div> contact</div>
+    <div className="fixed h-[8vh] backdrop-blur-3xl z-[10] w-full flex items-center justify-center text-white text-sm font-medium font-roboto tracking-tighter ">
+      <button onClick={handleHome} className={css}>
+        home
+      </button>
+      <button onClick={handleExpertise} className={css}>
+        expertise
+      </button>
+      <button onClick={handleWork} className={css}>
+        work
+      </button>
+      <button onClick={handleExperience} className={css}>
+        experience
+      </button>
+      <button onClick={handleContact} className={css}>
+        contact
+      </button>
     </div>
   );
 };
