@@ -6,7 +6,7 @@ const ContactForm = () => {
     <div className="space-y-1 font-roboto font-semibold w-full">
       <p className="opacity-40">{"<a>"}</p>
       <div className="flex space-x-2">
-        <img
+        <Image
           src="/mail.svg"
           alt="Mail Icon by Karya Sore"
           height="25px"
@@ -20,7 +20,7 @@ const ContactForm = () => {
         </a>
       </div>
       <div className="flex space-x-2">
-        <img src="/linkedin.svg" />
+        <Image alt="linkedIn" height={25} width={25} src="/linkedin.svg" />
         <a
           href="https://www.linkedin.com/in/devxm"
           className="hover:text-purple-600 hover:cursor-pointer my"
@@ -29,7 +29,7 @@ const ContactForm = () => {
         </a>
       </div>
       <div className="flex items-center space-x-2">
-        <img src="/github.svg" />
+        <Image src="/github.svg" alt="github" height={25} width={25} />
         <a
           href="https://github.com/deveshXm"
           className="hover:text-purple-600 hover:cursor-pointer "

@@ -8,9 +8,9 @@ const Projects = () => {
   };
   return (
     <div className=" rounded-lg lg:flex space-y-10 lg:space-y-0 lg:space-x-10 mx-5 lg:mx-0">
-      <ProjectCard Data={Data} />
-      <ProjectCard Data={Data} />
-      <ProjectCard Data={Data} />
+      {Data.Projects.map((item) => (
+        <ProjectCard item={item} key={item.id} />
+      ))}
     </div>
   );
 };
