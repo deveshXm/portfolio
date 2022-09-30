@@ -8,7 +8,7 @@ const ExperienceCard = ({ item }) => {
     setDrop(!drop);
   };
   return (
-    <div className="space-y-4 text-sm md:text-sm mb-4">
+    <div className="space-y-4 text-xs md:text-sm mb-4">
       <div
         className={`w-[90vw] md:w-[60vw] transform duration-300 ${
           drop ? "bg-purple-900" : "bg-purple-600"
@@ -18,8 +18,8 @@ const ExperienceCard = ({ item }) => {
         <div>{item.title}</div>
         <div className="flex items-center space-x-2">
           <div>{item.timeline}</div>
-          <div className="hover:text-[#61c4d9] text-center ">
-            {drop ? "-" : "+"}
+          <div className="hover:text-[#61c4d9] hover:border-[#61c4d9] text-center border-2 rounded-full px-2">
+            {drop ? "~" : "+"}
           </div>
         </div>
       </div>
