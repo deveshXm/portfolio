@@ -19,7 +19,7 @@ const Experience = ({ scroll }) => {
           Professional <br /> Experience
         </h1>
         <div className="flex justify-center pt-4">
-          <div className="w-fit mx-auto space-y-5 " data-aos = "fade-left">
+          <div className="w-fit mx-auto space-y-5 " data-aos ="fade-up">
             {Data.Experience.map((item) => (
               <ExperienceCard item={item} key={item.id} />
             ))}

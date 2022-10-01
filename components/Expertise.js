@@ -17,10 +17,10 @@ const Expertise = ({scroll}) => {
   return (
     <div ref={scroll} className="bg-gradient-to-b from-[#15212c] via-[#1a191d] to-[#1a191d] flex items-center justify-center">
       <div className="text-white pt-10 sm:pt-32" >
-        <h1 className="font-bold text-4xl sm:text-7xl text-center " data-aos = "fade-left">
+        <h1 className="font-bold text-4xl sm:text-7xl text-center " data-aos = "fade-right">
           My Expertise
         </h1>
-        <div className="pt-20 space-y-2 md:space-y-0 lg:flex " data-aos = "fade-right">
+        <div className="pt-20 space-y-2 md:space-y-0 lg:flex " data-aos = "fade-up">
           {data.Expertise.map((item) => (
             <Card key={item.id} item={item} />
           ))}

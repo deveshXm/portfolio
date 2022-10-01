@@ -25,10 +25,10 @@ const Work = ({ scroll }) => {
             FEATURED
           </h1>
         </div>
-        <div data-aos = "fade-up">
+        <div data-aos="zoom-in">
           <FeaturedProject />
         </div>
-        <div data-aos = "fade-up">
+        <div data-aos="fade-up">
           <Projects />
         </div>
       </div>
