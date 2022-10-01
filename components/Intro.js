@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import HALO from "vanta/dist/vanta.halo.min";
 import * as THREE from "three";
+import Heading from "./SubComponents/Heading";
 
 const Intro = ({ scroll }) => {
   const [vantaEffect, setVantaEffect] = useState(0);
@@ -35,11 +36,11 @@ const Intro = ({ scroll }) => {
         <div className="space-y-20">
           <div className="space-y-20">
             <div className=" z-[1] text-center  text-white mt-36 ">
-              <h6 className="text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold drop-shadow-2xl max-w-[90vw]">
-                DEVESH MEENA
-              </h6>
-              <h4 className="text-1xl lg:text-3xl font-semibold font-roboto drop-shadow-2xl">
-                STUDENT , FULL STACK DEVELOPER{" "}
+              <div className="text-6xl sm:text-7xl lg:text-8xl font-semibold drop-shadow-2xl max-w-[90vw]">
+                <Heading title={"Hi! I'm Devesh"} color={"blue-500"}/>
+              </div>
+              <h4 className="text-1xl lg:text-2xl font-semibold font-poppins drop-shadow-2xl">
+                Student , Developer , Basketball Player
               </h4>
             </div>
             <div className="flex justify-center ">
