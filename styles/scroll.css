@@ -1,0 +1,29 @@
+.indicator {
+  width: 40px; 
+  height: 100px;
+  border: 2px solid #fff;
+  border-radius: 50px; 
+  position: relative;
+}
+.indicator:before {
+  content: ""; 
+  position: absolute;
+  width: 20px; 
+  height: 20px;
+  background: #fff; 
+  margin: auto;
+  left: 0; 
+  right: 0;
+  top: 30px; 
+  border-radius: 50%;
+  animation: animate 1s linear infinite; 
+}
+@keyframes animate {
+  0% {
+      opacity: 1; top: 5px;
+  }
+  100% {
+      opacity: 0; top: 70px;
+      /* transform: scale(1); */
+  }
+}
