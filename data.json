@@ -31,7 +31,7 @@
             "title" : "Matinee | OTT Platform",
             "image" : "/images/matinee.jpg",
             "about" : "Designed and developed a web-app that demonstrates algorithms that a web-streaming app (like Netflix) or an audio-streaming app (like Spotify) may use for their Recommendation Engine.<br/><br/> Programmed the most efficient sorting algorithm for content based recommendation engine.",
-            "link" : ""
+            "link" : "https://github.com/deveshXm/matinee"
         }
     ],
     "Projects" : [
@@ -39,19 +39,19 @@
             "id" : 1,
             "title" : "Matinee | OTT Platform",
             "image" : "/images/matinee.jpg",
-            "link" : ""
+            "link" : "https://github.com/deveshXm/matinee"
         },
         {
             "id" : 2,
             "title" : "Matinee | OTT Platform",
             "image" : "/images/matinee.jpg",
-            "link" : ""
+            "link" : "https://github.com/deveshXm/matinee"
         },
         {
             "id" : 3,
             "title" : "Matinee | OTT Platform",
             "image" : "/images/matinee.jpg",
-            "link" : ""
+            "link" : "https://github.com/deveshXm/matinee"
         }
 
     ],

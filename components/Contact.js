@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import map from "../public/map.png";
 import ContactForm from "./SubComponents/ContactForm";
+import AOS from 'aos';
+import 'aos/dist/aos';
 
 const subhead =
   "<p>I'm a creative young mind looking for opportunities & I would love to collaborate on any kinds of project.<br/><br/>Have an exciting project you need help with?<br/> Send me an email or contact me via direct message!</p>";
 
 const Contact = ({ scroll }) => {
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
   return (
     <div ref={scroll} className="bg-black h-fit p-12 text-white space-y-10">
       <div className="space-y-6">
-        <h1 className="text-6xl font-bold md:text-8xl">Contact Me</h1>
+        <h1 className="text-6xl font-bold md:text-8xl" data-aos = "fade-right">Contact Me</h1>
       </div>
-      <div className="lg:flex ">
+      <div className="lg:flex " data-aos = "fade-up">
         <div className="space-y-2 bg-[#27282c] flex items-center justify-center px-10 py-5">
           <div>
             <div
