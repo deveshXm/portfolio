@@ -18,8 +18,8 @@ const Experience = ({ scroll }) => {
         <h1 className="text-center text-5xl md:text-7xl lg:text-8xl font-semibold" data-aos = "fade-right">
           Professional <br /> Experience
         </h1>
-        <div className="flex justify-center pt-4" data-aos = "fade-left">
-          <div className="w-fit mx-auto space-y-5 ">
+        <div className="flex justify-center pt-4">
+          <div className="w-fit mx-auto space-y-5 " data-aos = "fade-left">
             {Data.Experience.map((item) => (
               <ExperienceCard item={item} key={item.id} />
             ))}
