@@ -16,7 +16,7 @@ const ProjectCard = ({ item }) => {
       <div className="space-y-4 p-6 rounded-md  border-2 border-white border-opacity-100 md:hover:translate-x-3 md:hover:translate-y-3 transition duration-300 bg-grey ">
         <div className="text-2xl font-semibold">{item.title}</div>
         <div className="py-2">{item.about}</div>
-        <Button title={"View Project"} />
+        <Button title={"View Project"} link={item.link}/>
       </div>
     </div>
   );

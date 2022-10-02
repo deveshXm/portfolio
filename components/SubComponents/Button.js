@@ -1,8 +1,8 @@
 import React from "react";
 
-const Button = ({ title }) => {
+const Button = ({ title , link}) => {
   return (
-    <a href="#" class="button nav-link">
+    <a href={link} class="button nav-link" target="_blank" rel="noreferrer">
       <div class="bottom"></div>
       <div class="top">
         <div class="label">{title}</div>

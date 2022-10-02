@@ -25,9 +25,7 @@ const Intro = ({ scroll }) => {
               <p>Student , Developer & Basketball player.</p>
             </div>
             <div className="flex justify-center ">
-              <a href="https://drive.google.com/file/d/1ZAiKj7vhU_x7Zu5JTGWpSd8q33jaAVSP/view?usp=sharing">
-                <Button title={"RESUME"} />
-              </a>
+                <Button title={"RESUME"} link={"https://drive.google.com/file/d/1ZAiKj7vhU_x7Zu5JTGWpSd8q33jaAVSP/view?usp=sharing"}/>
             </div>
             
           </div>
