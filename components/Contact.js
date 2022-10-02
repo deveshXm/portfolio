@@ -15,23 +15,28 @@ const Contact = ({ scroll }) => {
   return (
     <div
       ref={scroll}
-      className="bg-[url('../public/images/contact-bg.jpg')]  bg-cover h-screen flex items-center p-12 text-white space-y-10"
+      className="bg-[url('../public/images/contact-bg.jpg')]  bg-cover bg-no-repeat h-fit md:h-screen flex items-center p-4 md:p-12 text-white space-y-10"
     >
       <div className="space-y-16">
-          <div
-            className="text-6xl font-semibold md:text-8xl"
-            data-aos="fade-right"
-          >
-            <Heading title={"Contact Me"} />
-          </div>
-        <div className="lg:flex w-[43vw] " data-aos="fade-up">
-          <div className="space-y-2 border-2 border-white hover:border-pink transition duration-300 rounded-md flex items-center justify-center p-10">
+        <div
+          className="text-5xl mx-auto w-fit sm:mx-0 font-semibold md:text-8xl"
+          data-aos="fade-right"
+        >
+          <Heading title={"Contact Me"} />
+        </div>
+        <div
+          className="lg:flex w-fit lg:w-[60vw] xl:w-[43vw] "
+          data-aos="fade-up"
+        >
+          <div className="space-y-2 border-2 border-white hover:border-pink transition duration-300 rounded-md flex items-center justify-center p-4 md:p-10">
             <div>
               <div
-                className="font-poppins font-normal"
+                className="font-poppins font-normal text-sm sm:text-base"
                 dangerouslySetInnerHTML={{ __html: subhead }}
               />
-              <ContactForm />
+              <div className="">
+                <ContactForm />
+              </div>
             </div>
           </div>
         </div>

@@ -6,7 +6,7 @@ const Button = ({ title, link, image }) => {
     <a href={link} class="button nav-link" target="_blank" rel="noreferrer">
       <div class="bottom"></div>
       <div class="top">
-        <div className="flex items-center space-x-2">
+        <div className="flex justify-center space-x-2 w-[10rem] md:w-auto items-center">
           {image && (
             <Image
               src={image}

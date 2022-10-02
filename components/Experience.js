@@ -11,7 +11,7 @@ const Experience = ({ scroll }) => {
   }, []);
 
   return (
-    <div ref={scroll} className="h-fit py-40 flex justify-center text-white">
+    <div ref={scroll} className="h-fit py-40 flex justify-center text-white bg-[url('../public/images/experience-bg.jpg')] h-screen  bg-cover bg-no-repeat">
       <div className="space-y-20">
         <div
           className="text-center text-5xl md:text-7xl lg:text-8xl font-semibold"

@@ -16,7 +16,7 @@ const Expertise = ({scroll}) => {
   
 
   return (
-    <div ref={scroll} className="flex items-center justify-center z-10">
+    <div ref={scroll} className="flex bg-[url('../public/images/expertise-bg.jpg')]  bg-cover bg-no-repeat h-fit items-center justify-center z-10">
       <div className="text-white pt-10 sm:pt-32" >
         <h1 className="font-bold text-4xl sm:text-7xl text-center font-poppins text-lightblue " data-aos = "fade-right">
           <Heading title={"My Expertise"}/>
