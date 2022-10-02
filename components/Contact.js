@@ -1,39 +1,39 @@
 import React, { useEffect } from "react";
-import Image from "next/image";
-import map from "../public/map.png";
 import ContactForm from "./SubComponents/ContactForm";
-import AOS from 'aos';
-import 'aos/dist/aos';
+import AOS from "aos";
+import "aos/dist/aos";
 import Heading from "./SubComponents/Heading";
 
 const subhead =
   "<p>I'm a creative young mind looking for opportunities & I would love to collaborate on any kinds of project.<br/><br/>Have an exciting project you need help with?<br/> Send me an email or contact me via direct message!</p><br/>";
 
 const Contact = ({ scroll }) => {
-
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
   return (
-    <div ref={scroll} className="bg-black h-fit p-12 text-white space-y-10">
-      <div className="space-y-6">
-        <div className="text-6xl font-semibold md:text-8xl" data-aos = "fade-right"><Heading title={"Contact Me"} /></div>
-      </div>
-      <div className="lg:flex " data-aos = "fade-up">
-        <div className="space-y-2 bg-[#27282c] flex items-center justify-center px-10 py-5">
-          <div>
-            <div
-              className="font-poppins text-sm font-normal"
-              dangerouslySetInnerHTML={{ __html: subhead }}
-            />
-            <ContactForm />
+    <div
+      ref={scroll}
+      className="bg-[url('../public/images/contact-bg.jpg')]  bg-cover h-screen flex items-center p-12 text-white space-y-10"
+    >
+      <div className="space-y-16">
+          <div
+            className="text-6xl font-semibold md:text-8xl"
+            data-aos="fade-right"
+          >
+            <Heading title={"Contact Me"} />
           </div>
-        </div>
-        <div className="inline-block overflow-hidden">
-          <a href="https://www.google.com/maps/place/Jaipur,+Rajasthan/@26.6299788,73.51859,8.07z/data=!4m5!3m4!1s0x396c4adf4c57e281:0xce1c63a0cf22e09!8m2!3d26.91258!4d75.7871246">
-            <Image src={map} alt="map" className=" scale-[2.0] md:scale-100 " />
-          </a>
+        <div className="lg:flex w-[43vw] " data-aos="fade-up">
+          <div className="space-y-2 border-2 border-white hover:border-pink transition duration-300 rounded-md flex items-center justify-center p-10">
+            <div>
+              <div
+                className="font-poppins font-normal"
+                dangerouslySetInnerHTML={{ __html: subhead }}
+              />
+              <ContactForm />
+            </div>
+          </div>
         </div>
       </div>
     </div>
