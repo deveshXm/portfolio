@@ -29,23 +29,20 @@
     {
       "id": 1,
       "title": "Matinee | OTT Platform",
-      "image": "/images/matinee.jpg",
-      "about": "Designed and developed a web-app that demonstrates algorithms that a web-streaming app (like Netflix) or an audio-streaming app (like Spotify) may use for their Recommendation Engine.<br/><br/> Programmed the most efficient sorting algorithm for content based recommendation engine.",
+      "about": "Designed & developed a web-app that demonstrates algorithms that a web-streaming app (like Netflix) or an audio-streaming app (like Spotify) may use for their Recommendation Engine.",
       "link": "https://github.com/deveshXm/matinee"
     },
     {
       "id": 2,
-      "title": "Matinee | OTT Platform",
-      "image": "/images/matinee.jpg",
-      "about": "Designed and developed a web-app that demonstrates algorithms that a web-streaming app (like Netflix) or an audio-streaming app (like Spotify) may use for their Recommendation Engine.<br/><br/> Programmed the most efficient sorting algorithm for content based recommendation engine.",
-      "link": "https://github.com/deveshXm/matinee"
+      "title": "Trabel",
+      "about": "Designed & developed a full stack web app that allows users to share travel blogs. Users can add , delete or update their blogs.",
+      "link": "https://github.com/deveshXm/trabel"
     },
     {
       "id": 3,
-      "title": "Matinee | OTT Platform",
-      "image": "/images/matinee.jpg",
-      "about": "Designed and developed a web-app that demonstrates algorithms that a web-streaming app (like Netflix) or an audio-streaming app (like Spotify) may use for their Recommendation Engine.<br/><br/> Programmed the most efficient sorting algorithm for content based recommendation engine.",
-      "link": "https://github.com/deveshXm/matinee"
+      "title": "The Algorithmic Path",
+      "about": "Developing a web app which will allow young minds to learn & explore paths like CP , web dev & android dev with 1 on 1 mentorships & best resouces out there.",
+      "link": "https://github.com/deveshXm/"
     }
   ],
   "Experience": [
