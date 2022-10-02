@@ -17,7 +17,7 @@ const Intro = ({ scroll }) => {
         <li></li>
         <li></li>
         <li></li>
-        <div className="text-white h-screen w-screen flex items-center justify-center md:justify-start ">
+        <div className="text-white min-h-screen h-fit w-screen flex items-center justify-center md:justify-start ">
           <div className="md:flex items-center justify-center">
             <div className=" md:ml-20 space-y-10 md:space-y-4 md:mr-20 ">
               <div className=" font-poppins  text-4xl md:text-8xl font-medium text-lightblue flex justify-center">
