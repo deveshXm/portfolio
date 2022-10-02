@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <div className="body bg-grey">
       <Head>
-        <title>Portfolio</title>
+        <title>Portfolio | Devesh Meena</title>
         <meta name="deScription" content="Devesh Meena Portfolio" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
