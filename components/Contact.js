@@ -15,7 +15,7 @@ const Contact = ({ scroll }) => {
   return (
     <div
       ref={scroll}
-      className="bg-[url('../public/images/contact-bg.jpg')] w-full  bg-cover bg-no-repeat h-full md:h-screen flex items-center p-4 md:p-12 text-white space-y-10"
+      className="bg-[url('/images/contact-bg.jpg')]  bg-cover bg-no-repeat h-fit md:h-screen flex items-center p-4 md:p-12 text-white space-y-10"
     >
       <div className="space-y-16">
         <div
