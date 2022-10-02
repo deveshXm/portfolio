@@ -4,7 +4,7 @@ import Image from "next/image";
 const Card = ({ item }) => {
   return (
     <div
-      className={`h-fit lg:h-[22vw] xl:h-[20vw] w-[80vw] lg:w-[22vw] transition duration-300 ease-in-out md:hover:-translate-y-10 rounded-md p-9 xl:p-12 border-2 border-lightblue shadow-xl hover:shadow-white shadow-pink`}
+      className={`h-fit lg:h-[22vw] xl:h-[20vw] w-[80vw] lg:w-[22vw] transition duration-300 ease-in-out lg:hover:-translate-y-10 rounded-md p-9 xl:p-12 border-2 border-lightblue shadow-xl hover:shadow-white shadow-pink`}
     >
       <div className="flex fill-white items-center justify-evenly space-x-2 ">
         <Image src={item.logo} height={50} width={50} alt="logo" />
