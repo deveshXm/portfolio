@@ -19,7 +19,7 @@ const NavBar = ({
 
   const rescss = "flex border-b border-purple-600 py-4 pl-4 hover:text-[#66d9ed] px-5 hover:cursor-pointer transform duration-300 ease-in-out w-full"
   return (
-    <div className="flex fixed top-0 z-[10] w-full  text-lightblue p-4 2xl:text-3xl font-bold justify-end bg-gradient-to-t from-transparent to-black md:bg-none md:backdrop-blur-3xl items-center md:justify-center font-roboto">
+    <div className="flex fixed top-0 z-[10] w-full  text-lightblue p-4 font-bold justify-end bg-gradient-to-t from-transparent to-black md:bg-none md:backdrop-blur-3xl items-center md:justify-center font-roboto">
       <div className="hidden md:flex">
         <button onClick={handleHome} className={css}>
           home
