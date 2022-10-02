@@ -4,9 +4,10 @@ import map from "../public/map.png";
 import ContactForm from "./SubComponents/ContactForm";
 import AOS from 'aos';
 import 'aos/dist/aos';
+import Heading from "./SubComponents/Heading";
 
 const subhead =
-  "<p>I'm a creative young mind looking for opportunities & I would love to collaborate on any kinds of project.<br/><br/>Have an exciting project you need help with?<br/> Send me an email or contact me via direct message!</p>";
+  "<p>I'm a creative young mind looking for opportunities & I would love to collaborate on any kinds of project.<br/><br/>Have an exciting project you need help with?<br/> Send me an email or contact me via direct message!</p><br/>";
 
 const Contact = ({ scroll }) => {
 
@@ -17,13 +18,13 @@ const Contact = ({ scroll }) => {
   return (
     <div ref={scroll} className="bg-black h-fit p-12 text-white space-y-10">
       <div className="space-y-6">
-        <h1 className="text-6xl font-bold md:text-8xl" data-aos = "fade-right">Contact Me</h1>
+        <div className="text-6xl font-semibold md:text-8xl" data-aos = "fade-right"><Heading title={"Contact Me"} /></div>
       </div>
       <div className="lg:flex " data-aos = "fade-up">
         <div className="space-y-2 bg-[#27282c] flex items-center justify-center px-10 py-5">
           <div>
             <div
-              className="font-roboto text-sm font-normal"
+              className="font-poppins text-sm font-normal"
               dangerouslySetInnerHTML={{ __html: subhead }}
             />
             <ContactForm />

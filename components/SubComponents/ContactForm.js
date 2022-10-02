@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const ContactForm = () => {
   return (
-    <div className="space-y-1 font-roboto font-semibold w-full">
+    <div className="space-y-1 font-poppins font-semibold w-full">
       <p className="opacity-40">{"<a>"}</p>
       <div className="flex space-x-2">
         <Image
@@ -14,7 +14,7 @@ const ContactForm = () => {
         />
         <a
           href="mailto:nothefakedevesh@gmail.com"
-          className="hover:text-purple-600 hover:cursor-pointer"
+          className="hover:text-pink hover:cursor-pointer"
         >
           {"E-mail"}
         </a>
@@ -23,7 +23,7 @@ const ContactForm = () => {
         <Image alt="linkedIn" height={25} width={25} src="/linkedin.svg" />
         <a
           href="https://www.linkedin.com/in/devxm"
-          className="hover:text-purple-600 hover:cursor-pointer my"
+          className="hover:text-pink hover:cursor-pointer my"
         >
           LinkedIn
         </a>
@@ -32,7 +32,7 @@ const ContactForm = () => {
         <Image src="/github.svg" alt="github" height={25} width={25} />
         <a
           href="https://github.com/deveshXm"
-          className="hover:text-purple-600 hover:cursor-pointer "
+          className="hover:text-pink hover:cursor-pointer "
         >
           Github
         </a>

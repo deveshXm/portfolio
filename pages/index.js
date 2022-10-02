@@ -32,7 +32,7 @@ export default function Home() {
   };
 
   return (
-    <div className="body">
+    <div className="body bg-grey">
       <Head>
         <title>Portfolio</title>
         <meta name="deScription" content="Devesh Meena Portfolio" />

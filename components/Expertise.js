@@ -5,6 +5,7 @@ import Card from "./SubComponents/Card";
 import gojo from "../public/gojo.png";
 import AOS from "aos";
 import 'aos/dist/aos.css';
+import Heading from "./SubComponents/Heading";
 
 const Expertise = ({scroll}) => {
 
@@ -15,10 +16,10 @@ const Expertise = ({scroll}) => {
   
 
   return (
-    <div ref={scroll} className="bg-gradient-to-b from-[#15212c] via-[#1a191d] to-[#1a191d] flex items-center justify-center">
+    <div ref={scroll} className="flex items-center justify-center z-10">
       <div className="text-white pt-10 sm:pt-32" >
-        <h1 className="font-bold text-4xl sm:text-7xl text-center " data-aos = "fade-right">
-          My Expertise
+        <h1 className="font-bold text-4xl sm:text-7xl text-center font-poppins text-lightblue " data-aos = "fade-right">
+          <Heading title={"My Expertise"}/>
         </h1>
         <div className="text-white pt-20 space-y-5 md:space-y-0 lg:flex md:space-x-2 " data-aos = "fade-up">
           {data.Expertise.map((item) => (
@@ -29,7 +30,7 @@ const Expertise = ({scroll}) => {
           <p className="md:text-2xl text-center  sm:flex sm:justify-center mt-10 sm:mt-0 opacity-50 " >
              &ldquo; I&rsquo;ll debug you &rdquo;
           </p>
-          <div className=" mx-auto md:mx-0 h-[200px] w-[200px] md:h-[400px] md:w-[400px] opacity-50">
+          <div className=" mx-auto md:mx-0 h-[200px] w-[200px] md:h-[400px] md:w-[400px] opacity-50 ">
             <Image src={gojo} objectFit="contain" alt=" gojo" />
           </div>
         </div>
