@@ -47,7 +47,7 @@ const NavBar = ({
       <div
         className={
           !nav
-            ? "fixed left-0 top-0 h-full bg-opacity-50 backdrop-blur-md bg-black text-lightblue hover:text-pink w-60 border-r border-r-gray-500 z-[1000] ease-in-out duration-500"
+            ? "fixed left-0 top-0 h-[200vh] bg-opacity-50 backdrop-blur-md bg-black text-lightblue hover:text-pink w-60 border-r border-r-gray-500 z-[1000] ease-in-out duration-500"
             : "fixed left-[-100%] top-0 h-full bg-opacity-50 backdrop-blur-md bg-black w-60 border-r border-r-gray-500 z-[1000] ease-in duration-500 font-roboto "
         }
       >
