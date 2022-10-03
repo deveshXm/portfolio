@@ -19,7 +19,7 @@ const Intro = ({ scroll }) => {
         <li></li>
         <div className="text-white min-h-screen h-fit w-screen flex items-center justify-center ">
           <div className="w-full md:flex md:items-center md:justify-around">
-            <div className=" md:ml-20 space-y-10 md:space-y-4 ">
+            <div className=" md:ml-20 space-y-4 ">
               <div className=" font-poppins  text-4xl md:text-8xl font-medium text-lightblue flex justify-center">
                 <Heading title={"Hi! I'm Devesh"} />
               </div>
