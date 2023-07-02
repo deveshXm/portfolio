@@ -6,7 +6,7 @@
       "color": "pink",
       "title1": "Software",
       "title2": "Development",
-      "about": "Good knowledge of OOPs, DBMS & Data Structures. Experienced in C++, Python, Javascript."
+      "about": " Experienced with JS, TS, Golang(Learning) \n Familiar with Git, Docker, Keycloak, Vercel ,etc. \n Knowledge of DSA, OOPS, Cyber Security,etc. \n Knowledge of working with Linux System."
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "color": "blue",
       "title1": "Frontend",
       "title2": "Development",
-      "about": "Experienced in HTML, CSS , JS, React & NextJS Frameworks."
+      "about": "Have worked with React, Next, LIT Web-components, ThreeJS. \n Developed mobile apps using React-Native, Expo. \n Worked with component libraries like Material, Vaadin, Bootstrap."
     },
     {
       "id": 3,
@@ -22,33 +22,47 @@
       "color": "green",
       "title1": "Backend",
       "title2": "Development",
-      "about": "Skilled with REST & Fast APIs, node, Mongo DB & MySQL. "
+      "about": "Worked with Firebase, AWS (EC2, Redis, ECS) & GCP. \n Developed RESTful APIs using Express, Nodejs. \n Worked with databases like MongoDB, SQL, etc."
     }
   ],
   "Projects": [
     {
       "id": 1,
-      "title": "Matinee | OTT Platform",
-      "about": "Designed & developed a web-app that demonstrates algorithms that a web-streaming app (like Netflix) or an audio-streaming app (like Spotify) may use for their Recommendation Engine.",
-      "link": "https://github.com/deveshXm/matinee"
+      "title": "Bento",
+      "about": "Designed and developed barber & food ordering mobile app for both students & shopkeeper in React Native, Expo & Firebase & deployed the app on Play Store.",
+      "link": "https://github.com/orgs/Bento-One-stop-for-students/repositories"
     },
     {
       "id": 2,
       "title": "Trabel",
-      "about": "Designed & developed a full stack web app that allows users to share travel blogs. Users can add , delete or update their blogs.",
+      "about": "Designed & developed a full stack web app that allows users to share travel blogs in MERN",
       "link": "https://github.com/deveshXm/trabel"
     },
     {
       "id": 3,
-      "title": "The Algorithmic Path",
-      "about": "Developing a web app which will allow young minds to learn & explore paths like CP , web dev & android dev with 1 on 1 mentorships & best resouces out there.",
-      "link": "https://github.com/deveshXm/"
+      "title": "ThreeJS Building Introspection Tool",
+      "about": "Tried to implemented how websites like housing.com allows viewing buildings in 3d to users",
+      "link": "https://github.com/deveshXm/BuildingProject"
     }
   ],
   "Experience": [
     {
       "id": 1,
-      "title": "Microsoft Engage 2022",
+      "title": "Fundwave - Full Stack Intern",
+      "timeline": "June - July 2023",
+      "about": "Setup OIDC using Keycloak(IAM) on AWS EC2 & Redis. Developed RESTful APIs using Express & Nodejs. Designed & developed front-end using LIT  Web-components",
+      "stack": ["LIT WC", "TypeScript", "NodeJS", "AWS", "Docker", "Keycloak(IAM)"]
+    },
+    {
+      "id": 2,
+      "title": "Shardings - Frontend Intern",
+      "timeline": "Dec - Jan 2023",
+      "about": "Designed & developed UI in React using TailwindCSS & ThreeJS. Developed RESTful API on Firebase.",
+      "stack": ["React", "ThreeJS", "Firebase", "JavaScript", "Tailwind"]
+    },
+    {
+      "id": 3,
+      "title": "Microsoft Engage Mentee",
       "timeline": "May - June 2022",
       "about": "Designed and developed a web-app that demonstrates algorithms that a web-streaming app (like Netflix) or an audio-streaming app (like Spotify) may use for their Recommendation Engine.",
       "stack": ["NextJS", "Fast API", "Python", "Tailwind"]

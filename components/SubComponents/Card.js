@@ -2,6 +2,8 @@ import React from "react";
 import Image from "next/image";
 
 const Card = ({ item }) => {
+  const points = item.about.split("\n");
+  console.log(points);
   return (
     <div
       className={`h-fit lg:h-[22vw] xl:h-[20vw] w-[80vw] lg:w-[22vw] transition duration-300 ease-in-out lg:hover:-translate-y-10 rounded-md p-9 xl:p-12 border-2 border-lightblue shadow-xl hover:shadow-white shadow-pink`}
@@ -17,7 +19,11 @@ const Card = ({ item }) => {
         </div>
       </div>
       <div className="font-poppins text-md md:text-sm lg:text-xs xl:text-base mt-9">
-        <p className="text-left">{item.about}</p>
+        <ul style={{ listStyleType: 'disc' }}>
+          {points.map((point, index) => (
+            <li key={index}>{point}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
