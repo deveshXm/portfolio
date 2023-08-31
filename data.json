@@ -6,7 +6,7 @@
       "color": "pink",
       "title1": "Software",
       "title2": "Development",
-      "about": " Languages : Javascript, TypeScript, Java \n Skills : OOPS, DSA, Computer Networks, DBMS \n OS : Linux, Windows \n Technologies : Git, Visual Studio, IntelliJ Idea"
+      "about": " Languages : Javascript, TypeScript, Python, Java (Learning) \n Skills : OOPS, DSA, Computer Networks, DBMS \n OS : Linux, Windows \n Technologies : Git, Visual Studio, IntelliJ Idea"
     },
     {
       "id": 2,
@@ -54,14 +54,14 @@
   "Experience": [
     {
       "id": 1,
-      "title": "Fundwave - Full Stack Intern",
+      "title": "Software Engineer",
       "timeline": "June - July 2023",
-      "about": "Setup OIDC using Keycloak(IAM) on AWS EC2 & Redis. Developed RESTful APIs using Express & Nodejs. Designed & developed front-end using LIT  Web-components",
+      "about": "Developed an OIDC server using Keycloak(IAM) on AWS EC2 & Redis. Developed RESTful APIs using Express & Nodejs. Designed & developed front-end using LIT  Web-components",
       "stack": ["LIT WC", "TypeScript", "NodeJS", "AWS", "Docker", "Keycloak(IAM)"]
     },
     {
       "id": 2,
-      "title": "Shardings - Frontend Intern",
+      "title": "Frontend Engineer",
       "timeline": "Dec - Jan 2023",
       "about": "Designed & developed UI in React using TailwindCSS & ThreeJS. Developed RESTful API on Firebase.",
       "stack": ["React", "ThreeJS", "Firebase", "JavaScript", "Tailwind"]
