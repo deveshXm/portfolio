@@ -6,7 +6,7 @@
       "color": "pink",
       "title1": "Software",
       "title2": "Development",
-      "about": " Experienced with JS, TS, Golang(Learning) \n Familiar with Git, Docker, Keycloak, Vercel ,etc. \n Knowledge of DSA, OOPS, Cyber Security,etc. \n Knowledge of working with Linux System."
+      "about": " Languages : Javascript, TypeScript, Java \n Skills : OOPS, DSA, Computer Networks, DBMS \n OS : Linux, Windows \n Technologies : Git, Visual Studio, IntelliJ Idea"
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "color": "blue",
       "title1": "Frontend",
       "title2": "Development",
-      "about": "Have worked with React, Next, LIT Web-components, ThreeJS. \n Developed mobile apps using React-Native, Expo. \n Worked with component libraries like Material, Vaadin, Bootstrap."
+      "about": "Frameworks : React Native, LIT Web Components, Next.js, Expo \n Libraries : React, Three.js, Redux, Moment, Anime, Bootstrap \n Hosting : Firebase Hosting, Vercel, Heroku, VMs"
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "color": "green",
       "title1": "Backend",
       "title2": "Development",
-      "about": "Worked with Firebase, AWS (EC2, Redis, ECS) & GCP. \n Developed RESTful APIs using Express, Nodejs. \n Worked with databases like MongoDB, SQL, etc."
+      "about": "Technologies : Node.js, REST, GraphQL \n Libraries : Express.js, JWT, Crypto \n Databases : MongoDB, PostgreSQL, MariaDB, DynamoDB, CockroachDB \n ORMs : Mongoose, Prisma \n Cloud : Docker, AWS, GCP, Airtable, Firebase, Digital Ocean "
     }
   ],
   "Projects": [
@@ -34,12 +34,18 @@
     },
     {
       "id": 2,
+      "title": "TravelBOT",
+      "about": "Developed a travel assistant chatbot using OpenAI's ChatGPT-3.5-turbo model API in Python, FastAPI & React.",
+      "link": "https://github.com/deveshXm/TravelBot"
+    },
+    {
+      "id": 3,
       "title": "Trabel",
       "about": "Designed & developed a full stack web app that allows users to share travel blogs in MERN",
       "link": "https://github.com/deveshXm/trabel"
     },
     {
-      "id": 3,
+      "id": 4,
       "title": "ThreeJS Building Introspection Tool",
       "about": "Tried to implemented how websites like housing.com allows viewing buildings in 3d to users",
       "link": "https://github.com/deveshXm/BuildingProject"

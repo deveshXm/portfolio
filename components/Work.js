@@ -12,7 +12,7 @@ const Work = ({ scroll }) => {
     AOS.init({ duration: 1000 });
   }, []);
   return (
-    <div className="bg-[url('/images/work-bg.jpg')]  bg-cover bg-no-repeat min-h-screen  h-fit text-white md:px-24 sm:px-15 py-10 " ref={scroll}>
+    <div className="bg-[url('/images/work-bg.jpg')]  bg-cover bg-no-repeat min-h-screen  h-fit text-white md:px-24 sm:px-15 py-80" ref={scroll}>
       <div
         className=" px-5 text-5xl md:text-7xl lg:text-8xl font-semibold"
         data-aos="fade-right"
