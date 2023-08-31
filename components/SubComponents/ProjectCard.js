@@ -10,7 +10,7 @@ const ProjectCard = ({ item }) => {
 
   return (
     <div data-aos="fade-up">
-      <div className="w-[90vw] md:w-[50vw] border-2 border-white border-opacity-0 md:hover:border-opacity-100 rounded-md font-poppins border-dashed shadow-xl mx-auto transform duration-300">
+      <div className="w-[90vw] md:w-[50vw] border-2 border-white border-opacity-0 md:hover:border-opacity-100 rounded-md font-poppins border-dashed shadow-xl mx-auto transform duration-300 bg-opacity-80">
         <div className="space-y-4 p-6 rounded-md  border-2 border-white border-opacity-100 md:hover:translate-x-3 md:hover:translate-y-3 transition duration-300 bg-grey ">
           <div className="text-2xl font-semibold">{item.title}</div>
           <div className="py-2">{item.about}</div>

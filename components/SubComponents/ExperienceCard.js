@@ -8,10 +8,10 @@ const ExperienceCard = ({ item }) => {
     setDrop(!drop);
   };
   return (
-    <div className="space-y-4 text-xs md:text-sm mb-4 font-poppins">
+    <div className="space-y-4 text-xs md:text-sm mb-4 font-poppins transition duration-300 ">
       <div
         className={`w-[90vw] md:w-[60vw] transform duration-300 ${
-          drop ? "bg-pink border-pink border-2" : "bg-transparent border-2 border-white"
+          drop ? "bg-pink border-pink border-2" : "bg-grey border-2 border-white"
         } h-12 flex items-center justify-between rounded-md text-white font-medium px-2 sm:px-6 hover:cursor-pointer`}
         onClick={handleClick}
       >
@@ -25,7 +25,7 @@ const ExperienceCard = ({ item }) => {
       </div>
       <div
         ref={contentEl}
-        className={` text-white rounded-md w-[90vw] md:w-[60vw] font-normal  transition-all ease-in-out overflow-hidden duration-300 border-2 border-white ${
+        className={` text-white bg-grey bg-opacity-80 rounded-md w-[90vw] md:w-[60vw] font-normal  transition-all ease-in-out overflow-hidden duration-300 border-2 border-white ${
           drop ? "" : "border-0"
         }`}
         style={
