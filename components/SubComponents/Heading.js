@@ -11,7 +11,7 @@ const Heading = ({ title }) => {
       {arr.map((item, idx) => (
         <div
           key={idx}
-          className={`text-lightblue hover:-translate-y-6 transition duration-[150] ease-in-out cursor-default hover:text-pink`}
+          className={`text-lightblue hover:-translate-y-6 transition duration-150 ease-in-out cursor-default hover:text-pink select-none`}
         >
           <pre className="font-poppins">{item}</pre>
         </div>
