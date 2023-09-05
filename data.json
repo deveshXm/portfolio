@@ -1,77 +1,111 @@
 {
-  "Expertise": [
+  "skills": [
+    "Java",
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "SQL",
+    "AWS",
+    "Ngnix",
+    "Docker",
+    "AWS",
+    "GCP",
+    "Postgres",
+    "MongoDB",
+    "Redux",
+    "Redis",
+    "Spring",
+    "Git",
+    "Node.js",
+    "REST",
+    "GraphQL",
+    "Three.js"
+  ],
+  "about": [
     {
-      "id": 1,
-      "logo": "/app.svg",
-      "color": "pink",
-      "title1": "Software",
-      "title2": "Development",
-      "about": " Languages : Javascript, TypeScript, Python, Java (Learning) \n Skills : OOPS, DSA, Computer Networks, DBMS \n OS : Linux, Windows \n Technologies : Git, Visual Studio, IntelliJ Idea"
+      "ques": "Who am I?",
+      "ans": "I am Devesh a senior, majoring in Computer Science from NIT, Jalandhar."
     },
     {
-      "id": 2,
-      "logo": "/react.svg",
-      "color": "blue",
-      "title1": "Frontend",
-      "title2": "Development",
-      "about": "Frameworks : React Native, LIT Web Components, Next.js, Expo \n Libraries : React, Three.js, Redux, Moment, Anime, Bootstrap \n Hosting : Firebase Hosting, Vercel, Heroku, VMs"
+      "ques": "What do I do?",
+      "ans": "I am passionate about programming. A Fullstack developer inclined towards backend. You may have guessed it from my website's SSL public key behind."
     },
     {
-      "id": 3,
-      "logo": "/nodejs.svg",
-      "color": "green",
-      "title1": "Backend",
-      "title2": "Development",
-      "about": "Technologies : Node.js, REST, GraphQL \n Libraries : Express.js, JWT, Crypto \n Databases : MongoDB, PostgreSQL, MariaDB, DynamoDB, CockroachDB \n ORMs : Mongoose, Prisma \n Cloud : Docker, AWS, GCP, Airtable, Firebase, Digital Ocean "
+      "ques": "My Expertise?",
+      "ans": "I am proficient in Javascript, Typescript, Python & Java ( Learning) and related technologies like Node.js, React, Fast API, GraphQL , AWS, etc. "
+    },
+    {
+      "ques": "What do I do in my free time?",
+      "ans": "I love watching Anime (200+), playing basketball & contributing to Open Source in my free time. "
+    },
+    {
+      "ques": "My goals?",
+      "ans": "Learning new things everyday and keep learning and utilize it to solve problems and leave an impact."
     }
   ],
-  "Projects": [
+  "work": [
     {
-      "id": 1,
-      "title": "Bento",
-      "about": "Designed and developed barber & food ordering mobile app for both students & shopkeeper in React Native, Expo & Firebase & deployed the app on Play Store.",
-      "link": "https://github.com/orgs/Bento-One-stop-for-students/repositories"
+      "title": "Software Engineer Intern",
+      "company": "Fundwave",
+      "place": "Delhi, India",
+      "date": "Jun 23 - Jul 23",
+      "about": [
+        "Implemented OIDC Auth Server, using Java, Node.js, Express, and Keycloak for enhanced security and scalability.",
+        "Transitioned from monolith to microservices, resulting in 30% faster response times.",
+        "reducing authentication latency by 20% using CDN caching and pre token generation.",
+        "Enhanced user authentication and authorization, achieving reduction in security incidents."
+      ]
     },
     {
-      "id": 2,
-      "title": "TravelBOT",
-      "about": "Developed a travel assistant chatbot using OpenAI's ChatGPT-3.5-turbo model API in Python, FastAPI & React.",
+      "title": "Frontend Engineer Intern",
+      "company": "Shardings",
+      "place": "Mumbai, India (Remote)",
+      "date": "Oct 22 - Jan 23",
+      "about": [
+        "Developed responsive web interfaces with React, improving page load time by 25% and user engagement by 30%.",
+        "Integrated Firebase for real-time data synchronization, reducing API response times by 40%.",
+        "Collaborated with a cross-functional team to deliver three client projects ahead of schedule.",
+        "Conducted code reviews, optimizing codebase for maintainability and achieving a 15% reduction in bugs."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Trip Advisor ChatBOT",
+      "date": "Aug 23 - Aug 23",
+      "stack": ["Open AI", "GPT-3.5-turbo", "Python", "React", "Fast API"],
+      "about": [
+        "This Project was under top 10 for Mercor Chatbot Challenge",
+        "Created a travel assistant chatbot using OpenAI's ChatGPT-3.5-turbo model in Python, FastAPI & React",
+        "Optimized performance by caching responses, minimizing API calls for repetitive queries.",
+        "Integrated third-party services, such as geolocation and Hotel APIs, to provide real-time information.",
+        "Enhanced chatbot interactions by analyzing user input using natural language processing techniques."
+      ],
       "link": "https://github.com/deveshXm/TravelBot"
     },
     {
-      "id": 3,
-      "title": "Trabel",
-      "about": "Designed & developed a full stack web app that allows users to share travel blogs in MERN",
-      "link": "https://github.com/deveshXm/trabel"
+      "title": "Bento Mobile App",
+      "date": "Feb 23 - Mar 23",
+      "stack": ["React Native", "Firebase", "Expo", "Play Store"],
+      "about": [
+        "Designed and developed a barber appointment managing app in React Native & Firebase.",
+        "Streamlined the user experience by implementing features such as dynamic queue calculation, estimated",
+        "waiting time, and user notification functionalities, resulting in a 40% reduction in booking time.",
+        "Implemented Cloud Trigger Functions and Cron JOBs for efficient scheduling and seamless automation"
+      ],
+      "link": "https://github.com/Bento-One-stop-for-students/bento"
     },
     {
-      "id": 4,
-      "title": "ThreeJS Building Introspection Tool",
-      "about": "Tried to implemented how websites like housing.com allows viewing buildings in 3d to users",
-      "link": "https://github.com/deveshXm/BuildingProject"
-    }
-  ],
-  "Experience": [
-    {
-      "id": 1,
-      "title": "Software Engineer",
-      "timeline": "June - July 2023",
-      "about": "Developed an OIDC server using Keycloak(IAM) on AWS EC2 & Redis. Developed RESTful APIs using Express & Nodejs. Designed & developed front-end using LIT  Web-components",
-      "stack": ["LIT WC", "TypeScript", "NodeJS", "AWS", "Docker", "Keycloak(IAM)"]
-    },
-    {
-      "id": 2,
-      "title": "Frontend Engineer",
-      "timeline": "Dec - Jan 2023",
-      "about": "Designed & developed UI in React using TailwindCSS & ThreeJS. Developed RESTful API on Firebase.",
-      "stack": ["React", "ThreeJS", "Firebase", "JavaScript", "Tailwind"]
-    },
-    {
-      "id": 3,
-      "title": "Microsoft Engage Mentee",
-      "timeline": "May - June 2022",
-      "about": "Designed and developed a web-app that demonstrates algorithms that a web-streaming app (like Netflix) or an audio-streaming app (like Spotify) may use for their Recommendation Engine.",
-      "stack": ["NextJS", "Fast API", "Python", "Tailwind"]
+      "title": "Trabel Blog Web App",
+      "date": "Jun 22 - Jul 22",
+      "stack": [],
+      "about": [
+        "Developed MERN-based Travel Blog App enabling posting, editing, and commenting on personal blogs.",
+        "Implemented user authentication and authorization using Auth0, enhancing security and user experience.",
+        "waiting time, and user notification functionalities, resulting in a 40% reduction in booking time.",
+        "Enhanced app performance, reducing load times by code optimization and Deployed on AWS EC2 using Docker Containers."
+      ],
+      "link": "https://github.com/deveshXm/Trabel"
     }
   ]
 }
