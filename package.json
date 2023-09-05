@@ -14,10 +14,12 @@
     "@headlessui/react": "^1.7.2",
     "@material-tailwind/react": "^1.2.4",
     "@mui/material": "^5.10.7",
+    "aos": "^2.3.4",
     "next": "12.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
+    "sass": "^1.55.0",
     "three": "^0.121.0",
     "vanta": "^0.5.24"
   },

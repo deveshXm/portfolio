@@ -1,46 +1,51 @@
-import React, { useState, useEffect, useRef } from "react";
-import HALO from "vanta/dist/vanta.halo.min";
-import * as THREE from "three";
+import React from "react";
+import Heading from "./SubComponents/Heading";
+import Button from "./SubComponents/Button";
+import Image from "next/image";
 
 const Intro = ({ scroll }) => {
-  const [vantaEffect, setVantaEffect] = useState(0);
-  const vantaRef = useRef(null);
-
-  useEffect(() => {
-    if (!vantaEffect) {
-      setVantaEffect(
-        HALO({
-          el: vantaRef.current,
-          THREE: THREE,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          baseColor: "#15212c",
-          backgroundColor: "#15212c",
-          yOffset: 0.09,
-        })
-      );
-    }
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
-    };
-  }, [vantaEffect]);
-
   return (
-    <div ref={scroll}>
-      <div
-        className="h-screen w-full flex items-center justify-center"
-        ref={vantaRef}
-      >
-        <div className="block-inline z-[1] text-center  text-white  ">
-          <h6 className="text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-bold drop-shadow-2xl max-w-[90vw]">
-            DEVESH MEENA
-          </h6>
-          <h4 className="text-1xl lg:text-3xl font-semibold font-roboto drop-shadow-2xl">
-            STUDENT , FULL STACK DEVELOPER{" "}
-          </h4>
+    <div ref={scroll} className="h-screen">
+      <ul class="background ">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <div className="text-white min-h-screen h-fit w-screen flex items-center justify-center ">
+          <div className="w-full md:flex md:items-center md:justify-around">
+            <div className=" md:ml-20 space-y-4 ">
+              <div className=" font-poppins  text-4xl md:text-8xl font-medium text-lightblue flex justify-center">
+                <Heading title={"Hi! I'm Devesh"} />
+              </div>
+              <div className="mt-5 font-poppins text-3xl text-center">
+                <p>Student , Developer & Basketball player.</p>
+              </div>
+              <div className="flex justify-center ">
+                <Button
+                  title={"RESUME"}
+                  link={
+                    "https://docs.google.com/document/d/1htaoYT47PnWwykaWx1HmhDkPjO3T2lYh/edit?usp=sharing&ouid=104273066732846044937&rtpof=true&sd=true"
+                  }
+                />
+              </div>
+            </div>
+            <div>
+              <Image
+                src="/student.png"
+                height={400}
+                width={400}
+                alt="student"
+              />
+            </div>
+          </div>
         </div>
-      </div>
+      </ul>
     </div>
   );
 };
