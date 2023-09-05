@@ -11,6 +11,7 @@ const Cell = ({ isHighlighted, onMouseOver }) => {
       }, 300);
     }
   }, [isHighlighted]);
+
   return (
     <div
       className={`w-8 h-8  select-none  text-white justify-center flex items-center ${
@@ -40,8 +41,23 @@ function Background() {
     );
     setMatrix(newMatrix);
   };
+
+//   useEffect(() => {
+//     setInterval(() => {
+//       const randomRow = Math.floor(Math.random() * 60);
+//       const randomCol = Math.floor(Math.random() * 100);
+
+//       matrix[randomRow][randomCol] = true;
+//       setMatrix(matrix);
+//       handleMouseOver(randomRow, randomCol);
+//       setTimeout(() => {
+//         matrix[randomRow][randomCol] = false;
+//         setMatrix(matrix);
+//       }, 200);
+//     }, 200);
+//   }, []);
   return (
-    <div className="absolute h-[100vh]  overflow-hidden">
+    <div className="fixed top-0 left-0 h-[100vh]">
       {matrix.map((row, rowIndex) => (
         <div key={rowIndex} className="flex">
           {row.map((cell, colIndex) => (
