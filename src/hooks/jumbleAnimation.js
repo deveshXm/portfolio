@@ -22,10 +22,9 @@ async function generateIncrementalRandomString(targetWord, setTarget) {
   while (result !== targetWord) {
     while (result[currentIndex] !== targetWord[currentIndex]) {
       for (let i = 0; i < charset.length; i++) {
-        await timer(3); // th
+        await timer(3); 
         result = replaceAt(result, currentIndex, charset[i]);
         setTarget(result);
-        console.log(result);
         if (charset[i] === targetWord[currentIndex]) {
           break;
         }

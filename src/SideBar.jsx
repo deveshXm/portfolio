@@ -56,7 +56,7 @@ function SideBar({
             Projects
           </button>
           <button onClick={handleContact}>
-            contact
+            Contact
           </button>
         </div>
         <div className="box p-2 w-full flex flex-col justify-center items-center font-pixel text-xl">
