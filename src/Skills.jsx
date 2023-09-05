@@ -19,13 +19,13 @@ function Skills() {
     const div = document.getElementById("randomDiv");
     if (!div) return;
 
-    const maxDivWidth = div.clientWidth;
-    const maxDivHeight = div.clientHeight;
+    const maxDivWidth = div.clientWidth - 150;
+    const maxDivHeight = div.clientHeight - 150;
 
-    const columns = 5; // You can adjust the number of columns
+    const columns = 10; // You can adjust the number of columns
     const rows = Math.ceil(strings.length / columns);
-    const width = maxDivWidth / columns;
-    const height = maxDivHeight / rows;
+    const width = maxDivWidth / columns ;
+    const height = maxDivHeight / rows ;
 
     const updatedStrings = strings.map((str, index) => {
       const { x, y } = calculateGridPosition(index, columns, width, height);
@@ -45,20 +45,26 @@ function Skills() {
   return (
     <div className="relative pointer-events-none h-[100vh] w-full  bg-transparent p-20">
       <Heading text={"Skills"} />
-      <div className="w-[80vw] h-[70vh] p-20 ">
-        <div id="randomDiv" className="relative h-full ">
-          {strings.map((str, index) => (
-            <div
-              key={index}
-              className="absolute font-pixel text-4xl p-4 border-black border flex items-center justify-center"
-              style={{
-                top: `${str.y}px`,
-                left: `${str.x}px`,
-              }}
-            >
-              {str.text}
-            </div>
-          ))}
+      <div className="relative box w-[80vw] h-[70vh]">
+        <p className="absolute p-3 text-xl">My Whiteboard</p>
+        <div
+          id="randomDiv"
+          className="h-full p-20  bg-red-300 bg-opacity-25  "
+        >
+          <div>
+            {strings.map((str, index) => (
+              <div
+                key={index}
+                className="pointer-events-auto hover:rounded-3xl absolute text-4xl p-4 border-black border flex items-center justify-center cursor-default"
+                style={{
+                  top: `${str.y}px`,
+                  left: `${str.x}px`,
+                }}
+              >
+                {str.text}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

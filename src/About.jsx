@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import Heading from "./components/Heading";
+import * as data from "../data.json";
 
 function generateRandomString(length = 1000) {
   const characters =
@@ -26,9 +28,26 @@ function About() {
   });
 
   return (
-    <div className="relative max-h-[100vh] align-middle flex-1">
-      <p className="select-none cursor-default font-pixel text-8xl  h-[100vh] overflow-hidden  w-full break-words 
-      text-[#dfdcdf] font-semibold pl-3 absolute">
+    <div className="pointer-events-none relative h-[100vh] align-middle flex-1 w-full">
+      <div className="absolute p-20 z-[9] w-[90vw]">
+        <Heading text={"Me?"} />
+        <div>
+          <div className="box  m-5 p-10 space-y-6">
+            {data.about.map((ele, index) => {
+              return (
+                <div key={index}>
+                  <p className="text-4xl font-semibold">{ele.ques}</p>
+                  <p className="text-3xl">{ele.ans}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      <p
+        className="select-none cursor-default text-8xl  h-[100vh] overflow-hidden  w-full break-words 
+      text-[#dfdcdf] font-semibold pl-3 absolute"
+      >
         {randomStrings[currentIndex]}
       </p>
     </div>

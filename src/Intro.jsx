@@ -3,8 +3,8 @@ import Button from "./components/Button";
 
 function Intro() {
   return (
-    <div className="relative h-[100vh] w-full bg-transparent pointer-events-none flex flex-col">
-      <div className="h-full w-full text-9xl font-pixel font-medium flex flex-col justify-center items-center">
+    <div className="relative h-[100vh] w-full max-w-[100vw] bg-transparent pointer-events-none flex flex-col">
+      <div className="h-full w-full text-9xl font-medium flex flex-col justify-center items-center">
         <iframe
           src="https://giphy.com/embed/Zb5oyPaa1x4Zoo3yEi"
           width="150"

@@ -1,3 +1,72 @@
 {
-    "skills":["Java", "JavaScript", "TypeScript", "Python", "SQL" ,"AWS" , "Ngnix", "Docker", "AWS", "GCP", "Postgres", "MongoDB", "Redux", "Redis", "Spring", "Git", "Node.js", "REST", "GraphQL", "Three.js"]
+  "skills": [
+    "Java",
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "SQL",
+    "AWS",
+    "Ngnix",
+    "Docker",
+    "AWS",
+    "GCP",
+    "Postgres",
+    "MongoDB",
+    "Redux",
+    "Redis",
+    "Spring",
+    "Git",
+    "Node.js",
+    "REST",
+    "GraphQL",
+    "Three.js"
+  ],
+  "about": [
+    {
+      "ques": "Who am I?",
+      "ans": "I am Devesh a senior, majoring in Computer Science from NIT, Jalandhar."
+    },
+    {
+      "ques": "What do I do?",
+      "ans": "I am passionate about programming. A Fullstack developer inclined towards backend. You may have guessed it from my website's public key behind."
+    },
+    {
+      "ques": "My Expertise?",
+      "ans": "I am proficient in Javascript, Typescript, Python & Java ( Learning) and related technologies like Node.js, React, Fast API, GraphQL , AWS, etc. "
+    },
+    {
+      "ques": "What do I do in my free time?",
+      "ans": "I love watching Anime (200+), playing basketball & contributing to Open Source in my free time. "
+    },
+    {
+      "ques": "My goals?",
+      "ans": "Learning new things everyday and keep learning and utilize it to solve problems and leave an impact."
+    }
+  ],
+  "work": [
+    {
+      "title": "Software Engineer Intern",
+      "company": "Fundwave",
+      "place": "Delhi, India",
+      "date": "Jun 23 - Jul 23",
+      "about": [
+        "Implemented OIDC Auth Server, using Java, Node.js, Express, and Keycloak for enhanced security and scalability.",
+        "Transitioned from monolith to microservices, resulting in 30% faster response times.",
+        "reducing authentication latency by 20% using CDN caching and pre token generation.",
+        "Enhanced user authentication and authorization, achieving reduction in security incidents."
+      ]
+    },
+    {
+      "title": "Frontend Engineer Intern",
+      "company": "Shardings",
+      "place": "Mumbai, India (Remote)",
+      "date": "Oct 22 - Jan 23",
+      "about": [
+        "Developed responsive web interfaces with React, improving page load time by 25% and user engagement by 30%.",
+        "Integrated Firebase for real-time data synchronization, reducing API response times by 40%.",
+        "Collaborated with a cross-functional team to deliver three client projects ahead of schedule.",
+        "Conducted code reviews, optimizing codebase for maintainability and achieving a 15% reduction in bugs."
+      ]
+    }
+  ]
 }
