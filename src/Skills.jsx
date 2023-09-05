@@ -2,7 +2,7 @@ import Heading from "./components/Heading";
 import * as data from "../data.json";
 import { useEffect, useState } from "react";
 
-function Skills() {
+function Skills({ scroll }) {
   const [strings, setStrings] = useState(data.skills);
 
   const calculateGridPosition = (index, columns, width, height) => {
@@ -24,8 +24,8 @@ function Skills() {
 
     const columns = 10; // You can adjust the number of columns
     const rows = Math.ceil(strings.length / columns);
-    const width = maxDivWidth / columns ;
-    const height = maxDivHeight / rows ;
+    const width = maxDivWidth / columns;
+    const height = maxDivHeight / rows;
 
     const updatedStrings = strings.map((str, index) => {
       const { x, y } = calculateGridPosition(index, columns, width, height);
@@ -43,14 +43,14 @@ function Skills() {
   }, []);
 
   return (
-    <div className="relative pointer-events-none h-[100vh] w-full  bg-transparent p-20">
+    <div
+    className="relative pointer-events-none h-[100vh] w-full  bg-transparent py-20 px-60"
+    ref={scroll}
+    >
       <Heading text={"Skills"} />
-      <div className="relative box w-[80vw] h-[70vh]">
+      <div className="relative box w-[70vw] h-[80vh]">
         <p className="absolute p-3 text-xl">My Whiteboard</p>
-        <div
-          id="randomDiv"
-          className="h-full p-20  bg-red-300 bg-opacity-25  "
-        >
+        <div id="randomDiv" className="h-full p-20  bg-red-300 bg-opacity-25  ">
           <div>
             {strings.map((str, index) => (
               <div

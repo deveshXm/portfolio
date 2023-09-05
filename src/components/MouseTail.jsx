@@ -26,7 +26,7 @@ const Cell = ({ isHighlighted, onMouseOver }) => {
   );
 };
 
-function Background() {
+function MouseTail() {
   const numRows = 60;
   const numCols = 100;
   const [matrix, setMatrix] = useState(() =>
@@ -57,7 +57,7 @@ function Background() {
   //     }, 200);
   //   }, []);
   return (
-    <div className="fixed top-0 left-0 h-[100vh]">
+    <div className="fixed top-0 left-0 h-[100vh] bg-transparent">
       {matrix.map((row, rowIndex) => (
         <div key={rowIndex} className="flex">
           {row.map((cell, colIndex) => (
@@ -73,4 +73,4 @@ function Background() {
   );
 }
 
-export default Background;
+export default MouseTail;

@@ -1,61 +1,59 @@
 import About from "./About";
 import Intro from "./Intro";
-import Background from "./components/Background";
+import MouseTail from "./components/MouseTail";
 import Skills from "./Skills";
-import TypeWriter from "./components/TypeWriter";
 
-import { useEffect, useState } from "react";
+import { useRef } from "react";
 import Work from "./Work";
+import Projects from "./Projects";
+import Contact from "./Contact";
+import Footer from "./Footer";
+import SideBar from "./SideBar";
 
 function App() {
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const [consoleText, setConsoleText] = useState([
-    "Greetings!",
-    "Initializing...",
-    "Loading About Myself...",
-    "Loading My Work...",
-    "Loading Experience...",
-    "Loading Contacts...",
-    "Checking...",
-    "Completed",
-  ]);
+  const scrollToHome = useRef();
+  const scrollToSkills = useRef();
+  const scrollToAbout = useRef();
+  const scrollToWork = useRef();
+  const scrollToProjects = useRef();
+  const scrollToContact = useRef();
 
-  useEffect(() => {
-    const updateCursorPosition = (e) => {
-      const { clientX, clientY } = e;
-      setCursorPosition({ x: clientX, y: clientY });
-    };
-    window.addEventListener("mousemove", updateCursorPosition);
-    return () => {
-      window.removeEventListener("mousemove", updateCursorPosition);
-    };
-  }, []);
+  const handleHome = () => {
+    scrollToHome.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleAbout = () => {
+    scrollToAbout.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleSkills = () => {
+    scrollToSkills.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleWork = () => {
+    scrollToWork.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleExperience = () => {
+    scrollToProjects.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const handleContact = () => {
+    scrollToContact.current?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div className="bg-[#f7f7f7] box-border  max-w-[100vw] text-[#111111] p-0 m-0 font-pixel">
-      <Background />
-      <div className="fixed top-0 left-0 flex justify-between w-full h-[100vh] p-10 pointer-events-none z-[1000]">
-        <div className="text-4xl font-pixel font-thin flex justify-start">
-          <div className="flex">
-            <TypeWriter text={consoleText} />
-          </div>
-        </div>
-        <div className="flex flex-col justify-between">
-          <div className="box p-5 text-4xl space-y-6 font-thin font-pixel w-fit flex flex-col">
-            <a>Home</a>
-            <a>About</a>
-            <a>Work</a>
-            <a>Contact</a>
-          </div>
-          <div className="box p-2 w-full flex flex-col justify-center items-center font-pixel text-xl">
-            <p>X : {cursorPosition.x}</p>
-            <p>Y : {cursorPosition.y}</p>
-          </div>
-        </div>
-      </div>
-      <Intro />
-      <About />
-      <Skills />
-      <Work />
+      <MouseTail />
+      <SideBar
+        handleHome={handleHome}
+        handleAbout={handleAbout}
+        handleSkills={handleSkills}
+        handleWork={handleWork}
+        handleExperience={handleExperience}
+        handleContact={handleContact}
+      />
+      <Intro scroll={scrollToHome} />
+      <About scroll={scrollToAbout} />
+      <Skills scroll={scrollToSkills} />
+      <Work scroll={scrollToWork} />
+      <Projects scroll={scrollToProjects} />
+      <Contact scroll={scrollToContact} />
+      <Footer />
     </div>
   );
 }

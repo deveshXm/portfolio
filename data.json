@@ -28,7 +28,7 @@
     },
     {
       "ques": "What do I do?",
-      "ans": "I am passionate about programming. A Fullstack developer inclined towards backend. You may have guessed it from my website's public key behind."
+      "ans": "I am passionate about programming. A Fullstack developer inclined towards backend. You may have guessed it from my website's SSL public key behind."
     },
     {
       "ques": "My Expertise?",
@@ -67,6 +67,45 @@
         "Collaborated with a cross-functional team to deliver three client projects ahead of schedule.",
         "Conducted code reviews, optimizing codebase for maintainability and achieving a 15% reduction in bugs."
       ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Trip Advisor ChatBOT",
+      "date": "Aug 23 - Aug 23",
+      "stack": ["Open AI", "GPT-3.5-turbo", "Python", "React", "Fast API"],
+      "about": [
+        "This Project was under top 10 for Mercor Chatbot Challenge",
+        "Created a travel assistant chatbot using OpenAI's ChatGPT-3.5-turbo model in Python, FastAPI & React",
+        "Optimized performance by caching responses, minimizing API calls for repetitive queries.",
+        "Integrated third-party services, such as geolocation and Hotel APIs, to provide real-time information.",
+        "Enhanced chatbot interactions by analyzing user input using natural language processing techniques."
+      ],
+      "link": "https://github.com/deveshXm/TravelBot"
+    },
+    {
+      "title": "Bento Mobile App",
+      "date": "Feb 23 - Mar 23",
+      "stack": ["React Native", "Firebase", "Expo", "Play Store"],
+      "about": [
+        "Designed and developed a barber appointment managing app in React Native & Firebase.",
+        "Streamlined the user experience by implementing features such as dynamic queue calculation, estimated",
+        "waiting time, and user notification functionalities, resulting in a 40% reduction in booking time.",
+        "Implemented Cloud Trigger Functions and Cron JOBs for efficient scheduling and seamless automation"
+      ],
+      "link": "https://github.com/Bento-One-stop-for-students/bento"
+    },
+    {
+      "title": "Trabel Blog Web App",
+      "date": "Jun 22 - Jul 22",
+      "stack": [],
+      "about": [
+        "Developed MERN-based Travel Blog App enabling posting, editing, and commenting on personal blogs.",
+        "Implemented user authentication and authorization using Auth0, enhancing security and user experience.",
+        "waiting time, and user notification functionalities, resulting in a 40% reduction in booking time.",
+        "Enhanced app performance, reducing load times by code optimization and Deployed on AWS EC2 using Docker Containers."
+      ],
+      "link": "https://github.com/deveshXm/Trabel"
     }
   ]
 }

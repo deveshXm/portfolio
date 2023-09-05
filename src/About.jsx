@@ -12,7 +12,7 @@ function generateRandomString(length = 1000) {
     .join("");
 }
 
-function About() {
+function About({ scroll }) {
   const [randomStrings, setRandomStrings] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
@@ -28,7 +28,10 @@ function About() {
   });
 
   return (
-    <div className="pointer-events-none relative h-[100vh] align-middle flex-1 w-full">
+    <div
+      ref={scroll}
+      className="pointer-events-none relative h-[100vh] align-middle flex-1 w-full"
+    >
       <div className="absolute p-20 z-[9] w-[90vw]">
         <Heading text={"Me?"} />
         <div>
@@ -46,7 +49,7 @@ function About() {
       </div>
       <p
         className="select-none cursor-default text-8xl  h-[100vh] overflow-hidden  w-full break-words 
-      text-[#dfdcdf] font-semibold pl-3 absolute"
+      text-[#eae7ea] font-semibold pl-3 absolute"
       >
         {randomStrings[currentIndex]}
       </p>
