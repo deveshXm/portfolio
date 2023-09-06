@@ -37,7 +37,7 @@ function App() {
     scrollToContact.current?.scrollIntoView({ behavior: "instant" });
   };
   return (
-    <div className="bg-[#f7f7f7] box-border w-full text-[#111111] p-0 m-0 font-pixel">
+    <div className="bg-[#f7f7f7] box-border overflow-y-hidden w-full text-[#111111] p-0 m-0 font-pixel">
       <MouseTail />
       <SideBar
         handleHome={handleHome}
