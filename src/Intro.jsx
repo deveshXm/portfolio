@@ -5,7 +5,7 @@ function Intro({ scroll }) {
   return (
     <div
       ref={scroll}
-      className="relative h-[100vh] w-full max-w-[100vw] bg-transparent pointer-events-none flex flex-col"
+      className="relative h-[100vh] w-full bg-transparent pointer-events-none flex flex-col"
     >
       <div className="h-full w-full text-5xl  md:text-7xl xl:text-9xl  font-medium flex flex-col justify-center items-center">
         <iframe

@@ -37,7 +37,7 @@ function App() {
     scrollToContact.current?.scrollIntoView({ behavior: "instant" });
   };
   return (
-    <div className="bg-[#f7f7f7] box-border  min-w-[100vw] max-w-[100vw] text-[#111111] p-0 m-0 font-pixel">
+    <div className="bg-[#f7f7f7] box-border w-full text-[#111111] p-0 m-0 font-pixel">
       <MouseTail />
       <SideBar
         handleHome={handleHome}
@@ -47,13 +47,13 @@ function App() {
         handleExperience={handleExperience}
         handleContact={handleContact}
       />
-      <Intro scroll={scrollToHome} />
-      <About scroll={scrollToAbout} />
-      <Skills scroll={scrollToSkills} />
-      <Work scroll={scrollToWork} />
-      <Projects scroll={scrollToProjects} />
-      <Contact scroll={scrollToContact} />
-      <Footer />
+        <Intro scroll={scrollToHome} />
+        <About scroll={scrollToAbout} />
+        <Skills scroll={scrollToSkills} />
+        <Work scroll={scrollToWork} />
+        <Projects scroll={scrollToProjects} />
+        <Contact scroll={scrollToContact} />
+        <Footer />
     </div>
   );
 }

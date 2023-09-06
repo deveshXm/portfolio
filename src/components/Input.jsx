@@ -1,8 +1,9 @@
-function Input({ text, placeholder, onChange, rows, cols }) {
+function Input({ text, placeholder, onChange, rows, cols, disabled }) {
   return (
     <div className="">
       <p className="sm:text-xl md:text-2xl">{text}</p>
       <textarea
+        disabled={disabled}
         rows={rows}
         cols={35}
         placeholder={placeholder}

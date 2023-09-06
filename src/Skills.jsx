@@ -44,7 +44,7 @@ function Skills({ scroll }) {
 
   return (
     <div
-    className="relative pointer-events-none h-[100vh] w-full  bg-transparent p-5 md:p-10 xl:py-20 xl:px-60"
+    className="relative pointer-events-none h-[100vh] w-full bg-transparent p-5 md:p-10 xl:py-20 xl:px-60"
     ref={scroll}
     >
       <Heading text={"Skills"} />
@@ -55,7 +55,7 @@ function Skills({ scroll }) {
             {strings.map((str, index) => (
               <div
                 key={index}
-                className="pointer-events-auto hover:rounded-3xl absolute text-lg xl:text-4xl p-2 xl:p-4 border-black border flex items-center justify-center cursor-default"
+                className="pointer-events-auto hover:rounded-3xl absolute text-base sm:text-lg xl:text-4xl p-2 xl:p-4 border-black border flex items-center justify-center cursor-default"
                 style={{
                   top: `${str.y}px`,
                   left: `${str.x}px`,
