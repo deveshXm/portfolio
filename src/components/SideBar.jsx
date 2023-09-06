@@ -39,7 +39,7 @@ function SideBar({
 
   return (
     <>
-      <div className="fixed top-0 left-0 justify-between text-lg md:text-2xl lg:text-4xl w-full h-[100vh] p-2 lg:p-10 pointer-events-none z-[1000] flex just-between">
+      <div className="fixed top-0 left-0 justify-between text-lg md:text-2xl lg:text-4xl w-full h-[100vh] p-2 lg:p-10 pointer-events-none z-[100] flex just-between">
         <div className="font-pixel font-thin flex justify-start">
           <div className="flex">
             <TypeWriter text={consoleText} />
@@ -103,8 +103,8 @@ function SideBar({
             </div>
           </div>
         </div>
-        <div className="pointer-events-auto xl:hidden flex flex-col items-center justify-center">
-          <div className="flex h-full items-start hover:cursor-pointer" onClick={handleNav}>
+        <div className="pointer-events-auto xl:hidden h-fit">
+          <div className="hover:cursor-pointer" onClick={handleNav}>
             {!nav ? (
               <AiOutlineClose color="black" size={40} />
             ) : (
@@ -114,8 +114,8 @@ function SideBar({
           <div
             className={
               !nav
-                ? "fixed left-[10%] h-fit w-[30vw] box z-[1000] ease-in-out duration-500"
-                : "fixed h-fit w-[30vw] box z-[1000] left-[-110%] ease-in duration-500"
+                ? "fixed left-[10%] top-[25%] h-fit w-[30vw] box z-[100] ease-in-out duration-500"
+                : "fixed h-fit top-[25%] w-[30vw] box z-[100] left-[-110%] ease-in duration-500"
             }
           >
             <ul className="">

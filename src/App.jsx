@@ -3,14 +3,16 @@ import Intro from "./pages/Intro";
 import MouseTail from "./components/MouseTail";
 import Skills from "./pages/Skills";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Work from "./pages/Work";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 import SideBar from "./components/SideBar";
+import Loading from "./pages/Loading";
 
 function App() {
+  const [completed, setCompleted] = useState(false);
   const scrollToHome = useRef();
   const scrollToSkills = useRef();
   const scrollToAbout = useRef();
@@ -37,7 +39,8 @@ function App() {
     scrollToContact.current?.scrollIntoView({ behavior: "instant" });
   };
   return (
-    <div className="bg-[#f7f7f7] box-border overflow-y-hidden w-full text-[#111111] p-0 m-0 font-pixel">
+    <div className="bg-[#f7f7f7] box-border  w-full text-[#111111] p-0 m-0 font-pixel">
+      {!completed ? <Loading isCompleted={setCompleted} text={"Loading..."}/> : null}
       <MouseTail />
       <SideBar
         handleHome={handleHome}
@@ -47,13 +50,13 @@ function App() {
         handleExperience={handleExperience}
         handleContact={handleContact}
       />
-        <Intro scroll={scrollToHome} />
-        <About scroll={scrollToAbout} />
-        <Skills scroll={scrollToSkills} />
-        <Work scroll={scrollToWork} />
-        <Projects scroll={scrollToProjects} />
-        <Contact scroll={scrollToContact} />
-        <Footer />
+      <Intro scroll={scrollToHome} />
+      <About scroll={scrollToAbout} />
+      <Skills scroll={scrollToSkills} />
+      <Work scroll={scrollToWork} />
+      <Projects scroll={scrollToProjects} />
+      <Contact scroll={scrollToContact} />
+      <Footer />
     </div>
   );
 }

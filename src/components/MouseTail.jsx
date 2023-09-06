@@ -41,21 +41,6 @@ function MouseTail() {
     );
     setMatrix(newMatrix);
   };
-
-  //   useEffect(() => {
-  //     setInterval(() => {
-  //       const randomRow = Math.floor(Math.random() * 60);
-  //       const randomCol = Math.floor(Math.random() * 100);
-
-  //       matrix[randomRow][randomCol] = true;
-  //       setMatrix(matrix);
-  //       handleMouseOver(randomRow, randomCol);
-  //       setTimeout(() => {
-  //         matrix[randomRow][randomCol] = false;
-  //         setMatrix(matrix);
-  //       }, 200);
-  //     }, 200);
-  //   }, []);
   return (
     <div className="fixed top-0 left-0 h-[100vh] bg-transparent">
       {matrix.map((row, rowIndex) => (
