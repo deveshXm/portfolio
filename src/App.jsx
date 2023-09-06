@@ -42,9 +42,11 @@ function App() {
     <div className="bg-[#f7f7f7] box-border  w-full text-[#111111] p-0 m-0 font-pixel">
       {!completed ? (
         <Loading isCompleted={setCompleted} text={"Loading"} />
-      ) : null}
-      <MouseTail />
+      ) : (
+        <MouseTail />
+      )}
       <SideBar
+        completed={completed}
         handleHome={handleHome}
         handleAbout={handleAbout}
         handleSkills={handleSkills}
@@ -52,7 +54,7 @@ function App() {
         handleExperience={handleExperience}
         handleContact={handleContact}
       />
-      <Intro scroll={scrollToHome} />
+      <Intro completed={completed} scroll={scrollToHome} />
       <About scroll={scrollToAbout} />
       <Skills scroll={scrollToSkills} />
       <Work scroll={scrollToWork} />

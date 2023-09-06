@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 function SideBar({
+  completed,
   handleHome,
   handleAbout,
   handleSkills,
@@ -41,9 +42,11 @@ function SideBar({
     <>
       <div className="fixed top-0 left-0 justify-between text-lg md:text-2xl lg:text-4xl w-full h-[100vh] p-2 lg:p-10 pointer-events-none z-[100] flex just-between">
         <div className="font-pixel font-thin flex justify-start">
-          <div className="flex">
-            <TypeWriter text={consoleText} />
-          </div>
+          {completed ? (
+            <div className="flex">
+              <TypeWriter text={consoleText} />
+            </div>
+          ) : null}
         </div>
         <div className="hidden xl:flex">
           <div className="flex flex-col justify-between">

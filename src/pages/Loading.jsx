@@ -7,7 +7,7 @@ const Cell = ({ isHighlighted }) => {
       className={`w-20 h-20 select-none justify-center flex items-center ${
         isHighlighted
           ? "bg-transparent transition duration-200"
-          : "bg-[#afec32]"
+          : "bg-[#afec32] border border-black"
       }`}
     ></div>
   );
@@ -47,10 +47,7 @@ function Loading({ isCompleted, text }) {
             requestAnimationFrame(() => {
               traverseDiagonal(slice + 1);
               if (slice === numRows + numCols - 2) {
-                setOpacity(true);
-                setTimeout(() => {
-                  isCompleted(true);
-                }, 300);
+                isCompleted(true);
               }
             });
             return;
@@ -72,12 +69,18 @@ function Loading({ isCompleted, text }) {
       };
 
       traverseDiagonal(0);
-    }, 3000);
+    }, 2000);
   };
 
   useEffect(() => {
     updateCell();
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setOpacity(true);
+    }, 2000);
+  }, [opacity]);
   useJumbleAnimation(ref, title, setTitle, 1);
 
   return (
@@ -94,7 +97,7 @@ function Loading({ isCompleted, text }) {
       <div className="top-0 left-0 absolute w-full h-full items-center justify-center flex">
         <p
           ref={ref}
-          className={`transition duration-300 ease-in-out ${
+          className={`transition duration-100 ease-in-out ${
             opacity ? " opacity-0" : ""
           } text-5xl text-black lg:text-9xl`}
         >

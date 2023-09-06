@@ -1,19 +1,15 @@
-import Typewriter from "typewriter-effect";
 import Button from "../components/Button";
-import { useTypewriter } from "react-simple-typewriter";
 import { useEffect, useRef, useState } from "react";
 import useJumbleAnimation from "../hooks/jumbleAnimation";
 
-function Intro({ scroll }) {
+function Intro({ scroll, completed }) {
   const ref = useRef();
-  const [string, setString] = useState("Devesh Here!");
-  // const [text] = useTypewriter({
-  //   words: ["Devesh Here"],
-  //   typeSpeed: 80,
-  //   deleteSpeed: 80,
-  //   delaySpeed: 100,
-  // });
-  useJumbleAnimation(ref, string, setString);
+  const [string, setString] = useState("");
+  useEffect(() => {
+    setString("Devesh Here!");
+  }, [completed]);
+
+  useJumbleAnimation(ref, string, setString, completed);
   return (
     <div
       ref={scroll}
