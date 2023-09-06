@@ -8,7 +8,11 @@ function replaceAt(s, i, c) {
 
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
-async function generateIncrementalRandomString(targetWord, setTarget) {
+async function generateIncrementalRandomString(
+  targetWord,
+  setTarget,
+  duration
+) {
   const charset =
     " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890?!";
   let result = "";
@@ -22,7 +26,7 @@ async function generateIncrementalRandomString(targetWord, setTarget) {
   while (result !== targetWord) {
     while (result[currentIndex] !== targetWord[currentIndex]) {
       for (let i = 0; i < charset.length; i++) {
-        await timer(5); 
+        await timer(duration);
         result = replaceAt(result, currentIndex, charset[i]);
         setTarget(result);
         if (charset[i] === targetWord[currentIndex]) {
@@ -34,12 +38,12 @@ async function generateIncrementalRandomString(targetWord, setTarget) {
   }
 }
 
-const useJumbleAnimation = (ref, target, setTarget) => {
+const useJumbleAnimation = (ref, target, setTarget, duration = 5) => {
   const observer = useMemo(
     () =>
       new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
-          generateIncrementalRandomString(target, setTarget);
+          generateIncrementalRandomString(target, setTarget, duration);
         }
       }),
     [ref]

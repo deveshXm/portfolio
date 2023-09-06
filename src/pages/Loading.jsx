@@ -73,10 +73,10 @@ function Loading({ isCompleted, text }) {
   useEffect(() => {
     setTimeout(() => {
       setOpacity(true);
-    }, 5000);
+    }, 1000);
     updateCell();
   }, []);
-  useJumbleAnimation(ref, title, setTitle);
+  useJumbleAnimation(ref, title, setTitle, 2);
 
   return (
     <div className="fixed top-0 left-0 h-[100vh] w-full z-[1000]">
