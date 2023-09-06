@@ -15,7 +15,7 @@ const Cell = ({ isHighlighted }) => {
 function Loading({ isCompleted, text }) {
   const numRows = 60;
   const numCols = 100;
-  const [opacity, setOpacity] = useState(false)
+  const [opacity, setOpacity] = useState(false);
   const [matrix, setMatrix] = useState(() =>
     new Array(numRows).fill(null).map(() => new Array(numCols).fill(false))
   );
@@ -40,13 +40,13 @@ function Loading({ isCompleted, text }) {
 
       const updateNextCell = () => {
         if (cellsToUpdate.length === 0) {
-          setTimeout(() => {
+          requestAnimationFrame(() => {
             traverseDiagonal(slice + 1);
             // Call isCompleted only after the current diagonal is completed
             if (slice === numRows + numCols - 2) {
-              //   isCompleted(true);
+              // isCompleted(true);
             }
-          }, 3);
+          });
           return;
         }
 
@@ -59,7 +59,7 @@ function Loading({ isCompleted, text }) {
           return updatedMatrix;
         });
 
-        updateNextCell();
+        requestAnimationFrame(updateNextCell);
       };
 
       updateNextCell();
@@ -70,9 +70,9 @@ function Loading({ isCompleted, text }) {
 
   useEffect(() => {
     updateCell();
-    setTimeout(()=>{
-        setOpacity(true)
-    },3000)
+    setTimeout(() => {
+      setOpacity(true);
+    }, 3000);
   }, []);
 
   return (
