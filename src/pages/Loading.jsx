@@ -6,7 +6,7 @@ const Cell = ({ isHighlighted }) => {
     <div
       className={`w-8 h-8 select-none justify-center flex items-center ${
         isHighlighted
-          ? "bg-transparent transition duration-200"
+          ? "bg-transparent"
           : "bg-[#afec32]"
       }`}
     ></div>
