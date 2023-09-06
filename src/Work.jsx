@@ -7,10 +7,10 @@ function Work({ scroll }) {
   return (
     <div
       ref={scroll}
-      className="relative pointer-events-none h-fit w-full  bg-transparent py-5 px-2 lg:py-20 lg:px-60"
+      className="relative pointer-events-none h-fit w-full  bg-transparent py-5 px-2 md:p-10 xl:py-20 xl:px-60"
     >
       <Heading text={"Work"} />
-      <div className="flex mt-16 justify-center items-center h-[50vh]">
+      <div className="flex mt-16 justify-center items-center h-[50vh] w-full">
         <Caraousel items={data.work} Card={WorkCard} />
       </div>
     </div>

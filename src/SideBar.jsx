@@ -13,12 +13,6 @@ function SideBar({
   const [consoleText, setConsoleText] = useState([
     "Greetings!",
     "Initializing...",
-    "Loading About Myself...",
-    "Loading My Work...",
-    "Loading Experience...",
-    "Loading Contacts...",
-    "Checking...",
-    "Completed",
   ]);
 
   useEffect(() => {
@@ -32,7 +26,7 @@ function SideBar({
     };
   }, []);
   return (
-    <div className="fixed top-0 left-0 flex justify-between text-lg lg:text-4xl w-full h-[100vh] p-2 lg:p-10 pointer-events-none z-[1000]">
+    <div className="fixed top-0 left-0 flex justify-between text-lg md:text-2xl lg:text-4xl w-full h-[100vh] p-2 lg:p-10 pointer-events-none z-[1000]">
       <div className="font-pixel font-thin flex justify-start">
         <div className="flex">
           <TypeWriter text={consoleText} />
@@ -40,22 +34,52 @@ function SideBar({
       </div>
       <div className="flex flex-col justify-between">
         <div className="box p-5 space-y-6 font-thin font-pixel w-fit flex flex-col pointer-events-auto">
-          <button onClick={handleHome} >
+          <button
+            onClick={() => {
+              handleHome();
+              setConsoleText(["Load home"]);
+            }}
+          >
             Home
           </button>
-          <button onClick={handleAbout}>
+          <button
+            onClick={() => {
+              handleAbout();
+              setConsoleText(["Load about"]);
+            }}
+          >
             About
           </button>
-          <button onClick={handleSkills}>
+          <button
+            onClick={() => {
+              handleSkills();
+              setConsoleText(["Load skills"]);
+            }}
+          >
             Skills
           </button>
-          <button onClick={handleWork}>
+          <button
+            onClick={() => {
+              handleWork();
+              setConsoleText(["Load work"]);
+            }}
+          >
             Work
           </button>
-          <button onClick={handleExperience}>
+          <button
+            onClick={() => {
+              handleExperience();
+              setConsoleText(["Load projects"]);
+            }}
+          >
             Projects
           </button>
-          <button onClick={handleContact}>
+          <button
+            onClick={() => {
+              handleContact();
+              setConsoleText(["Load contact"]);
+            }}
+          >
             Contact
           </button>
         </div>
