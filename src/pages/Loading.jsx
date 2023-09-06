@@ -4,7 +4,7 @@ import useJumbleAnimation from "../hooks/jumbleAnimation.js";
 const Cell = ({ isHighlighted }) => {
   return (
     <div
-      className={`w-8 h-8 select-none justify-center flex items-center ${
+      className={`w-20 h-20 select-none justify-center flex items-center ${
         isHighlighted
           ? "bg-transparent transition duration-200"
           : "bg-[#afec32]"
@@ -14,8 +14,8 @@ const Cell = ({ isHighlighted }) => {
 };
 
 function Loading({ isCompleted, text }) {
-  const numRows = 60;
-  const numCols = 90;
+  const numRows = 20;
+  const numCols = 30;
   const ref = useRef();
   const [opacity, setOpacity] = useState("");
   const [title, setTitle] = useState(text);
@@ -47,7 +47,10 @@ function Loading({ isCompleted, text }) {
             requestAnimationFrame(() => {
               traverseDiagonal(slice + 1);
               if (slice === numRows + numCols - 2) {
-                isCompleted(true);
+                setOpacity(true);
+                setTimeout(() => {
+                  isCompleted(true);
+                }, 300);
               }
             });
             return;
@@ -73,9 +76,6 @@ function Loading({ isCompleted, text }) {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      setOpacity(true);
-    }, 5000);
     updateCell();
   }, []);
   useJumbleAnimation(ref, title, setTitle, 1);
@@ -91,12 +91,12 @@ function Loading({ isCompleted, text }) {
           </div>
         ))}
       </div>
-      <div>
+      <div className="top-0 left-0 absolute w-full h-full items-center justify-center flex">
         <p
           ref={ref}
-          className={`absolute top-[40%] left-[40%] transition duration-300 ease-in-out ${
+          className={`transition duration-300 ease-in-out ${
             opacity ? " opacity-0" : ""
-          } text-7xl text-black lg:text-9xl`}
+          } text-5xl text-black lg:text-9xl`}
         >
           {title}
         </p>
