@@ -40,8 +40,10 @@ function App() {
   };
   return (
     <div className="bg-[#f7f7f7] box-border  w-full text-[#111111] p-0 m-0 font-pixel">
-      {!completed ? <Loading isCompleted={setCompleted} text={"Loading..."}/> : null}
-      {/* <MouseTail />
+      {!completed ? (
+        <Loading isCompleted={setCompleted} text={"Loading..."} />
+      ) : null}
+      <MouseTail />
       <SideBar
         handleHome={handleHome}
         handleAbout={handleAbout}
@@ -49,14 +51,14 @@ function App() {
         handleWork={handleWork}
         handleExperience={handleExperience}
         handleContact={handleContact}
-      /> */}
-      {/* <Intro scroll={scrollToHome} />
+      />
+      <Intro scroll={scrollToHome} />
       <About scroll={scrollToAbout} />
       <Skills scroll={scrollToSkills} />
       <Work scroll={scrollToWork} />
       <Projects scroll={scrollToProjects} />
       <Contact scroll={scrollToContact} />
-      <Footer /> */}
+      <Footer />
     </div>
   );
 }
