@@ -4,7 +4,7 @@ import useJumbleAnimation from "../hooks/jumbleAnimation.js";
 const Cell = ({ isHighlighted }) => {
   return (
     <div
-      className={`w-20 h-20 select-none justify-center flex items-center ${
+      className={`w-[80px] h-[80px] ${
         isHighlighted
           ? "bg-transparent transition duration-200"
           : "bg-[#afec32] border border-black"

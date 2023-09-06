@@ -1,15 +1,17 @@
 import Button from "../components/Button";
 import { useEffect, useRef, useState } from "react";
-import useJumbleAnimation from "../hooks/jumbleAnimation";
+import useJumbleAnimation, {
+  generateIncrementalRandomString,
+} from "../hooks/jumbleAnimation";
 
 function Intro({ scroll, completed }) {
   const ref = useRef();
   const [string, setString] = useState("");
   useEffect(() => {
-    setString("Devesh Here!");
+    if (completed) {
+      generateIncrementalRandomString("Devesh Here!", setString);
+    }
   }, [completed]);
-
-  useJumbleAnimation(ref, string, setString, completed);
   return (
     <div
       ref={scroll}
@@ -22,7 +24,11 @@ function Intro({ scroll, completed }) {
           height="150"
         ></iframe>
         <p>Hello There!</p>
-        <p ref={ref}>{string}</p>
+        <p ref={ref}>
+          <span className="text-transparent">a</span>
+          {string}
+          <span className="text-transparent">a</span>
+        </p>
         <div className="flex">
           <Button
             text={"Resume"}
