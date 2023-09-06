@@ -9,7 +9,7 @@ function Intro({ scroll, completed }) {
   const [string, setString] = useState("");
   useEffect(() => {
     if (completed) {
-      generateIncrementalRandomString("Devesh Here!", setString);
+      generateIncrementalRandomString("Devesh Here!", setString, 5);
     }
   }, [completed]);
   return (

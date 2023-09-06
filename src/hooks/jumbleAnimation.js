@@ -38,7 +38,7 @@ export async function generateIncrementalRandomString(
   }
 }
 
-const useJumbleAnimation = (ref, target, setTarget, duration = 5) => {
+const useJumbleAnimation = (ref, target, setTarget, duration = 10) => {
   const observer = useMemo(
     () =>
       new IntersectionObserver(([entry]) => {
