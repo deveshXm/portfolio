@@ -46,7 +46,7 @@ function Loading({ isCompleted, text }) {
             if (slice === numRows + numCols - 2) {
               //   isCompleted(true);
             }
-          }, 1);
+          }, 3);
           return;
         }
 
