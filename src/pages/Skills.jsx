@@ -50,7 +50,7 @@ function Skills({ scroll }) {
       <Heading text={"Skills"} />
       <div className="relative box xl:w-[70vw] h-[80vh] w-full">
         <p className="absolute p-3 text-xl">My Whiteboard</p>
-        <div id="randomDiv" className="h-full p-20  bg-red-300 bg-opacity-25  ">
+        <div id="randomDiv" className="h-full p-20  bg-red-300 bg-opacity-25">
           <div>
             {strings.map((str, index) => (
               <div

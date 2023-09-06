@@ -1,7 +1,19 @@
 import Typewriter from "typewriter-effect";
 import Button from "../components/Button";
+import { useTypewriter } from "react-simple-typewriter";
+import { useEffect, useRef, useState } from "react";
+import useJumbleAnimation from "../hooks/jumbleAnimation";
 
 function Intro({ scroll }) {
+  const ref = useRef();
+  const [string, setString] = useState("Devesh Here!");
+  // const [text] = useTypewriter({
+  //   words: ["Devesh Here"],
+  //   typeSpeed: 80,
+  //   deleteSpeed: 80,
+  //   delaySpeed: 100,
+  // });
+  useJumbleAnimation(ref, string, setString);
   return (
     <div
       ref={scroll}
@@ -13,20 +25,8 @@ function Intro({ scroll }) {
           width="150"
           height="150"
         ></iframe>
-        <p>Hello World!</p>
-        <Typewriter
-          onInit={(typewriter) => {
-            typewriter
-              .typeString("I am a ")
-              .pauseFor(300)
-              .typeString("Programmer.")
-              .deleteChars(13)
-              .pauseFor(500)
-              .typeString("Devesh.")
-              .pauseFor(1000)
-              .start();
-          }}
-        />
+        <p>Hello There!</p>
+        <p ref={ref}>{string}</p>
         <div className="flex">
           <Button
             text={"Resume"}

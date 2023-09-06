@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Button({ text, link, onClick, children, disabled, success }) {
+function Button({ text, link, onClick, children, disabled, success, className }) {
   const [string, setString] = useState(text);
   useEffect(() => {
     if (disabled) {
@@ -32,7 +32,7 @@ function Button({ text, link, onClick, children, disabled, success }) {
             : success == "error"
             ? "bg-red-400"
             : "bg-lime-400"
-        } `}
+        } ${className}`}
         onClick={onClick ? onClick : null}
       >
         {string ? string : children}
