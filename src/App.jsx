@@ -1,14 +1,14 @@
-import About from "./About";
-import Intro from "./Intro";
+import About from "./pages/About";
+import Intro from "./pages/Intro";
 import MouseTail from "./components/MouseTail";
-import Skills from "./Skills";
+import Skills from "./pages/Skills";
 
 import { useRef } from "react";
-import Work from "./Work";
-import Projects from "./Projects";
-import Contact from "./Contact";
-import Footer from "./Footer";
-import SideBar from "./SideBar";
+import Work from "./pages/Work";
+import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
+import Footer from "./components/Footer";
+import SideBar from "./components/SideBar";
 
 function App() {
   const scrollToHome = useRef();

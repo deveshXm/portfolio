@@ -1,5 +1,5 @@
 import Typewriter from "typewriter-effect";
-import Button from "./components/Button";
+import Button from "../components/Button";
 
 function Intro({ scroll }) {
   return (

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Heading from "./components/Heading";
-import * as data from "../data.json";
+import Heading from "../components/Heading";
+import * as data from "../../data.json";
 
 function generateRandomString(length = 2000) {
   const characters =

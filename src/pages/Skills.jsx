@@ -1,5 +1,5 @@
-import Heading from "./components/Heading";
-import * as data from "../data.json";
+import Heading from "../components/Heading";
+import * as data from "../../data.json";
 import { useEffect, useState } from "react";
 
 function Skills({ scroll }) {

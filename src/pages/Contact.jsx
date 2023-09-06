@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Button from "./components/Button";
-import Heading from "./components/Heading";
-import Input from "./components/Input";
+import Button from "../components/Button";
+import Heading from "../components/Heading";
+import Input from "../components/Input";
 import emailjs from "@emailjs/browser";
 
 function Contact({ scroll }) {
@@ -48,7 +48,7 @@ function Contact({ scroll }) {
       <Heading text={"Contact"} />
       <div className="w-fit flex justify-center mt-20 flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-10">
         <div className="box p-2 lg:p-10 w-fit text-base sm:text-xl xl:text-4xl flex-1">
-          <p>{"I am open for Fullstack/Backend roles."}</p>
+          <p>{"Open for Fullstack/Backend roles."}</p>
           <br />
           <p>
             {

@@ -1,7 +1,7 @@
-import Heading from "./components/Heading";
-import * as data from "../data.json";
-import Caraousel from "./components/Caraousel";
-import WorkCard from "./components/WorkCard";
+import Heading from "../components/Heading";
+import * as data from "../../data.json";
+import Caraousel from "../components/Caraousel";
+import WorkCard from "../components/WorkCard";
 
 function Work({ scroll }) {
   return (

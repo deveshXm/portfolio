@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import TypeWriter from "./components/TypeWriter";
+import TypeWriter from "./TypeWriter";
 
 function SideBar({
   handleHome,
@@ -13,6 +13,7 @@ function SideBar({
   const [consoleText, setConsoleText] = useState([
     "Greetings!",
     "Initializing...",
+    "Done",
   ]);
 
   useEffect(() => {

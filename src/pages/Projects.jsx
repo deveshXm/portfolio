@@ -1,7 +1,7 @@
-import Heading from "./components/Heading";
-import * as data from "../data.json";
-import Caraousel from "./components/Caraousel";
-import ProjectCard from "./components/ProjectCard";
+import Heading from "../components/Heading";
+import * as data from "../../data.json";
+import Caraousel from "../components/Caraousel";
+import ProjectCard from "../components/ProjectCard";
 
 function Projects({ scroll }) {
   return (
