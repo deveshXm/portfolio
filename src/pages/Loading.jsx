@@ -14,7 +14,7 @@ const Cell = ({ isHighlighted }) => {
 };
 
 function Loading({ isCompleted, text }) {
-  const numRows = 20;
+  const numRows = 25;
   const numCols = 30;
   const ref = useRef();
   const [opacity, setOpacity] = useState("");
