@@ -21,22 +21,22 @@ function App() {
   const scrollToContact = useRef();
 
   const handleHome = () => {
-    scrollToHome.current?.scrollIntoView({ behavior: "instant" });
+    scrollToHome.current?.scrollIntoView({ behavior: "smooth" });
   };
   const handleAbout = () => {
-    scrollToAbout.current?.scrollIntoView({ behavior: "instant" });
+    scrollToAbout.current?.scrollIntoView({ behavior: "smooth" });
   };
   const handleSkills = () => {
-    scrollToSkills.current?.scrollIntoView({ behavior: "instant" });
+    scrollToSkills.current?.scrollIntoView({ behavior: "smooth" });
   };
   const handleWork = () => {
-    scrollToWork.current?.scrollIntoView({ behavior: "instant" });
+    scrollToWork.current?.scrollIntoView({ behavior: "smooth" });
   };
   const handleExperience = () => {
-    scrollToProjects.current?.scrollIntoView({ behavior: "instant" });
+    scrollToProjects.current?.scrollIntoView({ behavior: "smooth" });
   };
   const handleContact = () => {
-    scrollToContact.current?.scrollIntoView({ behavior: "instant" });
+    scrollToContact.current?.scrollIntoView({ behavior: "smooth" });
   };
   return (
     <div className="bg-[#f7f7f7] box-border  w-full text-[#111111] p-0 m-0 font-pixel">
