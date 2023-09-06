@@ -41,7 +41,7 @@ function App() {
   return (
     <div className="bg-[#f7f7f7] box-border  w-full text-[#111111] p-0 m-0 font-pixel">
       {!completed ? <Loading isCompleted={setCompleted} text={"Loading..."}/> : null}
-      <MouseTail />
+      {/* <MouseTail />
       <SideBar
         handleHome={handleHome}
         handleAbout={handleAbout}
@@ -49,7 +49,7 @@ function App() {
         handleWork={handleWork}
         handleExperience={handleExperience}
         handleContact={handleContact}
-      />
+      /> */}
       <Intro scroll={scrollToHome} />
       <About scroll={scrollToAbout} />
       <Skills scroll={scrollToSkills} />

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import useJumbleAnimation from "../hooks/jumbleAnimation.js";
 
 const Cell = ({ isHighlighted }) => {
   return (
@@ -14,8 +15,10 @@ const Cell = ({ isHighlighted }) => {
 
 function Loading({ isCompleted, text }) {
   const numRows = 60;
-  const numCols = 100;
-  const [opacity, setOpacity] = useState(false);
+  const numCols = 90;
+  const ref = useRef();
+  const [opacity, setOpacity] = useState("");
+  const [title, setTitle] = useState(text);
   const [matrix, setMatrix] = useState(() =>
     new Array(numRows).fill(null).map(() => new Array(numCols).fill(false))
   );
@@ -42,9 +45,8 @@ function Loading({ isCompleted, text }) {
         if (cellsToUpdate.length === 0) {
           requestAnimationFrame(() => {
             traverseDiagonal(slice + 1);
-            // Call isCompleted only after the current diagonal is completed
             if (slice === numRows + numCols - 2) {
-              // isCompleted(true);
+              isCompleted(true);
             }
           });
           return;
@@ -59,7 +61,7 @@ function Loading({ isCompleted, text }) {
           return updatedMatrix;
         });
 
-        requestAnimationFrame(updateNextCell);
+        updateNextCell();
       };
 
       updateNextCell();
@@ -69,11 +71,12 @@ function Loading({ isCompleted, text }) {
   };
 
   useEffect(() => {
-    updateCell();
     setTimeout(() => {
       setOpacity(true);
-    }, 3000);
+    }, 5000);
+    updateCell();
   }, []);
+  useJumbleAnimation(ref, title, setTitle);
 
   return (
     <div className="fixed top-0 left-0 h-[100vh] w-full z-[1000]">
@@ -88,11 +91,12 @@ function Loading({ isCompleted, text }) {
       </div>
       <div>
         <p
-          className={`absolute top-[40%] left-[40%] transition  duration-1000 ease-in-out ${
+          ref={ref}
+          className={`absolute top-[40%] left-[40%] transition duration-300 ease-in-out ${
             opacity ? " opacity-0" : ""
           } text-7xl text-black lg:text-9xl`}
         >
-          {text}
+          {title}
         </p>
       </div>
     </div>
