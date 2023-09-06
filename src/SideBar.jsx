@@ -32,14 +32,14 @@ function SideBar({
     };
   }, []);
   return (
-    <div className="fixed top-0 left-0 flex justify-between w-full h-[100vh] p-10 pointer-events-none z-[1000]">
-      <div className="text-4xl font-pixel font-thin flex justify-start">
+    <div className="fixed top-0 left-0 flex justify-between text-lg lg:text-4xl w-full h-[100vh] p-2 lg:p-10 pointer-events-none z-[1000]">
+      <div className="font-pixel font-thin flex justify-start">
         <div className="flex">
           <TypeWriter text={consoleText} />
         </div>
       </div>
       <div className="flex flex-col justify-between">
-        <div className="box p-5 text-4xl space-y-6 font-thin font-pixel w-fit flex flex-col pointer-events-auto">
+        <div className="box p-5 space-y-6 font-thin font-pixel w-fit flex flex-col pointer-events-auto">
           <button onClick={handleHome} >
             Home
           </button>

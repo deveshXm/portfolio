@@ -30,17 +30,17 @@ function About({ scroll }) {
   return (
     <div
       ref={scroll}
-      className="pointer-events-none relative h-[100vh] align-middle flex-1 w-full"
+      className="pointer-events-none relative h-[150vh] min-h-[100vh]align-middle flex-1 w-full"
     >
-      <div className="absolute p-20 z-[9] w-[90vw]">
+      <div className="absolute p-5 lg:p-20 z-[9] w-full">
         <Heading text={"Me?"} />
         <div>
-          <div className="box  m-5 p-10 space-y-6">
+          <div className="box m-1 lg:m-5 p-2 space-y-2 lg:space-y-6">
             {data.about.map((ele, index) => {
               return (
                 <div key={index}>
                   <p className="text-4xl font-semibold">{ele.ques}</p>
-                  <p className="text-3xl">{ele.ans}</p>
+                  <p className="text-2xl lg:text-3xl">{ele.ans}</p>
                 </div>
               );
             })}
@@ -48,7 +48,7 @@ function About({ scroll }) {
         </div>
       </div>
       <p
-        className="select-none cursor-default text-8xl  h-[100vh] overflow-hidden  w-full break-words 
+        className="select-none cursor-default text-4xl lg:text-8xl h-full overflow-hidden  w-full break-words 
       text-[#eae7ea] font-semibold pl-3 absolute"
       >
         {randomStrings[currentIndex]}
