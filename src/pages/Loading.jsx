@@ -69,13 +69,13 @@ function Loading({ isCompleted, text }) {
       };
 
       traverseDiagonal(0);
-    }, 2000);
+    }, 3000);
   };
 
   useEffect(() => {
     setTimeout(() => {
       setOpacity(true);
-    }, 3000);
+    }, 5000);
     updateCell();
   }, []);
   useJumbleAnimation(ref, title, setTitle, 1);
