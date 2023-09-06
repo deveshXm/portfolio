@@ -50,13 +50,13 @@ function App() {
         handleExperience={handleExperience}
         handleContact={handleContact}
       /> */}
-      <Intro scroll={scrollToHome} />
+      {/* <Intro scroll={scrollToHome} />
       <About scroll={scrollToAbout} />
       <Skills scroll={scrollToSkills} />
       <Work scroll={scrollToWork} />
       <Projects scroll={scrollToProjects} />
       <Contact scroll={scrollToContact} />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }

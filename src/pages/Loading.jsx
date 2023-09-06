@@ -6,7 +6,7 @@ const Cell = ({ isHighlighted }) => {
     <div
       className={`w-8 h-8 select-none justify-center flex items-center ${
         isHighlighted
-          ? "bg-transparent"
+          ? "bg-transparent transition duration-200"
           : "bg-[#afec32]"
       }`}
     ></div>
@@ -24,59 +24,61 @@ function Loading({ isCompleted, text }) {
   );
 
   const updateCell = () => {
-    const traverseDiagonal = (slice) => {
-      if (slice >= numRows + numCols - 1) {
-        return;
-      }
-
-      const cellsToUpdate = [];
-
-      for (
-        let j = Math.max(0, slice - numRows + 1);
-        j <= Math.min(slice, numCols - 1);
-        ++j
-      ) {
-        const rowIndex = slice - j;
-        const colIndex = j;
-        cellsToUpdate.push([rowIndex, colIndex]);
-      }
-
-      const updateNextCell = () => {
-        if (cellsToUpdate.length === 0) {
-          requestAnimationFrame(() => {
-            traverseDiagonal(slice + 1);
-            if (slice === numRows + numCols - 2) {
-              isCompleted(true);
-            }
-          });
+    setTimeout(() => {
+      const traverseDiagonal = (slice) => {
+        if (slice >= numRows + numCols - 1) {
           return;
         }
 
-        const [rowIndex, colIndex] = cellsToUpdate.shift();
+        const cellsToUpdate = [];
 
-        setMatrix((prevMatrix) => {
-          const updatedMatrix = [...prevMatrix];
-          updatedMatrix[rowIndex] = [...prevMatrix[rowIndex]];
-          updatedMatrix[rowIndex][colIndex] = true;
-          return updatedMatrix;
-        });
+        for (
+          let j = Math.max(0, slice - numRows + 1);
+          j <= Math.min(slice, numCols - 1);
+          ++j
+        ) {
+          const rowIndex = slice - j;
+          const colIndex = j;
+          cellsToUpdate.push([rowIndex, colIndex]);
+        }
+
+        const updateNextCell = () => {
+          if (cellsToUpdate.length === 0) {
+            requestAnimationFrame(() => {
+              traverseDiagonal(slice + 1);
+              if (slice === numRows + numCols - 2) {
+                isCompleted(true);
+              }
+            });
+            return;
+          }
+
+          const [rowIndex, colIndex] = cellsToUpdate.shift();
+
+          setMatrix((prevMatrix) => {
+            const updatedMatrix = [...prevMatrix];
+            updatedMatrix[rowIndex] = [...prevMatrix[rowIndex]];
+            updatedMatrix[rowIndex][colIndex] = true;
+            return updatedMatrix;
+          });
+
+          updateNextCell();
+        };
 
         updateNextCell();
       };
 
-      updateNextCell();
-    };
-
-    traverseDiagonal(0);
+      traverseDiagonal(0);
+    }, 2000);
   };
 
   useEffect(() => {
     setTimeout(() => {
       setOpacity(true);
-    }, 1000);
+    }, 3000);
     updateCell();
   }, []);
-  useJumbleAnimation(ref, title, setTitle, 2);
+  useJumbleAnimation(ref, title, setTitle, 1);
 
   return (
     <div className="fixed top-0 left-0 h-[100vh] w-full z-[1000]">
