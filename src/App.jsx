@@ -39,7 +39,7 @@ function App() {
     scrollToContact.current?.scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <div className="bg-[#f7f7f7] box-border  w-full text-[#111111] p-0 m-0 font-pixel">
+    <div className="bg-[#f7f7f7] box-border h-full  w-full text-[#111111] p-0 m-0 font-pixel">
       {!completed ? (
         <Loading isCompleted={setCompleted} text={"Loading"} />
       ) : (
