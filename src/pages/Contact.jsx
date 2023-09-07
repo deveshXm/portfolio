@@ -47,7 +47,7 @@ function Contact({ scroll }) {
     >
       <Heading text={"Contact"} />
       <div className="w-fit flex justify-center mt-20 flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-10">
-        <div className="box p-2 lg:p-10 w-fit text-base sm:text-xl xl:text-4xl flex-1">
+        <div className="box p-2 lg:p-10 w-fit text-base sm:text-xl 2xl:text-4xl flex-1">
           <p>{"Open for Fullstack/Backend roles."}</p>
           <br />
           <p>

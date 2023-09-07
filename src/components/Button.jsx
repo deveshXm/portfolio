@@ -24,7 +24,7 @@ function Button({ text, link, onClick, children, disabled, success, className })
     <a href={link} target="_blank" rel="noreferrer">
       <button
         disabled={disabled}
-        className={`pointer-events-auto px-5 md:px-10  py-2 xl:py-5 w-fit h-fit border-[1px] border-black text-base md:text-2xl xl:text-4xl font-thin ${
+        className={`pointer-events-auto px-5 md:px-10  py-2 xl:py-4 2xl:py-5 w-fit h-fit border-[1px] border-black text-base 2xl:text-4xl font-thin ${
           !disabled ? "hover:bg-gray-200" : ""
         }  cursor-pointer  ${
           success == null
