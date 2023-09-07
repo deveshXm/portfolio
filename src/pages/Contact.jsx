@@ -43,7 +43,7 @@ function Contact({ scroll }) {
   return (
     <div
       ref={scroll}
-      className="relative pointer-events-none min-h-[100vh] h-fit  w-full bg-transparent py-5 px-2 md:p-10 xl:py-20 xl:px-60"
+      className="relative pointer-events-none min-h-[100vh] h-fit  w-full bg-transparent py-5 px-2 md:p-10 flex flex-col  justify-center xl:px-60"
     >
       <Heading text={"Contact"} />
       <div className="w-fit flex justify-center mt-20 flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-10">

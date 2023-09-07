@@ -19,8 +19,8 @@ function Skills({ scroll }) {
     const div = document.getElementById("randomDiv");
     if (!div) return;
 
-    const maxDivWidth = div.clientWidth -100;
-    const maxDivHeight = div.clientHeight - 100;
+    const maxDivWidth = div.clientWidth * 0.8;
+    const maxDivHeight = div.clientHeight * 0.8;
 
     const columns = 10; // You can adjust the number of columns
     const rows = Math.ceil(strings.length / columns);
@@ -44,18 +44,18 @@ function Skills({ scroll }) {
 
   return (
     <div
-    className="relative pointer-events-none h-[100vh] w-full bg-transparent p-5 md:p-10 xl:py-20 xl:px-60"
-    ref={scroll}
+      className="relative pointer-events-none min-h-[100vh] w-full flex flex-col justify-center bg-transparent p-5 md:p-10 xl:py-20 xl:px-60"
+      ref={scroll}
     >
       <Heading text={"Skills"} />
-      <div className="relative box xl:w-[70vw] h-[80vh] w-full">
+      <div className="relative box xl:w-[70vw] h-[70vh] w-full">
         <p className="absolute p-3 text-xl">My Whiteboard</p>
         <div id="randomDiv" className="h-full p-20  bg-red-300 bg-opacity-25">
           <div>
             {strings.map((str, index) => (
               <div
                 key={index}
-                className="pointer-events-auto hover:rounded-3xl absolute text-base sm:text-lg xl:text-4xl p-2 xl:p-4 border-black border flex items-center justify-center cursor-default"
+                className="pointer-events-auto hover:rounded-3xl absolute text-sm sm:text-base xl:text-4xl p-1 sm:p-2 xl:p-4 border-black border flex items-center justify-center cursor-default"
                 style={{
                   top: `${str.y}px`,
                   left: `${str.x}px`,
