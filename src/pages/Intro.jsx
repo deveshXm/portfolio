@@ -15,7 +15,7 @@ function Intro({ scroll, completed }) {
   return (
     <div
       ref={scroll}
-      className="relative min-h-[100vh] w-full bg-transparent text-5xl  md:text-7xl xl:text-9xl  font-medium pointer-events-none flex flex-col justify-center items-center"
+      className="relative min-h-[100vh] w-full bg-transparent text-5xl  md:text-7xl 2xl:text-9xl  font-medium pointer-events-none flex flex-col justify-center items-center"
     >
       <iframe
         src="https://giphy.com/embed/Zb5oyPaa1x4Zoo3yEi"
