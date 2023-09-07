@@ -30,9 +30,9 @@ function About({ scroll }) {
   return (
     <div
       ref={scroll}
-      className="pointer-events-none relative min-h-[120vh] h-fit flex-1 w-full justify-center items-center"
+      className="relative pointer-events-none min-h-[120vh] flex flex-1 w-full justify-center items-center"
     >
-      <div className="absolute py-5 px-2 md:p-10 xl:px-60 xl:mx-60 z-[9] flex flex-col justify-center h-full">
+      <div className="relative py-5 px-2 md:p-10 xl:px-60 xl:mx-60 z-[9] flex flex-col justify-center h-full">
         <Heading text={"Me?"} />
         <div>
           <div className="box md:p-5 p-2 xl:p-10 space-y-2 xl:space-y-6">
@@ -51,12 +51,12 @@ function About({ scroll }) {
           </div>
         </div>
       </div>
-      <p
-        className="select-none cursor-default text-3xl lg:text-4xl xl:text-8xl h-full overflow-hidden  w-full break-words 
-      text-[#eae7ea] font-semibold pl-3 absolute"
+      <div
+        className="absolute top-0 left-0 select-none cursor-default text-3xl lg:text-4xl xl:text-8xl h-full overflow-hidden  w-full break-words 
+      text-[#eae7ea] font-semibold pl-3"
       >
         {randomStrings[currentIndex]}
-      </p>
+      </div>
     </div>
   );
 }
