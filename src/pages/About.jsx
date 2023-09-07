@@ -30,19 +30,19 @@ function About({ scroll }) {
   return (
     <div
       ref={scroll}
-      className="relative pointer-events-none min-h-[120vh] flex flex-1 w-full justify-center items-center"
+      className="relative pointer-events-none min-h-[100vh] h-full flex flex-col justify-center w-full bg-transparent md:p-10 py-5 px-2 xl:px-40 2xl:px-60"
     >
-      <div className="relative py-5 px-2 md:p-10 xl:px-60 xl:mx-60 z-[9] flex flex-col justify-center h-full">
+      <div className="h-full z-[1]">
         <Heading text={"Me?"} />
         <div>
-          <div className="box md:p-5 p-2 xl:p-10 space-y-2 xl:space-y-6">
+          <div className="box md:p-5 p-2 xl:p-5 2xl:p-10 space-y-2 xl:space-y-6">
             {data.about.map((ele, index) => {
               return (
                 <div key={index}>
-                  <p className="text-xl lg:text-3xl 3xl:text-5xl font-semibold">
+                  <p className="text-xl lg:text-2xl 3xl:text-5xl font-semibold">
                     {ele.ques}
                   </p>
-                  <p className="text-base lg:text-2xl 3xl:text-4xl">
+                  <p className="text-base lg:text-xl 3xl:text-4xl">
                     {ele.ans}
                   </p>
                 </div>
@@ -52,7 +52,7 @@ function About({ scroll }) {
         </div>
       </div>
       <div
-        className="absolute top-0 left-0 select-none cursor-default text-3xl lg:text-4xl xl:text-8xl h-full overflow-hidden  w-full break-words 
+        className="absolute top-0 left-0 select-none cursor-default text-3xl xl:text-5xl 2xl:text-8xl h-full overflow-hidden  w-full break-words 
       text-[#eae7ea] font-semibold pl-3"
       >
         {randomStrings[currentIndex]}

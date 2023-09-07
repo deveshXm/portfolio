@@ -50,7 +50,7 @@ function SideBar({
         </div>
         <div className="hidden xl:flex">
           <div className="flex flex-col justify-between">
-            <div className="box p-5 space-y-6 font-thin font-pixel w-fit flex flex-col pointer-events-auto">
+            <div className="box p-5 space-y-6 font-thin text-base 2xl:text-xl 4xl:text-4xl font-pixel w-fit flex flex-col pointer-events-auto">
               <button
                 onClick={() => {
                   handleHome();
