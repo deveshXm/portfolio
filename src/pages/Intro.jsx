@@ -1,6 +1,6 @@
 import Button from "../components/Button";
 import { useEffect, useRef, useState } from "react";
-import useJumbleAnimation, {
+import {
   generateIncrementalRandomString,
 } from "../hooks/jumbleAnimation";
 
@@ -32,7 +32,7 @@ function Intro({ scroll, completed }) {
         <Button
           text={"Resume"}
           link={
-            "https://drive.google.com/file/d/1DRPTlA2wBm9rO7lus0LpkC3d8C8EpiUl/view?usp=sharing"
+            "https://drive.google.com/file/d/1fKnATMi8heGshZr8gtshbnIebqWapzEo/view?usp=sharing"
           }
         />
         <Button text={"Linkedin"} link={"https://www.linkedin.com/in/devxm"} />
