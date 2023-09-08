@@ -8,7 +8,7 @@ function WorkCard({ item }) {
         <p className="text-sm lg:text-2xl 3xl:text-5xl font-medium">{item.place}</p>
         <p className="text-sm lg:text-2xl 3xl:text-5xl font-medium">{item.date}</p>
       </div>
-      <div className="text-base lg:text-xl 3xl:text-4xl font-thin space-y-3">
+      <div className="text-base lg:text-2xl 3xl:text-4xl font-thin space-y-3">
         {item.about.map((point, index) => (
           <p key={index}>
             {"> "}

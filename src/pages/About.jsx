@@ -39,10 +39,10 @@ function About({ scroll }) {
             {data.about.map((ele, index) => {
               return (
                 <div key={index}>
-                  <p className="text-xl lg:text-2xl 3xl:text-5xl font-semibold">
+                  <p className="text-xl lg:text-3xl 3xl:text-5xl font-semibold">
                     {ele.ques}
                   </p>
-                  <p className="text-base lg:text-xl 3xl:text-4xl">
+                  <p className="text-base lg:text-2xl 3xl:text-4xl">
                     {ele.ans}
                   </p>
                 </div>
