@@ -32,7 +32,7 @@ function Intro({ scroll, completed }) {
         <Button
           text={"Resume"}
           link={
-            "https://drive.google.com/file/d/1HWRDR2gMyz3F4Y7zPf727fO-PIVkSna4/view?usp=drive_link"
+            "https://drive.google.com/drive/folders/144RXk4cLb86awh81TUtMLEI0Gao3det_?usp=drive_link"
           }
         />
         <Button text={"Linkedin"} link={"https://www.linkedin.com/in/devxm"} />
