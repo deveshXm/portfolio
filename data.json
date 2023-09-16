@@ -6,7 +6,7 @@
       "color": "pink",
       "title1": "Software",
       "title2": "Development",
-      "about": " Languages : Javascript, TypeScript, Python, Java (Learning) \n Skills : OOPS, DSA, Computer Networks, DBMS \n OS : Linux, Windows \n Technologies : Git, Visual Studio, IntelliJ Idea"
+      "about": " Languages : Javascript, TypeScript, Python, Java (Learning) \n Skills : Git, Linux, OOPS, DSA, Computer Networks, DBMS \n"
     },
     {
       "id": 2,
@@ -22,7 +22,7 @@
       "color": "green",
       "title1": "Backend",
       "title2": "Development",
-      "about": "Technologies : Node.js, REST, GraphQL \n Libraries : Express.js, JWT, Crypto \n Databases : MongoDB, PostgreSQL, MariaDB, DynamoDB, CockroachDB \n ORMs : Mongoose, Prisma \n Cloud : Docker, AWS, GCP, Airtable, Firebase, Digital Ocean "
+      "about": "Technologies : Node.js, REST, GraphQL \n Libraries : Express.js, JWT, Crypto \n Databases : MongoDB, PostgreSQL, MariaDB \n ORMs : Mongoose, Prisma \n Cloud : Docker, AWS, GCP, Airtable, Firebase"
     }
   ],
   "Projects": [
