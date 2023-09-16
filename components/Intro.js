@@ -30,7 +30,7 @@ const Intro = ({ scroll }) => {
                 <Button
                   title={"RESUME"}
                   link={
-                    "https://drive.google.com/file/d/1_2DoiM1_tU1xWB22SyZ3vZ6I_Yeie_SR/view?usp=sharing"
+                    "https://drive.google.com/file/d/1CYANAVR22ufte4jSPLpmdn4EHYwDmtEC/view?usp=drive_link"
                   }
                 />
               </div>
