@@ -30,7 +30,7 @@
       "id": 1,
       "title": "Bento",
       "about": "Designed and developed barber & food ordering mobile app for both students & shopkeeper in React Native, Expo & Firebase & deployed the app on Play Store.",
-      "link": "https://github.com/orgs/Bento-One-stop-for-students/repositories"
+      "link": "https://github.com/orgs/Bento-One-stop-for-students"
     },
     {
       "id": 2,
@@ -54,20 +54,27 @@
   "Experience": [
     {
       "id": 1,
+      "title": "Full Stack Developer",
+      "timeline": "Aug - Present",
+      "about": "Developing features in React Native. Developing APIs in firebase.",
+      "stack": ["React Native", "Firebase", "Redux"]
+    },
+    {
+      "id": 2,
       "title": "Software Engineer",
       "timeline": "June - July 2023",
       "about": "Developed an OIDC server using Keycloak(IAM) on AWS EC2 & Redis. Developed RESTful APIs using Express & Nodejs. Designed & developed front-end using LIT  Web-components",
       "stack": ["LIT WC", "TypeScript", "NodeJS", "AWS", "Docker", "Keycloak(IAM)"]
     },
     {
-      "id": 2,
+      "id": 3,
       "title": "Frontend Engineer",
       "timeline": "Dec - Jan 2023",
       "about": "Designed & developed UI in React using TailwindCSS & ThreeJS. Developed RESTful API on Firebase.",
       "stack": ["React", "ThreeJS", "Firebase", "JavaScript", "Tailwind"]
     },
     {
-      "id": 3,
+      "id": 4,
       "title": "Microsoft Engage Mentee",
       "timeline": "May - June 2022",
       "about": "Designed and developed a web-app that demonstrates algorithms that a web-streaming app (like Netflix) or an audio-streaming app (like Spotify) may use for their Recommendation Engine.",
