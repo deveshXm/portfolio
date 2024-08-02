@@ -15,7 +15,7 @@ function About({ landingOffset, aboutRef, contactRef }) {
   };
 
   return (
-    <div className="absolute px-[30px] flex flex-col justify-end w-full gap-20 h-full pt-[25vh] pb-[10vh]">
+    <div className="absolute px-[30px] flex flex-col justify-end w-full gap-20 h-full pt-[25vh] pb-[10vh]" ref={aboutRef}>
       <div className="h-fit">
         <div className="flex">
           {word1.map((char, index) => (
@@ -24,7 +24,7 @@ function About({ landingOffset, aboutRef, contactRef }) {
             </h2>
           ))}
         </div>
-        <div className="flex" ref={aboutRef}>
+        <div className="flex">
           {word2.map((char, index) => (
             <Heading key={index}>
               <RandomCharacter defaultValue={char} landingOffset={landingOffset} biasness={index / word2.length} height={windowHeight} />
