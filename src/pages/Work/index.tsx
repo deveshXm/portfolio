@@ -42,15 +42,16 @@ const experiences = [
   },
 ];
 
-const FloatingDiv = ({ text, position, offset = { x: 10, y: 10 } }) => {
+const FloatingDiv = ({ text, position, offset = { x: 10, y: 10 }, visible }) => {
   return (
     <div
-      className=" z-10 fixed pointer-events-none border-[#e8c6b4] border-[1px] bg-[#131313] p-6 rounded-md floating-div w-[30vw] flex flex-col gap-4 min-h-[50vh] "
+      className={` z-10 fixed pointer-events-none border-[#e8c6b4] border-[1px] bg-[#131313] p-6 rounded-md floating-div w-[30vw] flex-col gap-4 transition-all ease-linear ${
+        visible ? "flex" : "hidden"
+      }`}
       style={{
-        left: "0",
-        top: "0",
+        left: offset.x,
+        top: offset.y,
         transform: `translate(${offset.x}px, ${offset.y}px)`,
-        transition: "opacity 0.2s ease-in-out", // Add this line
         opacity: 1, // Change this from 0.8 to 1
       }}
     >
@@ -180,17 +181,17 @@ function Work() {
                   onMouseMove={handleMouseMove}
                 >
                   <td className="w-1/3 relative z-10">
-                    <Heading2 className="text-[#e8c6b4] border-b-[1px] border-opacity-35 border-[#e8c6b4] py-1 group-hover:text-black transition-colors duration-300">
+                    <Heading2 className="text-[#e8c6b4] border-b-[1px] border-opacity-35 border-[#e8c6b4] py-1 group-hover:text-black transition-all duration-300 group-hover:pl-2">
                       {experience.name}
                     </Heading2>
                   </td>
                   <td className="w-1/3 relative z-10">
-                    <Heading2 className="text-[#e8c6b4] border-b-[1px] border-opacity-35 border-[#e8c6b4] py-1 group-hover:text-black transition-colors duration-300">
+                    <Heading2 className="text-[#e8c6b4] border-b-[1px] border-opacity-35 border-[#e8c6b4] py-1 group-hover:text-black  transition-all duration-300 group-hover:ml-2">
                       {experience.tenure}
                     </Heading2>
                   </td>
                   <td className="w-1/3 relative z-10">
-                    <Heading2 className="text-[#e8c6b4] border-b-[1px] border-opacity-35 border-[#e8c6b4] py-1 group-hover:text-black transition-colors duration-300">
+                    <Heading2 className="text-[#e8c6b4] border-b-[1px] border-opacity-35 border-[#e8c6b4] py-1 group-hover:text-black transition-all duration-300 group-hover:ml-2">
                       {experience.role}
                     </Heading2>
                   </td>
@@ -216,13 +217,12 @@ function Work() {
           {"I HAD THE OPPORTUNITY TO WORK WITH AMAZING PEOPLE"}
         </Heading2>
       </div>
-      {showFloating && (
-        <FloatingDiv
-          text={floatingText}
-          position={mousePosition}
-          offset={{ x: 20, y: 20 }} // You can adjust these values
-        />
-      )}
+      <FloatingDiv
+        text={floatingText}
+        position={mousePosition}
+        visible={showFloating}
+        offset={{ x: 20, y: 20 }} // You can adjust these values
+      />
     </div>
   );
 }
