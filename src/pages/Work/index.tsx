@@ -181,19 +181,25 @@ function Work() {
                   onMouseMove={handleMouseMove}
                 >
                   <td className="w-1/3 relative z-10">
-                    <Heading2 className="text-[#e8c6b4] border-b-[1px] border-opacity-35 border-[#e8c6b4] py-1 group-hover:text-black transition-all duration-300 group-hover:pl-2">
-                      {experience.name}
-                    </Heading2>
+                    <a href="https://linkedin.com/in/devxm" target="_blank">
+                      <Heading2 className="text-[#e8c6b4] border-b-[1px] border-opacity-35 border-[#e8c6b4] py-1 group-hover:text-black transition-all duration-300 group-hover:pl-2">
+                        {experience.name}
+                      </Heading2>
+                    </a>
                   </td>
                   <td className="w-1/3 relative z-10">
-                    <Heading2 className="text-[#e8c6b4] border-b-[1px] border-opacity-35 border-[#e8c6b4] py-1 group-hover:text-black  transition-all duration-300 group-hover:ml-2">
-                      {experience.tenure}
-                    </Heading2>
+                    <a href="https://linkedin.com/in/devxm" target="_blank">
+                      <Heading2 className="text-[#e8c6b4] border-b-[1px] border-opacity-35 border-[#e8c6b4] py-1 group-hover:text-black  transition-all duration-300 group-hover:ml-2">
+                        {experience.tenure}
+                      </Heading2>
+                    </a>
                   </td>
                   <td className="w-1/3 relative z-10">
-                    <Heading2 className="text-[#e8c6b4] border-b-[1px] border-opacity-35 border-[#e8c6b4] py-1 group-hover:text-black transition-all duration-300 group-hover:ml-2">
-                      {experience.role}
-                    </Heading2>
+                    <a href="https://linkedin.com/in/devxm" target="_blank">
+                      <Heading2 className="text-[#e8c6b4] border-b-[1px] border-opacity-35 border-[#e8c6b4] py-1 group-hover:text-black transition-all duration-300 group-hover:ml-2">
+                        {experience.role}
+                      </Heading2>
+                    </a>
                   </td>
                   <div className="absolute inset-x-0 bottom-0 h-0 bg-[#e8c6b4] group-hover:h-full transition-all duration-300 ease-out"></div>
                 </tr>
@@ -201,13 +207,25 @@ function Work() {
             </tbody>
           </table>
         </div>
-        <div className="flex lg:hidden flex-col justify-center gap-2">
+        <div className="flex lg:hidden flex-col justify-center">
           {experiences.map((experience, index) => (
-            <div className="border-b-[1px] border-opacity-35 border-[#e8c6b4] flex flex-col py-2">
-              <Heading2 className="text-[#e8c6b4]">{experience.name}</Heading2>
-              <Heading2 className="text-[#e8c6b4]">{experience.tenure}</Heading2>
-              <Heading2 className="text-[#e8c6b4]">{experience.role}</Heading2>
-            </div>
+            <a href="https://linkedin.com/in/devxm" target="_blank">
+              <div
+                className="border-b-[1px] border-opacity-35 border-[#e8c6b4] flex flex-col py-2 group relative cursor-pointer overflow-hidden"
+                key={index}
+                onMouseEnter={() => {
+                  setShowFloating(true);
+                  setFloatingText({ name: experience.name, about: experience.about });
+                }}
+                onMouseLeave={() => setShowFloating(false)}
+                onMouseMove={handleMouseMove}
+              >
+                <div className="absolute inset-0 bg-[#e8c6b4] transform translate-y-full transition-transform duration-300 ease-in-out group-hover:translate-y-0"></div>
+                <Heading2 className="text-[#e8c6b4] relative z-10 group-hover:text-black transition-all duration-300 group-hover:pl-2">{experience.name}</Heading2>
+                <Heading2 className="text-[#e8c6b4] relative z-10 group-hover:text-black transition-all duration-300 group-hover:pl-2">{experience.tenure}</Heading2>
+                <Heading2 className="text-[#e8c6b4] relative z-10 group-hover:text-black transition-all duration-300 group-hover:pl-2">{experience.role}</Heading2>
+              </div>
+            </a>
           ))}
         </div>
         <a href="https://linkedin.com/in/devxm" target="_blank">
