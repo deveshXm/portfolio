@@ -48,3 +48,15 @@ body {
 .animate-marquee {
   animation: marquee 5s linear infinite;
 }
+
+::selection {
+  background: #ab4228;
+  color: black;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: #ab4228;
+  color: #eee;
+  text-shadow: none;
+}
