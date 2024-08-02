@@ -6,6 +6,8 @@ import Contact from "./pages/contact";
 import Footer from "./components/Footer";
 import { useRef } from "react";
 
+import bg from "./assets/bg.jpg";
+
 export default function App() {
   const aboutRef = useRef(0);
   const contactRef = useRef(0);
@@ -37,6 +39,15 @@ export default function App() {
       <div ref={contactRef} />
       <Contact />
       <Footer />
+      <div className={`fixed h-screen w-full z-[-100] top-0 left-0`}>
+        <img src={bg} alt="bg" className="w-full h-full object-cover" />
+        <div
+          className="absolute top-0 left-0 w-full h-full"
+          style={{
+            background: "linear-gradient(to bottom, rgba(19,19,19,0.38) 0%, rgba(19,19,19,0.89) 54%, rgba(19,19,19,1) 100%)",
+          }}
+        />
+      </div>
     </ReactLenis>
   );
 }

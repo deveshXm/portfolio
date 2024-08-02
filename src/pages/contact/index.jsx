@@ -28,7 +28,7 @@ function Contact() {
   const word1 = "LET'S".split("");
   const word2 = "CONNECT".split("");
   return (
-    <div className="px-[30px] min-h-screen bg-[#e8c6b4] flex flex-col justify-between" ref={containerRef}>
+    <div className="px-[30px] min-h-screen flex flex-col justify-between" ref={containerRef}>
       <div className="mt-[10vh]">
         <div className="flex mb-4">
           {word1.map((char, index) => (
@@ -50,10 +50,10 @@ function Contact() {
           ))}
         </div>
         <div className="mt-[5vh]">
-          <Heading2>{"I'M ALWAYS INTERESTED ABOUT"}</Heading2>
+          <Heading2 className="mb-[5vh]">{"I'M ALWAYS INTERESTED ABOUT"}</Heading2>
           <div className=" flex flex-wrap gap-2">
             {interests.map((text) => (
-              <Button key={text} classNameText="text-black" className="border-black " text={text} />
+              <Button key={text} text={text} />
             ))}
           </div>
           <div />
@@ -62,7 +62,7 @@ function Contact() {
       <div className="mt-[20vh] h-fit flex wrap gap-3 items-center mb-[2vh]">
         <Heading2>{"HAVE A PROJECT IN MIND?"}</Heading2>
         <a href="mailto:nothefakedevesh@gmail.com">
-          <Button text="CONTACT ME" className="border-black bg-black" />
+          <Button text="CONTACT ME" />
         </a>
       </div>
     </div>

@@ -15,7 +15,7 @@ function About({ landingOffset, aboutRef, contactRef }) {
   };
 
   return (
-    <div className="absolute px-[30px] flex flex-col justify-end w-full gap-20 h-full pt-[25vh] pb-[10vh]" ref={aboutRef}>
+    <div className="absolute px-[30px] flex flex-col justify-between w-full gap-20 h-full py-[10vh]" ref={aboutRef}>
       <div className="h-fit">
         <div className="flex">
           {word1.map((char, index) => (
