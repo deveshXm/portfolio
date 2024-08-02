@@ -62,7 +62,7 @@ function Contact() {
       <div className="mt-[20vh] h-fit flex wrap gap-3 items-center mb-[2vh]">
         <Heading2>{"HAVE A PROJECT IN MIND?"}</Heading2>
         <a href="mailto:nothefakedevesh@gmail.com">
-          <Button text="CONTACT ME" className="border-[#ab4228] bg-[#ab4229]" />
+          <Button text="CONTACT ME" className="border-black bg-black" />
         </a>
       </div>
     </div>
