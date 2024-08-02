@@ -14,6 +14,8 @@ function Landing({ aboutRef, contactRef }) {
   const footerRef = useRef(null);
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
   const [offset, setOffset] = useState(0);
+  const touchStartY = useRef(0);
+  const touchEndY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,6 +71,7 @@ function Landing({ aboutRef, contactRef }) {
 
     return () => ctx.revert();
   }, []);
+
   useEffect(() => {
     if (isAnimationComplete) {
       document.body.style.overflow = "auto";
@@ -77,8 +80,30 @@ function Landing({ aboutRef, contactRef }) {
     }
   }, [isAnimationComplete]);
 
+  const handleTouchStart = (e) => {
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndY.current = e.touches[0].clientY;
+    const deltaY = touchStartY.current - touchEndY.current;
+    window.scrollTo(0, window.scrollY + deltaY);
+    touchStartY.current = touchEndY.current;
+  };
+
+  const handleTouchEnd = () => {
+    touchStartY.current = 0;
+    touchEndY.current = 0;
+  };
+
   return (
-    <div ref={containerRef} className="h-[100vh] overflow-hidden relative">
+    <div
+      ref={containerRef}
+      className="min-h-screen overflow-hidden relative"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <About landingOffset={offset} aboutRef={aboutRef} contactRef={contactRef} />
       <div ref={headerRef} className="absolute top-0 w-full">
         <Header />
