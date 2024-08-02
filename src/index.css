@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Francois+One&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Anton", "Anton Placeholder", sans-serif;
+}
+
+html {
+  color: #ab4228;
+}
+
+h1 {
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0.9em;
+}
+
+h2 {
+  font-weight: 400;
+  font-family: "Francois One", "Francois One Placeholder", sans-serif;
+  line-height: 1em;
+}
+
+h4 {
+}
+
+body {
+  /* padding: 0px 30px;  */
+  /* background-color: #e8c6b4; */
+  background-color: #131313;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 5s linear infinite;
+}
