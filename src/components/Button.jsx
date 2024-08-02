@@ -21,7 +21,7 @@ const Button = ({ text, onClick, className, classNameText }) => {
       onClick={onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`bg-transparent  hover:cursor-pointer border border-[#e8c6b4] rounded-full overflow-hidden px-0 py-1 justify-start  ${className}`}
+      className={`hover:cursor-pointer border border-[#e8c6b4] rounded-full overflow-hidden px-0 py-1 justify-start  ${className}`}
       style={{ minWidth: `${textWidth}px`, maxWidth: `${textWidth}px` }}
     >
       <Heading4 className={`text-[#e8c6b4] whitespace-nowrap ${classNameText} `}>
