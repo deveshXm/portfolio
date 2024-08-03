@@ -5,6 +5,7 @@ import Work from "./pages/Work";
 import Contact from "./pages/contact";
 import Footer from "./components/Footer";
 import { useEffect, useRef } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import bg from "./assets/bg.jpg";
 import TagManager from "react-gtm-module/dist/TagManager";
@@ -35,6 +36,7 @@ export default function App() {
 
   return (
     <ReactLenis root options={lenisOptions}>
+      <Analytics />
       <Navbar aboutRef={aboutRef} contactRef={contactRef} workRef={workRef} landingRef={landingRef} />
       <div ref={landingRef} />
       <Landing aboutRef={aboutRef} contactRef={contactRef} />
