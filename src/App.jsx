@@ -4,11 +4,15 @@ import Navbar from "./components/Navbar";
 import Work from "./pages/Work";
 import Contact from "./pages/contact";
 import Footer from "./components/Footer";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import bg from "./assets/bg.jpg";
+import TagManager from "react-gtm-module/dist/TagManager";
 
 export default function App() {
+  useEffect(() => {
+    TagManager.initialize({ gtmId: "GTM-K4RG8953" });
+  }, []);
   const aboutRef = useRef(0);
   const contactRef = useRef(0);
   const workRef = useRef(0);
