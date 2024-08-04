@@ -228,9 +228,14 @@ function Work() {
             </a>
           ))}
         </div>
-        <a href="https://linkedin.com/in/devxm" target="_blank">
-          <Button text="SEE MORE" className="mt-[5vh]" />
-        </a>
+        <div className="flex gap-8">
+          <a href="https://linkedin.com/in/devxm" target="_blank">
+            <Button text="LINKEDIN" className="mt-[5vh]" />
+          </a>
+          <a href="https://github.com/deveshXm" target="_blank">
+            <Button text="GITHUB" className="mt-[5vh]" />
+          </a>
+        </div>
         <Heading2 className="w-[60vw] lg:w-[50vw] mx-auto indent-12 text-left mt-[10vh]  text-3xl md:text-4xl lg:text-5xl text-[#e8c6b4]">
           {"I HAD THE OPPORTUNITY TO WORK WITH AMAZING PEOPLE"}
         </Heading2>

@@ -29,7 +29,7 @@ function Contact() {
   const word2 = "CONNECT".split("");
   return (
     <div className="px-[30px] min-h-screen flex flex-col justify-between" ref={containerRef}>
-      <div className="mt-[10vh]">
+      <div >
         <div className="flex mb-4">
           {word1.map((char, index) => (
             <Heading key={index}>
@@ -53,7 +53,9 @@ function Contact() {
           <Heading2 className="mb-[5vh]">{"I'M ALWAYS INTERESTED ABOUT"}</Heading2>
           <div className=" flex flex-wrap gap-2">
             {interests.map((text) => (
-              <Button key={text} text={text} />
+              <a key={text}href="mailto:nothefakedevesh@gmail.com">
+                <Button  text={text} />
+              </a>
             ))}
           </div>
           <div />

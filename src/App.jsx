@@ -4,16 +4,12 @@ import Navbar from "./components/Navbar";
 import Work from "./pages/Work";
 import Contact from "./pages/contact";
 import Footer from "./components/Footer";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Analytics } from "@vercel/analytics/react";
 
 import bg from "./assets/bg.jpg";
-import TagManager from "react-gtm-module/dist/TagManager";
 
 export default function App() {
-  useEffect(() => {
-    TagManager.initialize({ gtmId: "GTM-K4RG8953" });
-  }, []);
   const aboutRef = useRef(0);
   const contactRef = useRef(0);
   const workRef = useRef(0);
