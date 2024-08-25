@@ -41,7 +41,7 @@ export default function App() {
       <div ref={contactRef} />
       <Contact />
       <Footer />
-      <div className={`fixed h-screen w-full z-[-100] top-0 left-0`}>
+      <div className={`fixed h-screen w-full overflow-x-hidden z-[-100] top-0 left-0`}>
         <img src={bg} alt="bg" className="w-full h-full object-cover" />
         <div
           className="absolute top-0 left-0 w-full h-full"
