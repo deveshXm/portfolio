@@ -15,7 +15,8 @@ export default function App() {
   const workRef = useRef(0);
   const landingRef = useRef(0);
   const lenisOptions = {
-    duration: 2.5,
+    // duration: 2.5,
+
     direction: "vertical",
     gestureDirection: "vertical",
     smooth: true,
@@ -23,7 +24,7 @@ export default function App() {
     smoothTouch: true,
     touchMultiplier: 0.8,
     infinite: false,
-    lerp: 0.8,
+    // lerp: 0.8,
     wheelMultiplier: 0.3,
     orientation: "vertical",
     smoothWheel: true,
