@@ -6,7 +6,7 @@ import Contact from "./pages/contact";
 import Footer from "./components/Footer";
 import { useRef } from "react";
 import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import bg from "./assets/bg.jpg";
 
 export default function App() {
