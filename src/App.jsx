@@ -6,7 +6,7 @@ import Contact from "./pages/contact";
 import Footer from "./components/Footer";
 import { useRef } from "react";
 import { Analytics } from "@vercel/analytics/react";
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import bg from "./assets/bg.jpg";
 
 export default function App() {
@@ -34,6 +34,7 @@ export default function App() {
   return (
     <ReactLenis root options={lenisOptions}>
       <Analytics />
+      <SpeedInsights />
       <Navbar aboutRef={aboutRef} contactRef={contactRef} workRef={workRef} landingRef={landingRef} />
       <div ref={landingRef} />
       <Landing aboutRef={aboutRef} contactRef={contactRef} />
