@@ -354,7 +354,7 @@ export default function Home() {
       <div
         id={id}
         style={{
-          fontFamily: "'VT323', monospace",
+          fontFamily: "var(--font-vt323), monospace",
           marginBottom: "30px",
           position: "relative",
           maxWidth: "100%",
@@ -462,7 +462,7 @@ export default function Home() {
         display: "flex",
         alignItems: "center",
         marginBottom: "10px",
-        fontFamily: "'VT323', monospace",
+        fontFamily: "var(--font-vt323), monospace",
         fontSize: "20px"
       }}>
         <div style={{
@@ -498,7 +498,7 @@ export default function Home() {
 
   return (
     <div style={{
-      fontFamily: "'VT323', monospace",
+      fontFamily: "var(--font-vt323), monospace",
       margin: "0 auto",
       padding: "20px",
       maxWidth: "800px",

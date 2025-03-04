@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" fill="#111111" />
+  
+  <!-- Pixelated DM letters -->
+  <g transform="translate(4, 12)" fill="#FF0000">
+    <!-- D - Pixelated Style -->
+    <rect x="0" y="0" width="8" height="8" />
+    <rect x="8" y="0" width="8" height="8" />
+    <rect x="16" y="0" width="8" height="8" />
+    
+    <rect x="0" y="8" width="8" height="8" />
+    <rect x="16" y="8" width="8" height="8" />
+    <rect x="24" y="8" width="8" height="8" />
+    
+    <rect x="0" y="16" width="8" height="8" />
+    <rect x="16" y="16" width="8" height="8" />
+    <rect x="24" y="16" width="8" height="8" />
+    
+    <rect x="0" y="24" width="8" height="8" />
+    <rect x="16" y="24" width="8" height="8" />
+    <rect x="24" y="24" width="8" height="8" />
+    
+    <rect x="0" y="32" width="8" height="8" />
+    <rect x="8" y="32" width="8" height="8" />
+    <rect x="16" y="32" width="8" height="8" />
+    
+    <!-- M - Pixelated Style -->
+    <rect x="32" y="0" width="8" height="8" />
+    <rect x="40" y="0" width="8" height="8" />
+    <rect x="48" y="0" width="8" height="8" />
+    <rect x="56" y="0" width="8" height="8" />
+    
+    <rect x="32" y="8" width="8" height="8" />
+    <rect x="40" y="8" width="8" height="8" />
+    <rect x="48" y="8" width="8" height="8" />
+    <rect x="56" y="8" width="8" height="8" />
+    
+    <rect x="32" y="16" width="8" height="8" />
+    <rect x="40" y="16" width="8" height="8" />
+    <rect x="48" y="16" width="8" height="8" />
+    <rect x="56" y="16" width="8" height="8" />
+    
+    <rect x="32" y="24" width="8" height="8" />
+    <rect x="56" y="24" width="8" height="8" />
+    
+    <rect x="32" y="32" width="8" height="8" />
+    <rect x="56" y="32" width="8" height="8" />
+  </g>
+  
+  <!-- Add pixelated glow effect -->
+  <rect width="64" height="64" fill="url(#glow)" opacity="0.3" />
+  
+  <defs>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="70%" stop-color="#FF0000" stop-opacity="0" />
+      <stop offset="100%" stop-color="#FF0000" stop-opacity="0.6" />
+    </radialGradient>
+  </defs>
+</svg>
