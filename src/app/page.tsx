@@ -1,101 +1,153 @@
-import Image from "next/image";
-
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  // DOOM-style terminal components
+  const DoomBox = ({ children, title }: { children: React.ReactNode; title?: string }) => (
+    <div style={{ 
+      fontFamily: "monospace", 
+      marginBottom: "20px",
+      border: "1px solid #555", 
+      padding: "15px", 
+      maxWidth: "100%",
+      background: "#1a1a1a",
+      color: "#ddd",
+    }}>
+      {title && <div style={{ 
+        marginBottom: "10px", 
+        fontWeight: "bold", 
+        fontSize: "1.2em", 
+        borderBottom: "1px solid #555",
+        paddingBottom: "5px"
+      }}>
+        ══ {title} ══
+      </div>}
+      {children}
+    </div>
+  );
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const DoomNavItem = ({ label }: { label: string }) => (
+    <span style={{ 
+      margin: "0 15px", 
+      cursor: "pointer",
+      padding: "5px 10px",
+      border: "1px solid #555",
+      background: "#222",
+      fontWeight: "bold"
+    }}>
+      {label}
+    </span>
+  );
+
+  // DOOM Logo
+  const DoomLogo = () => (
+    <pre style={{ 
+      color: "#FF0000",
+      fontWeight: "bold",
+      fontSize: "min(16px, 4vw)",
+      lineHeight: "1", 
+      textAlign: "center",
+      margin: "30px auto",
+      textShadow: "2px 2px 0px #500"
+    }}>
+{`
+██████╗  ██████╗  ██████╗ ███╗   ███╗
+██╔══██╗██╔═══██╗██╔═══██╗████╗ ████║
+██║  ██║██║   ██║██║   ██║██╔████╔██║
+██║  ██║██║   ██║██║   ██║██║╚██╔╝██║
+██████╔╝╚██████╔╝╚██████╔╝██║ ╚═╝ ██║
+╚═════╝  ╚═════╝  ╚═════╝ ╚═╝     ╚═╝
+                                      
+`}
+    </pre>
+  );
+
+  // Health and Armor bars
+  const StatBar = ({ label, value, max, color }: { label: string; value: number; max: number; color: string }) => (
+    <div style={{ display: "flex", alignItems: "center", marginBottom: "5px" }}>
+      <div style={{ width: "80px", marginRight: "10px", color: "#ddd" }}>{label}:</div>
+      <div style={{ 
+        height: "20px", 
+        width: "100%", 
+        border: "1px solid #555",
+        background: "#333"
+      }}>
+        <div style={{ 
+          height: "100%", 
+          width: `${(value/max*100)}%`, 
+          background: "#777" 
+        }}></div>
+      </div>
+      <div style={{ marginLeft: "10px", color: "#ddd", width: "40px", textAlign: "right" }}>{value}%</div>
+    </div>
+  );
+
+  return (
+    <div style={{ 
+      fontFamily: "monospace",
+      margin: "0 auto",
+      padding: "20px",
+      maxWidth: "800px",
+      width: "95%",
+      background: "#111",
+      color: "#ddd",
+      minHeight: "100vh"
+    }}>
+      <header style={{ 
+        padding: "10px", 
+        marginBottom: "20px",
+        textAlign: "center",
+        background: "#1a1a1a",
+        border: "1px solid #333"
+      }}>
+        <nav>
+          <DoomNavItem label="ABOUT" />
+          <DoomNavItem label="BLOG" />
+          <DoomNavItem label="CONTACT" />
+        </nav>
+      </header>
+
+      <DoomLogo />
+
+      <div style={{ marginBottom: "30px" }}>
+        <StatBar label="SKILLS" value={85} max={100} color="#00AAFF" />
+        <StatBar label="HEALTH" value={100} max={100} color="#FF0000" />
+        <StatBar label="ARMOR" value={75} max={100} color="#00FF00" />
+      </div>
+
+      <DoomBox title="MISSION">
+        <p>Software Developer | Demon Slayer</p>
+        <p>I build things for the web... and beyond.</p>
+        <p>Currently fighting bugs in React, Next.js, TypeScript.</p>
+      </DoomBox>
+
+      <DoomBox title="ARSENAL">
+        <div style={{ marginBottom: "15px" }}>
+          <p>▶ E-commerce Platform</p>
+          <p>   DAMAGE: React, Next.js, Stripe</p>
+          <p>   LOCATION: github.com/yourusername/ecommerce</p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div style={{ marginBottom: "15px" }}>
+          <p>▶ Task Management App</p>
+          <p>   DAMAGE: React, Redux, Firebase</p>
+          <p>   LOCATION: github.com/yourusername/tasks</p>
+        </div>
+        <div>
+          <p>▶ Weather Dashboard</p>
+          <p>   DAMAGE: React, OpenWeather API</p>
+          <p>   LOCATION: github.com/yourusername/weather</p>
+        </div>
+      </DoomBox>
+
+      <DoomBox title="WEAPONS">
+        <p>████████░░ JavaScript, TypeScript</p>
+        <p>███████░░░ React, Next.js, Git</p>
+        <p>█████░░░░░ Node.js, Docker, GraphQL</p>
+      </DoomBox>
+
+      <DoomBox title="COMMUNICATIONS">
+        <p>► email@example.com</p>
+        <p>► (123) 456-7890</p>
+        <p>► github.com/yourusername</p>
+        <p>► linkedin.com/in/yourusername</p>
+      </DoomBox>
     </div>
   );
 }
