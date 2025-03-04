@@ -15,7 +15,7 @@ export async function getAIResponse(userMessage: string, conversationHistory: Me
   
   // Initialize Gemini API
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
   // System instructions to guide the model response
   const systemInstruction = prompt;
