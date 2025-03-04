@@ -8,6 +8,11 @@ const geistMono = Geist_Mono({
   weight: ["400", "700"],
 });
 
+export const metadata: Metadata = {
+  title: "Devesh Meena | Software Engineer",
+  description: "Software Engineer and AI Engineer specialized in RAG systems and multi-agent AI architectures",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{

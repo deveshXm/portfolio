@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -22,5 +23,18 @@
 body {
   background: #111111;
   color: #dddddd;
-  font-family: 'Courier New', monospace;
+  font-family: 'VT323', 'Courier New', monospace;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
