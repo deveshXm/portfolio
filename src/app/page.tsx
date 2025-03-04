@@ -12,9 +12,9 @@ export default function Home() {
     const [movementDirection, setMovementDirection] = useState<'horizontal' | 'vertical'>('horizontal');
     const [isTouchDevice, setIsTouchDevice] = useState(false);
 
-    const requestRef = useRef<number>();
+    const requestRef = useRef<number | undefined>(undefined);
     const pathPlannerRef = useRef<number | null>(null);
-    const previousAnimTimeRef = useRef<number>();
+    const previousAnimTimeRef = useRef<number | undefined>(undefined);
     const speedRef = useRef(2.5); // Movement speed
 
     // Initialize position and set up event handlers
@@ -219,15 +219,15 @@ export default function Home() {
 
     // Memoize style object to prevent unnecessary re-renders
     const demonStyle = useMemo(() => ({
-      position: 'fixed',
+      position: 'fixed' as const,
       left: position.x - 8,
       top: position.y - 8,
       fontSize: '6px',
       color: '#FF3300', // Brighter red for better visibility
-      whiteSpace: 'pre',
+      whiteSpace: 'pre' as const,
       lineHeight: '1',
       zIndex: 9999,
-      pointerEvents: 'none',
+      pointerEvents: 'none' as const,
       fontFamily: 'monospace',
       transform: facingDirection, // Flip character based on cursor position
       letterSpacing: '0px',
