@@ -1,6 +1,28 @@
 // ASCII characters for DOOM-style typography
 // All characters maintain the same 6-line height format
 
+export const generateWaveform = (amplitude: number = 15, length: number = 20): number[] => {
+  const waveform = [];
+  for (let i = 0; i < length; i++) {
+    const height = Math.random() * amplitude;
+    waveform.push(height);
+  }
+  return waveform;
+};
+
+export const createFogParticles = (count: number = 30): { size: number; x: number; y: number; delay: number }[] => {
+  const particles = [];
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      size: Math.random() * 200 + 50,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      delay: Math.random() * 20
+    });
+  }
+  return particles;
+};
+
 export const asciiChars: {[key: string]: string[]} = {
   // Letters A-Z
   'A': [
