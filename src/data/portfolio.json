@@ -11,7 +11,18 @@
     "contact": {
       "email": "meenadevesh2003@gmail.com",
       "calendly": "https://calendly.com/deveshmeena/meet"
-    }
+    },
+    "professionalSummary": "Passionate software engineer with expertise in AI systems and full-stack development. Experienced in building scalable applications using modern technologies like TypeScript, Python, React, and AWS. Specialized in developing RAG systems, multi-agent architectures, and cloud solutions.",
+    "certifications": [
+      "AWS Certified Solutions Architect",
+      "Google Cloud Professional Data Engineer",
+      "TensorFlow Developer Certificate"
+    ],
+    "languages": [
+      "English (Fluent)",
+      "Hindi (Native)",
+      "Spanish (Basic)"
+    ]
   },
   "social": {
     "github": "https://github.com/deveshXm",
@@ -187,7 +198,14 @@
   },
   "meta": {
     "title": "Devesh Meena | Software Engineer & AI Specialist",
-    "description": "Software engineer specialized in AI systems and full-stack development. Building cutting-edge applications with a focus on performance and scalability.",
-    "keywords": "Software Engineer, AI Specialist, Full-Stack Developer, TypeScript, Python, React, Next.js, AWS, LLM, RAG Systems, Multi-Agent Systems"
+    "description": "Software engineer specialized in AI systems and full-stack development. Building cutting-edge applications with a focus on performance, security, and scalability.",
+    "keywords": "Software Engineer, AI Specialist, Full-Stack Developer, TypeScript, Python, React, Next.js, AWS, LLM, RAG Systems, Multi-Agent Systems, Cloud Architecture, OpenAI, Anthropic, LangChain, GCP",
+    "author": "Devesh Meena",
+    "ogImage": "/images/portrait.jpeg",
+    "twitterHandle": "@_devesh16",
+    "siteUrl": "https://deveshmeena.com",
+    "locale": "en_US",
+    "type": "website",
+    "themeColor": "#0a0a0a"
   }
 }

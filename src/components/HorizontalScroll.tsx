@@ -32,7 +32,7 @@ const HorizontalScroll = () => {
 
   // Smoother fade transition variants
   const variants = {
-    enter: (direction) => {
+    enter: (direction: number) => {
       return {
         opacity: 0,
         y: direction > 0 ? 20 : -20,
@@ -44,7 +44,7 @@ const HorizontalScroll = () => {
       y: 0,
       scale: 1
     },
-    exit: (direction) => {
+    exit: (direction: number) => {
       return {
         opacity: 0,
         y: direction < 0 ? 20 : -20,

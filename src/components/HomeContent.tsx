@@ -175,15 +175,19 @@ export default function HomeContent() {
             <div className="col-span-4 md:col-span-6 md:col-start-7 mt-16 md:mt-0 relative">
               <motion.div 
                 className="relative aspect-[4/5] border border-white/10 overflow-hidden"
-                initial={{ y: 100, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
               >
                 {/* Portrait image */}
                 <div className="absolute inset-0 flex flex-col">
-                  <div className="relative flex-1">
-                    <img src={images.portrait} alt={`${personal.name} Portrait`} className="object-cover w-full h-full opacity-90" />
+                  <div className="relative flex-1 overflow-hidden">
+                    <img 
+                      src={images.portrait} 
+                      alt={`${personal.name} Portrait`} 
+                      className="object-cover w-full h-full opacity-90 transition-transform duration-700 hover:scale-105"
+                    />
                     
                     {/* Grid overlay */}
                     <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30 mix-blend-overlay"></div>

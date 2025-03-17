@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import React from 'react';
 
 // Safely import ScrollTrigger without causing build errors
 let ScrollTrigger: any;
@@ -14,7 +15,7 @@ if (typeof window !== 'undefined') {
 
 interface TextRevealProps {
   children: React.ReactNode;
-  as?: keyof JSX.IntrinsicElements;
+  as?: string;
   className?: string;
   delay?: number;
   duration?: number;

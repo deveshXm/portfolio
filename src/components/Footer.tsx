@@ -15,7 +15,7 @@ if (typeof window !== 'undefined') {
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const footerRef = useRef<HTMLDivElement>(null);
-  const linksRef = useRef<HTMLDivElement>(null);
+  const linksRef = useRef<HTMLUListElement>(null);
   
   const { personal, social, branding, navigation } = portfolioData;
   
