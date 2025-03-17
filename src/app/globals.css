@@ -5,8 +5,9 @@
 /* Using Google Fonts instead of local fonts */
 
 :root {
-  --color-background: #f8f8f8;
-  --color-text: #000000;
+  --color-background: #0a0a0a;
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.7);
   --color-accent: #0000ff;
   --font-sans: var(--font-sans), system-ui, sans-serif;
   --font-serif: var(--font-serif), Georgia, serif;
@@ -36,10 +37,22 @@
     position: fixed;
     inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.03;
+    opacity: 0.08;
     pointer-events: none;
     z-index: 9999;
     animation: grain 8s steps(10) infinite;
+  }
+  
+  /* Add subtle dot pattern to the background */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 1;
   }
 
   ::selection {
@@ -152,7 +165,7 @@
   }
 
   .pp-btn {
-    @apply relative inline-block px-6 py-3 overflow-hidden;
+    @apply relative inline-block px-6 py-3 overflow-hidden border border-white/40 bg-white/10 hover:bg-white/20 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all duration-300;
   }
 
   .pp-btn-text {
@@ -160,11 +173,11 @@
   }
 
   .pp-btn-bg {
-    @apply absolute inset-0 z-0 bg-text transform transition-transform duration-400 origin-left;
+    @apply absolute inset-0 z-0 transform transition-transform duration-400 origin-left scale-x-0;
   }
 
   .pp-btn:hover .pp-btn-bg {
-    transform: scaleX(0);
+    transform: scaleX(1);
   }
 
   .pp-magnetic-btn {

@@ -6,89 +6,25 @@ import { gsap } from 'gsap';
 import Link from 'next/link';
 import TextReveal from './TextReveal';
 import MagneticButton from './MagneticButton';
-import HorizontalGallery from './HorizontalGallery';
-import HorizontalScroll from './HorizontalScroll';
+import FeaturedGrid from './Featured';
+import WorkExperience from './WorkExperience';
 import HeroSection from './HeroSection';
+import ExpertiseSection from './ExpertiseSection';
+import portfolioData from '../data/portfolio.json';
 
-// Define the project type for TypeScript
-interface FeaturedProject {
-  id: number;
-  title: string;
-  slug: string;
-  category: string;
-  image: string;
-}
-
-// Sample projects data
-const featuredProjects: FeaturedProject[] = [
-  {
-    id: 1,
-    title: "Orca AI",
-    slug: "orca-ai",
-    category: "AI Engineering / RAG Systems",
-    image: "/projects/orca-ai.jpg"
-  },
-  {
-    id: 2,
-    title: "HopStair® Platform",
-    slug: "hopstair",
-    category: "Full-Stack / React Native",
-    image: "/projects/hopstair.jpg"
-  },
-  {
-    id: 3,
-    title: "Fundwave Authentication",
-    slug: "fundwave",
-    category: "Microservices / Security",
-    image: "/projects/fundwave.jpg"
-  },
-  {
-    id: 4,
-    title: "Multi-Agent AI Systems",
-    slug: "multi-agent",
-    category: "AI / LLM Integration",
-    image: "/projects/multi-agent.jpg"
-  }
-];
-
-// Featured Project Component with asymmetric grid layout
-function FeaturedProject({ project, index }: { project: FeaturedProject, index: number }) {
-  return (
-    <motion.div 
-      className={`col-span-4 ${index % 3 === 0 ? 'md:col-span-8' : 'md:col-span-4'} mb-16 md:mb-24`}
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, delay: index * 0.1 }}
-    >
-      <Link href={`/work/${project.slug}`} className="pp-project-card block cursor-pointer">
-        <div className="pp-project-card-image aspect-[4/3] md:aspect-[16/10] overflow-hidden mb-6">
-          {/* Replace with actual project image */}
-          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-5 text-black text-opacity-30">
-            [Project Image]
-          </div>
-        </div>
-        
-        <div className="flex items-start justify-between">
-          <div>
-            <p className="pp-text-micro text-text/50 mb-2">
-              {project.category}
-            </p>
-            <h3 className="pp-text-xl md:pp-text-2xl font-serif tracking-tighter">
-              {project.title}
-            </h3>
-          </div>
-          
-          <div className="text-2xl font-serif mt-1">→</div>
-        </div>
-      </Link>
-    </motion.div>
-  );
-}
-
-export default function MotionMain() {
+export default function HomeContent() {
   // References for scroll-triggered animations
   const heroRef = useRef<HTMLDivElement>(null);
+  
+  const { 
+    personal, 
+    projects, 
+    skills, 
+    experience, 
+    contact, 
+    social, 
+    images
+  } = portfolioData;
   
   // Basic animation setup
   useEffect(() => {
@@ -111,60 +47,16 @@ export default function MotionMain() {
       <HeroSection />
       
       {/* Traditional Gallery */}
-      <HorizontalGallery projects={featuredProjects} />
-      
-      {/* Work Section Heading */}
-      <div className="pp-container py-16 md:py-20">
-        <div className="mb-16">
-          <h2 className="pp-text-4xl md:pp-text-5xl font-serif tracking-tight mb-4">Experience</h2>
-          <p className="pp-text-lg text-text/70">Highlights from my professional journey</p>
-        </div>
-      </div>
+      <FeaturedGrid projects={projects.featured} />
       
       {/* Horizontal scroll section */}
-      <HorizontalScroll />
+      <WorkExperience />
       
-      {/* Enhanced Divider Section with Marquee */}
-      <section className="py-20 md:py-32 overflow-hidden relative">
-        {/* Decorative elements */}
-        <div className="absolute left-0 top-0 h-[50%] w-[1px] bg-white/5"></div>
-        <div className="absolute right-0 bottom-0 h-[40%] w-[1px] bg-white/5"></div>
-        <div className="absolute left-[5%] top-[10%] w-3 h-3 rounded-full border border-white/10"></div>
-        <div className="absolute right-[15%] bottom-[15%] w-2 h-2 rounded-full bg-white/10"></div>
-        
-        {/* Main content */}
-        <div className="pp-container mb-16">
-          <div className="grid grid-cols-4 md:grid-cols-12 gap-6">
-            <div className="col-span-4 md:col-span-3">
-              <h2 className="pp-text-2xl font-serif tracking-tight mb-4">Expertise</h2>
-              <div className="h-[1px] w-full bg-white/10 mt-6 mb-8"></div>
-              <ul className="space-y-6">
-                <li className="relative pl-8">
-                  <div className="absolute left-0 top-1.5 w-3 h-3 rounded-full border border-white/30 flex items-center justify-center">
-                    <div className="w-1 h-1 rounded-full bg-white/50"></div>
-                  </div>
-                  <h3 className="text-sm font-medium mb-1">AI & Multi-Agent Systems</h3>
-                  <p className="text-xs text-white/50">Building autonomous systems with complex reasoning capabilities</p>
-                </li>
-                <li className="relative pl-8">
-                  <div className="absolute left-0 top-1.5 w-3 h-3 rounded-full border border-white/30 flex items-center justify-center">
-                    <div className="w-1 h-1 rounded-full bg-white/50"></div>
-                  </div>
-                  <h3 className="text-sm font-medium mb-1">Full-Stack Development</h3>
-                  <p className="text-xs text-white/50">Creating scalable applications with modern frameworks</p>
-                </li>
-                <li className="relative pl-8">
-                  <div className="absolute left-0 top-1.5 w-3 h-3 rounded-full border border-white/30 flex items-center justify-center">
-                    <div className="w-1 h-1 rounded-full bg-white/50"></div>
-                  </div>
-                  <h3 className="text-sm font-medium mb-1">Cloud Architecture</h3>
-                  <p className="text-xs text-white/50">Designing robust AWS and GCP infrastructure</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        
+      {/* Expertise Section */}
+      <ExpertiseSection skills={skills} />
+      
+      {/* Marquee Section */}
+      <section className="py-20 md:py-28 overflow-hidden relative">
         <div className="relative w-full overflow-hidden py-20 md:py-24 border-t border-b border-white/10">
           {/* Background pattern */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
@@ -200,7 +92,7 @@ export default function MotionMain() {
       </section>
       
       {/* Enhanced About Section */}
-      <section className="py-40 md:py-52 text-white relative">
+      <section id="about-section" className="py-40 md:py-52 text-white relative">
         {/* Background elements */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.03)_0%,transparent_70%)]"></div>
         <div className="absolute right-0 top-[20%] w-[1px] h-[40%] bg-white/5"></div>
@@ -231,7 +123,7 @@ export default function MotionMain() {
                 delay={0.2}
                 stagger={0.01}
               >
-                At Orca AI, my team and I have crafted a cutting-edge RAG system, harnessing the power of OpenAI and Anthropic LLMs, which we've meticulously optimized for peak performance.
+                {personal.bio.long.split('. ')[0] + '.'}
               </TextReveal>
               
               <TextReveal 
@@ -240,7 +132,7 @@ export default function MotionMain() {
                 delay={0.4}
                 stagger={0.01}
               >
-                My journey spans from founding team AI engineer to full-stack development across multiple domains, with expertise in AWS, TypeScript, Python, and building scalable multi-agent systems.
+                {personal.bio.long.split('. ').slice(1).join('. ')}
               </TextReveal>
               
               {/* Career highlights */}
@@ -251,27 +143,29 @@ export default function MotionMain() {
                   <div className="space-y-1">
                     <div className="text-sm font-medium">Education</div>
                     <ul className="text-xs text-white/60 space-y-1">
-                      <li>NIT Jalandhar (2020-2024)</li>
-                      <li>B.Tech in Computer Science</li>
-                      <li>buildspace S5 Cohort</li>
+                      {experience.education.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
                     </ul>
                   </div>
                   
                   <div className="space-y-1">
                     <div className="text-sm font-medium">Core Skills</div>
                     <ul className="text-xs text-white/60 space-y-1">
-                      <li>AI & Multi-Agent Systems</li>
-                      <li>Full-Stack Development</li>
-                      <li>Cloud Architecture (AWS/GCP)</li>
+                      {skills.coreSkills.map((skill, index) => (
+                        <li key={index}>{skill}</li>
+                      ))}
                     </ul>
                   </div>
                 </div>
               </div>
               
               <MagneticButton 
-                href="/about" 
-                cursorText="About"
-                className="backdrop-blur-sm"
+                href={social.linkedin}
+                cursorText="Connect"
+                className="backdrop-blur-sm bg-white/5 px-6 py-3 border border-white/10"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 More About Me
               </MagneticButton>
@@ -287,15 +181,22 @@ export default function MotionMain() {
                 transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
               >
                 {/* Portrait image */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <img src="/test.png" alt="Portrait" className="object-cover w-full h-full opacity-90" />
+                <div className="absolute inset-0 flex flex-col">
+                  <div className="relative flex-1">
+                    <img src={images.portrait} alt={`${personal.name} Portrait`} className="object-cover w-full h-full opacity-90" />
+                    
+                    {/* Grid overlay */}
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30 mix-blend-overlay"></div>
+                    
+                    {/* Corner decorations */}
+                    <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-white/20"></div>
+                    <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-white/20"></div>
+                  </div>
                   
-                  {/* Grid overlay */}
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30 mix-blend-overlay"></div>
-                  
-                  {/* Corner decorations */}
-                  <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-white/20"></div>
-                  <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-white/20"></div>
+                  {/* Caption */}
+                  <div className="bg-black/50 backdrop-blur-sm py-2 px-4 text-center">
+                    <p className="text-xs text-white/80 italic">At OpenAI Dev Day, New Delhi, 2025</p>
+                  </div>
                 </div>
               </motion.div>
               
@@ -310,7 +211,7 @@ export default function MotionMain() {
       </div>
       
       {/* Enhanced Contact Section with asymmetric layout */}
-      <section className="py-32 relative">
+      <section id="contact-section" className="py-32 relative">
         {/* Background elements */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(255,255,255,0.03)_0%,transparent_50%)]"></div>
         <div className="absolute right-[10%] top-0 w-[1px] h-[30%] bg-white/5"></div>
@@ -346,7 +247,7 @@ export default function MotionMain() {
                 as="h2" 
                 className="pp-text-5xl md:pp-text-6xl font-serif tracking-tightest mb-10"
               >
-                Let's build intelligent solutions together
+                {contact.cta}
               </TextReveal>
               
               <TextReveal 
@@ -354,40 +255,28 @@ export default function MotionMain() {
                 className="pp-text-lg font-serif tracking-tighter text-white/70 mb-12 max-w-[600px]"
                 delay={0.2}
               >
-                Looking for expertise in AI engineering or full-stack development? Let's connect and discuss how we can create innovative solutions for your challenges.
+                {contact.message}
               </TextReveal>
               
               {/* Project types */}
               <div className="mt-12 mb-16 grid grid-cols-2 md:grid-cols-3 gap-6">
-                <div className="space-y-2">
-                  <div className="w-8 h-8 flex items-center justify-center border border-white/20 rounded-full">
-                    <div className="w-1.5 h-1.5 bg-white/60 rounded-full"></div>
+                {skills.projectTypes.map((type, index) => (
+                  <div key={index} className="space-y-2">
+                    <div className="w-8 h-8 flex items-center justify-center border border-white/20 rounded-full">
+                      <div className="w-1.5 h-1.5 bg-white/60 rounded-full"></div>
+                    </div>
+                    <h3 className="text-sm font-medium">{type.title}</h3>
+                    <p className="text-xs text-white/50">{type.description}</p>
                   </div>
-                  <h3 className="text-sm font-medium">AI Engineering</h3>
-                  <p className="text-xs text-white/50">Custom LLM solutions and multi-agent systems</p>
-                </div>
-                
-                <div className="space-y-2">
-                  <div className="w-8 h-8 flex items-center justify-center border border-white/20 rounded-full">
-                    <div className="w-1.5 h-1.5 bg-white/60 rounded-full"></div>
-                  </div>
-                  <h3 className="text-sm font-medium">Full-Stack Development</h3>
-                  <p className="text-xs text-white/50">Modern web applications with React, Node.js, TypeScript</p>
-                </div>
-                
-                <div className="space-y-2">
-                  <div className="w-8 h-8 flex items-center justify-center border border-white/20 rounded-full">
-                    <div className="w-1.5 h-1.5 bg-white/60 rounded-full"></div>
-                  </div>
-                  <h3 className="text-sm font-medium">Cloud Solutions</h3>
-                  <p className="text-xs text-white/50">Scalable AWS and GCP architecture design</p>
-                </div>
+                ))}
               </div>
               
               <MagneticButton 
-                href="/contact" 
-                cursorText="Contact"
-                className="backdrop-blur-sm"
+                href={`mailto:${personal.contact.email}`}
+                cursorText="Email"
+                className="backdrop-blur-sm bg-white/5 px-6 py-3 border border-white/10"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Get in Touch
               </MagneticButton>
@@ -415,11 +304,11 @@ export default function MotionMain() {
                     <div>
                       <div className="text-xs text-white/40 mb-1">Email</div>
                       <a 
-                        href="mailto:meenadevesh2003@gmail.com"
+                        href={`mailto:${personal.contact.email}`}
                         className="text-sm text-white/90 hover:text-white transition-colors duration-300 relative z-10 pp-reveal-line"
                         data-cursor-text="Email"
                       >
-                        meenadevesh2003@gmail.com
+                        {personal.contact.email}
                       </a>
                     </div>
                   </div>
@@ -430,7 +319,7 @@ export default function MotionMain() {
                     </div>
                     <div>
                       <div className="text-xs text-white/40 mb-1">Based in</div>
-                      <div className="text-sm text-white/90">Bengaluru, India</div>
+                      <div className="text-sm text-white/90">{personal.location}</div>
                     </div>
                   </div>
                 </div>
@@ -438,9 +327,9 @@ export default function MotionMain() {
                 <div className="pt-6 border-t border-white/10">
                   <div className="text-xs text-white/40 mb-4">Connect</div>
                   <div className="flex gap-4 relative z-10">
-                    <a href="https://github.com/deveshXm" className="w-8 h-8 flex items-center justify-center border border-white/10 text-white/50 hover:text-white hover:border-white/30 transition-all duration-300 backdrop-blur-sm" data-cursor-text="GH">GH</a>
-                    <a href="https://linkedin.com/in/devxm" className="w-8 h-8 flex items-center justify-center border border-white/10 text-white/50 hover:text-white hover:border-white/30 transition-all duration-300 backdrop-blur-sm" data-cursor-text="Li">Li</a>
-                    <a href="https://x.com/_devesh16" className="w-8 h-8 flex items-center justify-center border border-white/10 text-white/50 hover:text-white hover:border-white/30 transition-all duration-300 backdrop-blur-sm" data-cursor-text="X">X</a>
+                    <a href={social.github} className="w-8 h-8 flex items-center justify-center border border-white/10 text-white/50 hover:text-white hover:border-white/30 transition-all duration-300 backdrop-blur-sm" data-cursor-text="GH">GH</a>
+                    <a href={social.linkedin} className="w-8 h-8 flex items-center justify-center border border-white/10 text-white/50 hover:text-white hover:border-white/30 transition-all duration-300 backdrop-blur-sm" data-cursor-text="Li">Li</a>
+                    <a href={social.twitter} className="w-8 h-8 flex items-center justify-center border border-white/10 text-white/50 hover:text-white hover:border-white/30 transition-all duration-300 backdrop-blur-sm" data-cursor-text="X">X</a>
                   </div>
                 </div>
               </div>
@@ -448,7 +337,7 @@ export default function MotionMain() {
               {/* Availability indicator */}
               <div className="mt-6 flex items-center">
                 <div className="w-2 h-2 rounded-full bg-green-400 mr-2 animate-pulse"></div>
-                <span className="text-xs text-white/50">Available for new projects</span>
+                <span className="text-xs text-white/50">{personal.availability}</span>
               </div>
             </div>
           </div>

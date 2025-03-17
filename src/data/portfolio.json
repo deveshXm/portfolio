@@ -1,0 +1,193 @@
+{
+  "personal": {
+    "name": "Devesh Meena",
+    "tagline": "Software Engineer & AI Specialist",
+    "bio": {
+      "short": "Building cutting-edge AI systems and full-stack applications with a focus on performance, security, and scalability.",
+      "long": "At Orca AI, my team and I have crafted a cutting-edge RAG system, harnessing the power of OpenAI and Anthropic LLMs, which we've meticulously optimized for peak performance. My journey spans from founding team AI engineer to full-stack development across multiple domains, with expertise in AWS, TypeScript, Python, and building scalable multi-agent systems."
+    },
+    "location": "Bengaluru, India",
+    "availability": "Available for new projects",
+    "contact": {
+      "email": "meenadevesh2003@gmail.com",
+      "calendly": "https://calendly.com/deveshmeena/meet"
+    }
+  },
+  "social": {
+    "github": "https://github.com/deveshXm",
+    "linkedin": "https://linkedin.com/in/devxm",
+    "twitter": "https://x.com/_devesh16"
+  },
+  "navigation": {
+    "main": ["Work", "About", "Contact"]
+  },
+  "skills": {
+    "specializations": [
+      "AI & Multi-Agent Systems",
+      "Full-Stack Development",
+      "Cloud Architecture",
+      "RAG Systems"
+    ],
+    "technologies": [
+      "TypeScript / Python",
+      "React / Next.js / Node.js",
+      "AWS / GCP",
+      "OpenAI / Anthropic / LangChain"
+    ],
+    "coreSkills": [
+      "AI & Multi-Agent Systems",
+      "Full-Stack Development", 
+      "Cloud Architecture (AWS/GCP)"
+    ],
+    "expertise": [
+      {
+        "title": "AI & Multi-Agent Systems",
+        "description": "Building autonomous systems with complex reasoning capabilities"
+      },
+      {
+        "title": "Full-Stack Development",
+        "description": "Creating scalable applications with modern frameworks"
+      },
+      {
+        "title": "Cloud Architecture",
+        "description": "Designing robust AWS and GCP infrastructure"
+      }
+    ],
+    "projectTypes": [
+      {
+        "title": "AI Engineering",
+        "description": "Custom LLM solutions and multi-agent systems"
+      },
+      {
+        "title": "Full-Stack Development",
+        "description": "Modern web applications with React, Node.js, TypeScript"
+      },
+      {
+        "title": "Cloud Solutions",
+        "description": "Scalable AWS and GCP architecture design"
+      }
+    ]
+  },
+  "experience": {
+    "stats": {
+      "companies": "4+",
+      "years": "2+",
+      "specialization": "AI"
+    },
+    "education": [
+      "NIT Jalandhar (2020-2024)",
+      "B.Tech in Computer Science",
+      "buildspace S5 Cohort"
+    ],
+    "timeline": [
+      {
+        "id": 1,
+        "title": "Founding Engineer",
+        "company": "Orca AI",
+        "duration": "2023 - Present",
+        "location": "San Francisco, CA / Remote",
+        "link": "https://getorca.ai",
+        "description": "Building cutting-edge RAG systems using OpenAI and Anthropic LLMs. Leading development of multi-agent architectures and scalable AI infrastructure.",
+        "color": "bg-[#1a1a1a]",
+        "logo": "/companies/orca.avif",
+        "skills": ["AI/ML", "Full Stack", "AWS", "Product"]
+      },
+      {
+        "id": 2,
+        "title": "Full-Stack Engineer",
+        "company": "HopStair",
+        "duration": "2023 - 2024",
+        "location": "London, UK / Remote",
+        "link": "https://linkedin.com/in/devxm",
+        "description": "Developed cross-platform mobile applications with React Native. Implemented real-time database solutions and authentication systems using Firebase.",
+        "color": "bg-[#242424]",
+        "logo": "/companies/hopstair.jpeg",
+        "skills": ["Full-Stack", "React Native", "Firebase", "Mobile"]
+      },
+      {
+        "id": 3,
+        "title": "Full-Stack Engineer Intern",
+        "company": "Fundwave",
+        "duration": "2023 - 2023",
+        "location": "Gurgaon, IN / On-site",
+        "link": "https://fundwave.com",
+        "description": "Designed and implemented microservices architecture. Built authentication systems using OIDC protocols. Contributed to backend services and API development.",
+        "color": "bg-[#1a1a1a]",
+        "logo": "/companies/fundwave.png",
+        "skills": ["Microservices", "OIDC", "Auth", "Backend"]
+      },
+      {
+        "id": 4,
+        "title": "Frontend Engineer Intern",
+        "company": "Shardings",
+        "duration": "2023 - 2023",
+        "location": "New Delhi, IN / Remote",
+        "link": "https://linkedin.com/in/devxm",
+        "description": "Created interactive 3D visualizations using ThreeJS. Developed responsive React components and user interfaces. Optimized web performance and animations.",
+        "color": "bg-[#242424]",
+        "logo": "/companies/shardings.jpeg",
+        "skills": ["Frontend", "ThreeJS", "React", "3D"]
+      }
+    ]
+  },
+  "projects": {
+    "featured": [
+      {
+        "id": 1,
+        "title": "OpenAI Dev Day",
+        "slug": "openai-dev-day",
+        "category": "AI / Meetup / Invitation",
+        "image": "/featured/openai-event.jpeg",
+        "link": "https://linkedin.com/in/devxm",
+        "year": "2025"
+      },
+      {
+        "id": 2,
+        "title": "Rocktangle (100+ users)",
+        "slug": "rocktangle",
+        "category": "Founder / Micro Saas / AI",
+        "image": "/featured/rocktangle.png",
+        "link": "https://rocktangle.com",
+        "year": "2025"
+      },
+      {
+        "id": 3,
+        "title": "Github Contributions",
+        "slug": "github-contributions",
+        "category": "Github / Contributions",
+        "image": "/featured/github.png",
+        "link": "https://github.com/deveshXm",
+        "year": "2024"
+      },
+      {
+        "id": 4,
+        "title": "Founding Engineer",
+        "slug": "founding-engineer",
+        "category": "Engineering / Saas / AI",
+        "image": "/featured/getorca.png",
+        "link": "https://getorca.ai",
+        "year": "2023"
+      }
+    ],
+    "categories": ["All Featured", "AI", "Meetup", "Saas"]
+  },
+  "contact": {
+    "cta": "Let's build intelligent solutions together",
+    "message": "Looking for expertise in AI engineering or full-stack development? Let's connect and discuss how we can create innovative solutions for your challenges."
+  },
+  "images": {
+    "portrait": "/images/portrait.jpeg",
+    "backgroundImage": "/images/classical-painting.jpg",
+    "noise": "/noise.png"
+  },
+  "branding": {
+    "logo": "D",
+    "tagline": "Crafted with intention",
+    "footer": "Software engineer specialized in AI systems and full-stack development, building innovative digital solutions."
+  },
+  "meta": {
+    "title": "Devesh Meena | Software Engineer & AI Specialist",
+    "description": "Software engineer specialized in AI systems and full-stack development. Building cutting-edge applications with a focus on performance and scalability.",
+    "keywords": "Software Engineer, AI Specialist, Full-Stack Developer, TypeScript, Python, React, Next.js, AWS, LLM, RAG Systems, Multi-Agent Systems"
+  }
+}

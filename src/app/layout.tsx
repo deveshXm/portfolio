@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Inter, Playfair_Display } from 'next/font/google';
 import PageTransition from '@/components/PageTransition';
-import CustomCursor from '@/components/CustomCursor';
+import portfolioData from '@/data/portfolio.json';
 
 // Use Google Fonts instead of local fonts for now
 const sans = Inter({
@@ -17,10 +17,12 @@ const serif = Playfair_Display({
   variable: '--font-serif',
 });
 
+const { meta } = portfolioData;
+
 export const metadata: Metadata = {
-  title: 'YODA — Designer & Developer',
-  description: 'Portfolio showcasing high-end design and development work',
-  keywords: 'design, development, portfolio, typography, minimalist',
+  title: meta.title,
+  description: meta.description,
+  keywords: meta.keywords,
 };
 
 export default function RootLayout({
@@ -31,7 +33,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body className="min-h-screen antialiased font-sans">
-        <CustomCursor />
         <PageTransition>
           {children}
         </PageTransition>

@@ -12,6 +12,8 @@ interface MagneticButtonProps {
   strength?: number;
   cursorText?: string;
   dark?: boolean;
+  target?: string;
+  rel?: string;
 }
 
 export default function MagneticButton({
@@ -22,6 +24,8 @@ export default function MagneticButton({
   strength = 0.3,
   cursorText,
   dark = false,
+  target,
+  rel,
 }: MagneticButtonProps) {
   const buttonRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -63,9 +67,10 @@ export default function MagneticButton({
     };
   }, [strength]);
   
-  const buttonClass = `pp-btn ${dark ? 'text-white' : 'text-text'} ${className}`;
-  const contentClass = `pp-btn-text ${dark ? 'text-text group-hover:text-white' : 'text-white group-hover:text-text'}`;
-  const bgClass = `pp-btn-bg ${dark ? 'bg-white' : 'bg-text'}`;
+  // Improved visibility for dark mode buttons
+  const buttonClass = `pp-btn text-white ${className}`;
+  const contentClass = `pp-btn-text`;
+  const bgClass = `pp-btn-bg bg-white/10`;
   
   const ButtonContent = () => (
     <div ref={buttonRef} data-magnetic-wrap className="relative inline-block">
@@ -76,27 +81,29 @@ export default function MagneticButton({
         data-cursor-text={cursorText}
       >
         <span className={contentClass}>
-          <span className="inline-block relative z-10">
+          <span className="inline-block relative z-10 font-medium">
             {children}
-            <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-current group-hover:w-full transition-all duration-300 ease-in-out"></span>
+            <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-300 ease-in-out"></span>
           </span>
           <span className="ml-2 inline-block relative z-10 group-hover:translate-x-1 transition-transform duration-300 ease-in-out">
             →
           </span>
         </span>
-        <span className={bgClass}></span>
+        
+        {/* Add clearer hover effect */}
+        <span className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition-opacity duration-300"></span>
         
         {/* Removed decorative border animations */}
       </div>
     </div>
   );
   
-  if (external) {
+  if (external || target === '_blank') {
     return (
       <a 
         href={href} 
-        target="_blank" 
-        rel="noopener noreferrer"
+        target={target || "_blank"} 
+        rel={rel || "noopener noreferrer"}
       >
         <ButtonContent />
       </a>
@@ -104,7 +111,11 @@ export default function MagneticButton({
   }
   
   return (
-    <Link href={href}>
+    <Link 
+      href={href}
+      target={target}
+      rel={rel}
+    >
       <ButtonContent />
     </Link>
   );

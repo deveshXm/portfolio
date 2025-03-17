@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import React from 'react';
+import portfolioData from '../data/portfolio.json';
 
 // Register ScrollTrigger
 if (typeof window !== 'undefined') {
@@ -15,6 +16,8 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   const footerRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
+  
+  const { personal, social, branding, navigation } = portfolioData;
   
   // Staggered animation for footer elements
   useEffect(() => {
@@ -57,24 +60,26 @@ export default function Footer() {
   }, []);
   
   return (
-    <footer ref={footerRef} className="py-16 md:py-32 bg-black text-white relative">
+    <footer ref={footerRef} className="py-16 md:py-32 text-white relative border-t border-white/10 bg-black">
       <div className="pp-container">
         <div className="pp-grid">
           <div className="col-span-4 md:col-span-4 footer-animate">
             <div className="w-24 h-24 rounded-full bg-white/5 flex items-center justify-center mb-6">
-              <h3 className="text-2xl font-serif tracking-tighter text-white">Y</h3>
+              <h3 className="text-2xl font-serif tracking-tighter text-white">{branding.logo}</h3>
             </div>
             <p className="pp-text-md text-white/60 max-w-[280px]">
-              Designer and developer creating thoughtful, memorable digital experiences.
+              {branding.footer}
             </p>
           </div>
           
           <div className="col-span-4 md:col-span-2 md:col-start-7 mt-12 md:mt-0 footer-animate">
             <h4 className="pp-text-micro mb-6">Navigate</h4>
             <ul ref={linksRef} className="flex flex-col gap-4">
-              <li><FooterLink href="/work">Work</FooterLink></li>
-              <li><FooterLink href="/about">About</FooterLink></li>
-              <li><FooterLink href="/contact">Contact</FooterLink></li>
+              {navigation.main.map((item, index) => (
+                <li key={index}>
+                  <FooterLink href={`/${item.toLowerCase()}`}>{item}</FooterLink>
+                </li>
+              ))}
             </ul>
           </div>
           
@@ -83,29 +88,38 @@ export default function Footer() {
             <ul className="flex flex-col gap-4">
               <li>
                 <FooterLink 
-                  href="https://twitter.com" 
+                  href={social.github} 
                   target="_blank"
-                  data-cursor-text="Twitter"
+                  data-cursor-text="GitHub"
                 >
-                  Twitter
+                  GitHub
                 </FooterLink>
               </li>
               <li>
                 <FooterLink 
-                  href="https://instagram.com" 
-                  target="_blank"
-                  data-cursor-text="Instagram"
-                >
-                  Instagram
-                </FooterLink>
-              </li>
-              <li>
-                <FooterLink 
-                  href="https://linkedin.com" 
+                  href={social.linkedin} 
                   target="_blank"
                   data-cursor-text="LinkedIn"
                 >
                   LinkedIn
+                </FooterLink>
+              </li>
+              <li>
+                <FooterLink 
+                  href={social.twitter} 
+                  target="_blank"
+                  data-cursor-text="X (Twitter)"
+                >
+                  X (Twitter)
+                </FooterLink>
+              </li>
+              <li>
+                <FooterLink 
+                  href={personal.contact.calendly} 
+                  target="_blank"
+                  data-cursor-text="Calendly"
+                >
+                  Calendly
                 </FooterLink>
               </li>
             </ul>
@@ -114,11 +128,11 @@ export default function Footer() {
           <div className="col-span-4 md:col-span-3 mt-20 footer-animate">
             <h4 className="pp-text-micro mb-6">Get in Touch</h4>
             <a 
-              href="mailto:hello@yoda.design" 
+              href={`mailto:${personal.contact.email}`} 
               className="pp-text-lg font-serif tracking-tighter text-white pp-link-hover inline-block"
               data-cursor-text="Email"
             >
-              hello@yoda.design
+              {personal.contact.email}
             </a>
           </div>
           
@@ -126,12 +140,12 @@ export default function Footer() {
             <div className="h-px w-full bg-white/10 mb-8"></div>
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
               <p className="pp-text-xs text-white/40">
-                © {currentYear} YODA. All rights reserved.
+                © {currentYear} {personal.name}. All rights reserved.
               </p>
               
               <p className="pp-text-xs text-white/40 flex items-center gap-2">
                 <span className="inline-block w-3 h-3 rounded-full bg-white/40"></span>
-                Crafted with intention
+                {branding.tagline}
               </p>
             </div>
           </div>
@@ -159,7 +173,7 @@ function FooterLink({
   return (
     <Link 
       href={href} 
-      className="pp-text-md text-white/60 pp-link-hover inline-block"
+      className="pp-text-lg font-serif tracking-tighter text-white/60 pp-link-hover inline-block"
       target={target}
       {...props}
     >

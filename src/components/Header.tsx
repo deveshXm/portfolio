@@ -5,12 +5,15 @@ import Link from 'next/link';
 import React from 'react';
 import { gsap } from 'gsap';
 import { motion } from 'framer-motion';
+import portfolioData from '../data/portfolio.json';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const navLinksRef = useRef<HTMLDivElement>(null);
+  
+  const { personal, social, navigation } = portfolioData;
   
   useEffect(() => {
     const handleScroll = () => {
@@ -28,49 +31,13 @@ export default function Header() {
     };
   }, []);
   
-  // Menu animation
+  // Menu toggle with body scroll control
   useEffect(() => {
-    if (!menuRef.current) return;
-    
     if (isMenuOpen) {
-      // Animate menu opening
-      gsap.to(menuRef.current, {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power2.out",
-        pointerEvents: "auto"
-      });
-      
-      // Staggered animation for menu items
-      if (navLinksRef.current) {
-        gsap.fromTo(
-          navLinksRef.current.children,
-          { y: 40, opacity: 0 },
-          { 
-            y: 0, 
-            opacity: 1, 
-            stagger: 0.1, 
-            delay: 0.2, 
-            duration: 0.8, 
-            ease: "power2.out" 
-          }
-        );
-      }
-      
-      // Disable body scroll
+      // Disable body scroll when menu is open
       document.body.style.overflow = 'hidden';
     } else {
-      // Animate menu closing
-      gsap.to(menuRef.current, {
-        y: -50,
-        opacity: 0,
-        duration: 0.4,
-        ease: "power2.in",
-        pointerEvents: "none"
-      });
-      
-      // Enable body scroll
+      // Enable body scroll when menu is closed
       document.body.style.overflow = '';
     }
   }, [isMenuOpen]);
@@ -82,21 +49,21 @@ export default function Header() {
   return (
     <>
       <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-800 mix-blend-difference
-          ${scrolled ? 'py-4' : 'py-8'}`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-800
+          ${scrolled ? 'py-4 bg-background/80 backdrop-blur-md border-b border-white/5' : 'py-8'}`}
       >
         <div className="pp-container flex items-center justify-between">
           <Link 
             href="/" 
             className="text-lg font-sans font-medium tracking-tighter text-white"
           >
-            YODA
+            {personal.name.split(' ')[0]}
           </Link>
           
           <nav className="hidden md:flex items-center gap-12">
-            <NavLink href="/work">Work</NavLink>
-            <NavLink href="/about">About</NavLink>
-            <NavLink href="/contact">Contact</NavLink>
+            {navigation.main.map((item, index) => (
+              <NavLink key={index} href={`/${item.toLowerCase()}`}>{item}</NavLink>
+            ))}
           </nav>
           
           <button 
@@ -118,72 +85,124 @@ export default function Header() {
         </div>
       </header>
       
-      {/* Full screen menu */}
+      {/* Mobile Menu with transition */}
       <div 
-        ref={menuRef}
-        className="fixed inset-0 z-40 bg-background flex flex-col justify-center opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-40 bg-black transition-opacity duration-300 ease-in-out ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
       >
-        <div 
-          ref={navLinksRef}
-          className="pp-container flex flex-col gap-3 md:gap-4 items-start"
-        >
-          <div className="pp-text-micro mb-8 text-text/50">Menu</div>
-          <MobileNavLink href="/work" onClick={toggleMenu}>Work</MobileNavLink>
-          <MobileNavLink href="/about" onClick={toggleMenu}>About</MobileNavLink>
-          <MobileNavLink href="/contact" onClick={toggleMenu}>Contact</MobileNavLink>
-          
-          <div className="mt-20 md:mt-40">
-            <div className="pp-text-micro mb-6 text-text/50">Contact</div>
-            <a 
-              href="mailto:hello@yoda.design" 
-              className="pp-text-lg md:pp-text-xl font-serif tracking-tighter block mb-3 pp-link-hover"
-              data-cursor-text="Email"
-            >
-              hello@yoda.design
-            </a>
-            <div className="flex gap-8 mt-6">
-              <SocialLink href="https://twitter.com" label="Tw" />
-              <SocialLink href="https://instagram.com" label="Ig" />
-              <SocialLink href="https://linkedin.com" label="Li" />
+          <div className="pp-container py-12 pt-24">
+            <h2 className="pp-text-micro text-text/50 mb-8">Menu</h2>
+            
+            {/* Main Navigation */}
+            <ul>
+              {navigation.main.map((item, index) => (
+                <li key={index} className="mb-6">
+                  <a 
+                    href="#"
+                    className="pp-text-5xl font-serif tracking-tightest text-white block"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      toggleMenu();
+                      
+                      // Get section mapping
+                      const sectionId = item.toLowerCase();
+                      const sectionMap: Record<string, string> = {
+                        '': 'hero-section',
+                        'work': 'featured-section', 
+                        'about': 'about-section',
+                        'contact': 'contact-section'
+                      };
+                      
+                      const targetId = sectionMap[sectionId] || sectionId;
+                      
+                      // Wait for menu to close, then scroll
+                      setTimeout(() => {
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                          window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                          });
+                        }
+                      }, 300);
+                    }}
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            
+            {/* Contact Section */}
+            <div className="mt-12">
+              <h2 className="pp-text-micro text-text/50 mb-6">Contact</h2>
+              <a 
+                href={`mailto:${personal.contact.email}`}
+                className="pp-text-lg font-serif tracking-tighter text-white block mb-3"
+                data-cursor-text="Email"
+              >
+                {personal.contact.email}
+              </a>
+              
+              <div className="flex gap-8 mt-6">
+                <a href={social.github} target="_blank" rel="noopener noreferrer" 
+                   className="pp-text-sm font-sans uppercase tracking-widest text-white">
+                  GH
+                </a>
+                <a href={social.linkedin} target="_blank" rel="noopener noreferrer" 
+                   className="pp-text-sm font-sans uppercase tracking-widest text-white">
+                  Li
+                </a>
+                <a href={social.twitter} target="_blank" rel="noopener noreferrer" 
+                   className="pp-text-sm font-sans uppercase tracking-widest text-white">
+                  X
+                </a>
+              </div>
             </div>
           </div>
-        </div>
       </div>
     </>
   );
 }
 
 function NavLink({ href, children }: { href: string, children: React.ReactNode }) {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    // Get the section id from href
+    const sectionId = href.replace('/', '');
+    const sectionName = sectionId || 'hero'; // Default to hero if empty (home)
+    
+    // Create a mapping of navigation items to section IDs
+    const sectionMap: Record<string, string> = {
+      '': 'hero-section',
+      'work': 'featured-section',
+      'about': 'about-section',
+      'contact': 'contact-section'
+    };
+    
+    const targetId = sectionMap[sectionName] || sectionName;
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 100, // Adjust offset as needed
+        behavior: 'smooth'
+      });
+    }
+  };
+  
   return (
-    <Link 
-      href={href} 
-      className="pp-text-micro text-white relative overflow-hidden group"
+    <a 
+      href={href}
+      onClick={handleClick}
+      className="pp-text-micro text-white relative overflow-hidden group cursor-pointer"
     >
       <span className="block">{children}</span>
       <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-400 group-hover:w-full"></span>
-    </Link>
+    </a>
   );
 }
 
-function MobileNavLink({ href, children, onClick }: { href: string, children: React.ReactNode, onClick: () => void }) {
-  return (
-    <Link 
-      href={href} 
-      className="pp-text-5xl md:pp-text-7xl font-serif tracking-tightest block opacity-0"
-      onClick={onClick}
-    >
-      <div className="relative overflow-hidden group">
-        <motion.span
-          className="block"
-          whileHover={{ x: 20 }}
-          transition={{ duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
-        >
-          {children}
-        </motion.span>
-      </div>
-    </Link>
-  );
-}
 
 function SocialLink({ href, label }: { href: string, label: string }) {
   return (
@@ -191,8 +210,9 @@ function SocialLink({ href, label }: { href: string, label: string }) {
       href={href} 
       target="_blank" 
       rel="noopener noreferrer"
-      className="pp-text-sm font-sans uppercase tracking-widest relative overflow-hidden group"
+      className="pp-text-sm font-sans uppercase tracking-widest relative overflow-hidden group text-white"
       data-cursor-text={label}
+      style={{ opacity: 1 }}
     >
       <span className="block">{label}</span>
       <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-text transition-all duration-400 group-hover:w-full"></span>

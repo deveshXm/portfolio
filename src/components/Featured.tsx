@@ -1,8 +1,9 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import portfolioData from '../data/portfolio.json';
 
 interface Project {
   id: number;
@@ -10,17 +11,21 @@ interface Project {
   slug: string;
   category: string;
   image: string;
+  year: string;
+  link: string;
 }
 
-interface HorizontalGalleryProps {
+interface FeaturedGridProps {
   projects: Project[];
 }
 
-export default function HorizontalGallery({ projects }: HorizontalGalleryProps) {
+export default function FeaturedGrid({ projects }: FeaturedGridProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [activeFilter, setActiveFilter] = useState("All Featured");
+  const { projects: projectsData } = portfolioData;
   
   return (
-    <section className="py-24 md:py-32 relative">
+    <section id="featured-section" className="py-24 md:py-32 relative">
       {/* Decorative elements */}
       <div className="absolute left-0 top-[10%] w-[40%] h-[1px] bg-white/5"></div>
       <div className="absolute right-0 bottom-[20%] w-[30%] h-[1px] bg-white/5"></div>
@@ -43,8 +48,8 @@ export default function HorizontalGallery({ projects }: HorizontalGalleryProps) 
         <div className="grid grid-cols-4 md:grid-cols-12 gap-6 md:gap-8 mb-16">
           {/* Section heading with additional details */}
           <div className="col-span-4 md:col-span-4">
-            <h2 className="pp-text-4xl md:pp-text-5xl font-serif tracking-tight mb-4">Featured Projects</h2>
-            <p className="pp-text-lg text-text/70 mb-6">Selected roles from my career</p>
+            <h2 className="pp-text-4xl md:pp-text-5xl font-serif tracking-tight mb-4">Featured</h2>
+            <p className="pp-text-lg text-text/70 mb-6">Selected achievements from my professional journey</p>
             
             <div className="hidden md:block mt-8 space-y-4">
               <div className="w-full h-[1px] bg-white/10"></div>
@@ -60,22 +65,18 @@ export default function HorizontalGallery({ projects }: HorizontalGalleryProps) 
             <div className="p-6 border border-white/10 bg-white/5 backdrop-blur-sm">
               <h3 className="pp-text-micro mb-4">Filter By</h3>
               <ul className="space-y-3">
-                <li className="text-sm flex items-center">
-                  <span className="inline-block w-2 h-2 bg-white/40 mr-3"></span>
-                  <span className="text-white">All Experience</span>
-                </li>
-                <li className="text-sm flex items-center">
-                  <span className="inline-block w-2 h-2 bg-white/10 mr-3"></span>
-                  <span className="text-white/50 hover:text-white transition-colors">AI Engineering</span>
-                </li>
-                <li className="text-sm flex items-center">
-                  <span className="inline-block w-2 h-2 bg-white/10 mr-3"></span>
-                  <span className="text-white/50 hover:text-white transition-colors">Full-Stack</span>
-                </li>
-                <li className="text-sm flex items-center">
-                  <span className="inline-block w-2 h-2 bg-white/10 mr-3"></span>
-                  <span className="text-white/50 hover:text-white transition-colors">Cloud & DevOps</span>
-                </li>
+                {projectsData.categories.map((category, index) => (
+                  <li 
+                    key={index}
+                    className="text-sm flex items-center cursor-pointer"
+                    onClick={() => setActiveFilter(category)}
+                  >
+                    <span className={`inline-block w-2 h-2 ${activeFilter === category ? 'bg-white/40' : 'bg-white/10'} mr-3`}></span>
+                    <span className={`${activeFilter === category ? 'text-white' : 'text-white/50 hover:text-white'} transition-colors`}>
+                      {category}
+                    </span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -89,35 +90,17 @@ export default function HorizontalGallery({ projects }: HorizontalGalleryProps) 
           {/* Grid background pattern */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] opacity-20 pointer-events-none"></div>
           
-          {projects.map((project, index) => (
-            <ProjectCard 
-              key={project.id}
-              project={project}
-              index={index}
-            />
-          ))}
-          
-          {/* Optional extra card for "View All" */}
-          <motion.div
-            className="col-span-4 mb-16 aspect-[16/9] flex"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ 
-              duration: 0.8, 
-              delay: projects.length * 0.1,
-              ease: [0.25, 0.1, 0.25, 1]
-            }}
-          >
-            <Link
-              href="/work"
-              className="w-full h-full border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col items-center justify-center transition-all duration-300 hover:bg-white/10 group"
-            >
-              <span className="text-3xl mb-4">→</span>
-              <span className="text-sm uppercase tracking-widest">View All Experience</span>
-              <div className="mt-6 w-0 h-[1px] bg-white group-hover:w-[60px] transition-all duration-500"></div>
-            </Link>
-          </motion.div>
+          {projects
+            .filter(project => 
+              activeFilter === "All Featured" || 
+              project.category.includes(activeFilter.replace("All ", "")))
+            .map((project, index) => (
+              <ProjectCard 
+                key={project.id}
+                project={project}
+                index={index}
+              />
+            ))}
         </div>
       </div>
     </section>
@@ -140,8 +123,10 @@ function ProjectCard({ project, index }: { project: Project, index: number }) {
         ease: [0.25, 0.1, 0.25, 1]
       }}
     >
-      <Link
-        href={`/work/${project.slug}`}
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
         className="block group cursor-pointer"
         data-cursor-text="View"
       >
@@ -149,7 +134,7 @@ function ProjectCard({ project, index }: { project: Project, index: number }) {
           {/* Project image placeholder */}
           <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
             <img 
-              src="/test.png" 
+              src={project.image}
               alt={project.title}
               className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out brightness-90"
             />
@@ -185,7 +170,7 @@ function ProjectCard({ project, index }: { project: Project, index: number }) {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                View Role
+                View
               </span>
             </div>
           </div>
@@ -203,8 +188,8 @@ function ProjectCard({ project, index }: { project: Project, index: number }) {
             
             {/* Quick project details */}
             <div className="mt-3 flex gap-4">
-              <span className="text-xs text-white/50">2023</span>
-              <span className="text-xs text-white/50">{project.category.includes("Design") ? "Design & Development" : "Development"}</span>
+              <span className="text-xs text-white/50">{project.year}</span>
+              <span className="text-xs text-white/50">{project.category.includes("Engineering") ? "Engineering" : "Development"}</span>
             </div>
           </div>
           
@@ -226,7 +211,7 @@ function ProjectCard({ project, index }: { project: Project, index: number }) {
             </div>
           </div>
         </div>
-      </Link>
+      </a>
     </motion.div>
   );
 }

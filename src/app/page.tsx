@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import MotionMain from '../components/MotionMain';
+import HomeContent from '../components/HomeContent';
 
 export default function Home() {
   // Basic setup for page
@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <div className="relative overflow-x-hidden min-h-screen bg-background">
       <Header />
-      <MotionMain />
+      <HomeContent />
       <Footer />
     </div>
   );
