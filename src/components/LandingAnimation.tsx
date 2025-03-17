@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
-import CustomCursor from './CustomCursor';
 
 interface LandingAnimationProps {
   name: string;
@@ -120,8 +119,6 @@ export default function LandingAnimation({ name }: LandingAnimationProps) {
       ref={containerRef}
       className="relative h-screen w-screen flex items-center justify-center bg-[#0a0a0a] overflow-hidden"
     >
-      <CustomCursor />
-      
       {/* Main content with asymmetric layout */}
       <div className="relative z-10 flex flex-col w-full h-full">
         <div className="flex-1 flex items-center justify-center">

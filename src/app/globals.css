@@ -2,10 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Using Google Fonts instead of local fonts */
+
 :root {
-  --color-background: #ffffff;
+  --color-background: #f8f8f8;
   --color-text: #000000;
-  --color-accent: #ff5c00;
+  --color-accent: #0000ff;
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
+  --font-display: var(--font-serif), Georgia, serif;
 }
 
 @layer base {
@@ -15,64 +20,152 @@
     scroll-behavior: smooth;
   }
 
+  /* Normal cursor for all elements */
+
   body {
     background-color: var(--color-background);
     color: var(--color-text);
     overflow-x: hidden;
+    position: relative;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 9999;
+    animation: grain 8s steps(10) infinite;
   }
 
   ::selection {
     background-color: var(--color-accent);
     color: var(--color-background);
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+  
+  /* Default cursor styling */
 }
 
 @layer components {
   .pp-container {
-    @apply w-full max-w-[1440px] mx-auto px-4 md:px-10;
+    @apply w-full max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16;
+  }
+
+  .pp-asymmetric-container {
+    @apply w-full max-w-[1920px] mx-auto pl-6 pr-0 md:pl-12 md:pr-0 lg:pl-16 lg:pr-0;
+  }
+
+  .pp-text-micro {
+    @apply font-sans text-2xs uppercase tracking-widest leading-tight;
   }
 
   .pp-text-xs {
-    @apply text-[10px] leading-tight;
+    @apply font-sans text-xs tracking-wide leading-tight;
   }
 
   .pp-text-sm {
-    @apply text-xs leading-tight;
+    @apply font-sans text-sm tracking-wide leading-tight;
   }
 
   .pp-text-md {
-    @apply text-sm leading-tight;
+    @apply font-sans text-base leading-tight;
   }
 
   .pp-text-lg {
-    @apply text-lg leading-tight;
+    @apply font-sans text-lg leading-tight;
   }
 
   .pp-text-xl {
-    @apply text-xl leading-tight;
+    @apply font-sans text-xl leading-tight;
   }
 
   .pp-text-2xl {
-    @apply text-2xl leading-tight;
+    @apply font-sans text-2xl leading-tight;
   }
 
   .pp-text-3xl {
-    @apply text-3xl leading-tight md:text-[38px];
+    @apply font-serif text-3xl leading-tight tracking-tighter md:text-4xl;
   }
 
   .pp-text-4xl {
-    @apply text-[38px] leading-tight md:text-[54px];
+    @apply font-serif text-4xl leading-tight tracking-tightest md:text-5xl;
   }
 
   .pp-text-5xl {
-    @apply text-[54px] leading-tight md:text-[68px];
+    @apply font-serif text-5xl leading-tight tracking-tightest md:text-6xl;
   }
 
   .pp-text-6xl {
-    @apply text-[68px] leading-[1.05] md:text-[86px];
+    @apply font-serif text-6xl leading-[0.95] tracking-tightest md:text-7xl;
+  }
+
+  .pp-text-7xl {
+    @apply font-serif text-7xl leading-[0.9] tracking-tightest md:text-8xl;
+  }
+
+  .pp-text-8xl {
+    @apply font-serif text-8xl leading-[0.9] tracking-tightest md:text-9xl;
+  }
+
+  .pp-text-9xl {
+    @apply font-serif text-9xl leading-[0.85] tracking-tightest md:text-10xl;
   }
 
   .pp-grid {
-    @apply grid grid-cols-4 gap-4 md:grid-cols-12;
+    @apply grid grid-cols-4 gap-6 md:grid-cols-12 md:gap-8;
+  }
+
+  .pp-link-hover {
+    @apply relative overflow-hidden;
+  }
+  
+  .pp-link-hover:after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-px bg-text transition-all duration-400;
+  }
+  
+  .pp-link-hover:hover:after {
+    @apply w-full;
+  }
+
+  .pp-project-card {
+    @apply block relative overflow-hidden;
+  }
+
+  .pp-project-card-image {
+    @apply relative overflow-hidden;
+  }
+
+  .pp-project-card-image img {
+    @apply transition-all duration-800 ease-out;
+  }
+
+  .pp-project-card:hover .pp-project-card-image img {
+    @apply scale-105;
+  }
+
+  .pp-btn {
+    @apply relative inline-block px-6 py-3 overflow-hidden;
+  }
+
+  .pp-btn-text {
+    @apply relative z-10 font-sans text-xs uppercase tracking-widest transition-colors duration-400;
+  }
+
+  .pp-btn-bg {
+    @apply absolute inset-0 z-0 bg-text transform transition-transform duration-400 origin-left;
+  }
+
+  .pp-btn:hover .pp-btn-bg {
+    transform: scaleX(0);
+  }
+
+  .pp-magnetic-btn {
+    @apply relative inline-flex items-center justify-center;
   }
 }

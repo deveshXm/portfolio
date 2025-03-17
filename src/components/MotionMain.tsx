@@ -1,7 +1,12 @@
 'use client';
 
+import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { gsap } from 'gsap';
 import Link from 'next/link';
+import TextReveal from './TextReveal';
+import MagneticButton from './MagneticButton';
+import HorizontalGallery from './HorizontalGallery';
 
 // Define the project type for TypeScript
 interface FeaturedProject {
@@ -44,164 +49,240 @@ const featuredProjects: FeaturedProject[] = [
   }
 ];
 
-// Featured Project Component
+// Featured Project Component with asymmetric grid layout
 function FeaturedProject({ project, index }: { project: FeaturedProject, index: number }) {
   return (
     <motion.div 
-      className="col-span-4 md:col-span-6 mb-12 group"
-      initial={{ opacity: 0, y: 40 }}
+      className={`col-span-4 ${index % 3 === 0 ? 'md:col-span-8' : 'md:col-span-4'} mb-16 md:mb-24`}
+      initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
     >
-      <Link href={`/work/${project.slug}`}>
-        <div className="relative aspect-[16/10] bg-black bg-opacity-5 mb-4 overflow-hidden">
+      <Link href={`/work/${project.slug}`} className="pp-project-card block cursor-pointer">
+        <div className="pp-project-card-image aspect-[4/3] md:aspect-[16/10] overflow-hidden mb-6">
           {/* Replace with actual project image */}
-          <div className="absolute inset-0 flex items-center justify-center text-black text-opacity-30">
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-5 text-black text-opacity-30">
             [Project Image]
           </div>
-          
-          <div className="absolute inset-0 bg-accent bg-opacity-0 transition-colors duration-300 group-hover:bg-opacity-10" />
         </div>
         
-        <h3 className="pp-text-xl font-medium tracking-tight transition-colors group-hover:text-accent">
-          {project.title}
-        </h3>
-        <p className="pp-text-md text-black text-opacity-70 mt-1">
-          {project.category}
-        </p>
+        <div className="flex items-start justify-between">
+          <div>
+            <p className="pp-text-micro text-text/50 mb-2">
+              {project.category}
+            </p>
+            <h3 className="pp-text-xl md:pp-text-2xl font-serif tracking-tighter">
+              {project.title}
+            </h3>
+          </div>
+          
+          <div className="text-2xl font-serif mt-1">→</div>
+        </div>
       </Link>
     </motion.div>
   );
 }
 
 export default function MotionMain() {
+  // References for scroll-triggered animations
+  const heroRef = useRef<HTMLDivElement>(null);
+  
+  // Basic animation setup
+  useEffect(() => {
+    // Setup animations with your ScrollTrigger configuration here
+    // but keep it simple for now
+    
+    return () => {
+      // Clean up
+      if (typeof window !== 'undefined' && gsap.globalTimeline) {
+        gsap.globalTimeline.clear();
+        // If ScrollTrigger is imported, use this:
+        // ScrollTrigger.getAll().forEach(t => t.kill());
+      }
+    };
+  }, []);
+  
   return (
-    <main>
+    <main className="will-change-transform">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-32">
-        <div className="pp-container">
-          <motion.h1 
-            className="pp-text-5xl md:pp-text-6xl font-medium tracking-tighter max-w-[900px]"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Designer & developer crafting intentional digital experiences
-          </motion.h1>
-          
-          <motion.p 
-            className="pp-text-lg md:pp-text-xl mt-8 max-w-[560px] text-black text-opacity-70"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            I build thoughtful, memorable, and functional digital products that perfectly balance form and function.
-          </motion.p>
-          
-          <motion.div
-            className="mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <Link 
-              href="/work" 
-              className="inline-flex items-center px-8 py-4 bg-black text-white text-sm hover:bg-accent transition-colors"
-            >
-              View Work
-              <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-      
-      {/* Featured Work Section */}
-      <section className="py-20 bg-black bg-opacity-5">
-        <div className="pp-container">
-          <h2 className="pp-text-3xl font-medium tracking-tighter mb-12">Selected Work</h2>
-          
-          <div className="pp-grid">
-            {featuredProjects.map((project, index) => (
-              <FeaturedProject 
-                key={project.id}
-                project={project}
-                index={index}
-              />
-            ))}
-          </div>
-          
-          <div className="mt-16 text-center">
-            <Link 
-              href="/work" 
-              className="inline-flex items-center justify-center text-sm text-black hover:text-accent transition-colors"
-            >
-              View All Projects
-              <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </section>
-      
-      {/* About Section */}
-      <section className="py-20">
-        <div className="pp-container">
-          <div className="pp-grid">
-            <div className="col-span-4 md:col-span-5">
-              <h2 className="pp-text-3xl font-medium tracking-tighter mb-8">About Me</h2>
-              <p className="pp-text-lg mb-4 text-black text-opacity-70">
-                I'm a designer and developer with over 5 years of experience creating digital products for clients around the world.
-              </p>
-              <p className="pp-text-lg mb-6 text-black text-opacity-70">
-                My approach combines strategic thinking, clean aesthetics, and robust functionality to create meaningful experiences that resonate with users.
-              </p>
-              <Link 
-                href="/about" 
-                className="inline-flex items-center text-sm text-black hover:text-accent transition-colors"
+      <section ref={heroRef} className="min-h-screen flex flex-col justify-center pt-32 pb-28 md:pt-40 md:pb-40 overflow-hidden">
+        <div className="pp-asymmetric-container">
+          <div className="pl-0 md:pl-[10%]">
+            <div className="hero-heading">
+              <TextReveal 
+                as="h1" 
+                className="pp-text-6xl md:pp-text-8xl font-serif tracking-tightest max-w-[1200px] mb-6"
+                delay={0.4}
               >
-                More About Me
-                <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
+                Designer & Developer Crafting Digital Experiences
+              </TextReveal>
             </div>
             
-            <div className="col-span-4 md:col-span-6 md:col-start-7 mt-8 md:mt-0">
-              <div className="relative aspect-[4/5] bg-black/5">
-                {/* Replace with actual image */}
-                <div className="absolute inset-0 flex items-center justify-center text-black/30">
-                  [Portrait Image]
+            <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <TextReveal 
+                  as="p" 
+                  className="pp-text-md md:pp-text-lg text-text/70 leading-relaxed max-w-[460px]"
+                  delay={0.8}
+                  stagger={0.01}
+                >
+                  I build thoughtful, memorable, and functional digital products that find the perfect balance between form and function.
+                </TextReveal>
+                
+                <div className="mt-10">
+                  <MagneticButton 
+                    href="/work" 
+                    cursorText="View"
+                  >
+                    View Work
+                  </MagneticButton>
+                </div>
+              </div>
+              
+              <div className="hidden md:block">
+                <div className="pl-[10%] pt-[30%] relative">
+                  <div className="absolute top-0 right-0 w-16 h-16 rounded-full bg-accent opacity-20 animate-pulse"></div>
+                  <div className="pp-text-micro text-text/50">Based in SF</div>
+                  <div className="mt-6 h-[1px] w-16 bg-text/20"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
-      
-      {/* Contact Section */}
-      <section className="py-20 bg-black bg-opacity-5">
-        <div className="pp-container text-center">
-          <h2 className="pp-text-3xl md:pp-text-4xl font-medium tracking-tighter mb-6 max-w-[800px] mx-auto">
-            Let's create something amazing together
-          </h2>
-          <p className="pp-text-lg mb-12 text-black text-opacity-70 max-w-[600px] mx-auto">
-            Have a project in mind? I'd love to hear about it. Let's discuss how we can work together to bring your ideas to life.
-          </p>
-          <Link 
-            href="/contact" 
-            className="inline-flex items-center px-8 py-4 bg-black text-white text-sm hover:bg-accent transition-colors"
-          >
-            Get in Touch
-            <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-50">
+          <div className="animate-bounce">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-          </Link>
+          </div>
+          <span className="text-xs mt-2 tracking-widest text-text/50">SCROLL</span>
         </div>
       </section>
+      
+      {/* Featured Projects Gallery (Grid Layout) */}
+      <HorizontalGallery projects={featuredProjects} />
+      
+      {/* Section transition */}
+      <div className="h-20 md:h-40 bg-gradient-to-b from-background to-black"></div>
+      
+      {/* About Section */}
+      <section className="py-32 bg-black text-white">
+        <div className="pp-container">
+          <div className="pp-grid">
+            <div className="col-span-4 md:col-span-6">
+              <TextReveal 
+                as="h2" 
+                className="pp-text-4xl font-serif tracking-tightest mb-10 text-white"
+              >
+                About Me
+              </TextReveal>
+              
+              <TextReveal 
+                as="p" 
+                className="pp-text-lg font-serif tracking-tight mb-6 text-white/80 max-w-[500px]"
+                delay={0.2}
+                stagger={0.01}
+              >
+                I'm a designer and developer with over 5 years of experience creating digital products for clients around the world.
+              </TextReveal>
+              
+              <TextReveal 
+                as="p" 
+                className="pp-text-lg font-serif tracking-tight mb-12 text-white/80 max-w-[500px]"
+                delay={0.4}
+                stagger={0.01}
+              >
+                My approach combines strategic thinking, clean aesthetics, and robust functionality to create meaningful experiences that resonate with users.
+              </TextReveal>
+              
+              <MagneticButton 
+                href="/about" 
+                dark={true}
+                cursorText="About"
+              >
+                More About Me
+              </MagneticButton>
+            </div>
+            
+            <div className="col-span-4 md:col-span-5 md:col-start-8 mt-16 md:mt-0">
+              <motion.div 
+                className="relative aspect-[4/5] bg-white/10 overflow-hidden"
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+              >
+                {/* Replace with actual image */}
+                <div className="absolute inset-0 flex items-center justify-center text-white/30">
+                  [Portrait Image]
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Section transition */}
+      <div className="h-20 md:h-40 bg-gradient-to-b from-black to-background"></div>
+      
+      {/* Contact Section */}
+      <section className="py-32">
+        <div className="pp-container">
+          <div className="flex flex-col items-center text-center max-w-[900px] mx-auto">
+            <TextReveal 
+              as="h2" 
+              className="pp-text-5xl md:pp-text-6xl font-serif tracking-tightest mb-10"
+            >
+              Let's create something amazing together
+            </TextReveal>
+            
+            <TextReveal 
+              as="p" 
+              className="pp-text-lg text-text/70 mb-12 max-w-[600px]"
+              delay={0.2}
+            >
+              Have a project in mind? I'd love to hear about it. Let's discuss how we can work together to bring your ideas to life.
+            </TextReveal>
+            
+            <MagneticButton 
+              href="/contact" 
+              cursorText="Contact"
+            >
+              Get in Touch
+            </MagneticButton>
+          </div>
+        </div>
+      </section>
+      
+      {/* Add custom styles for improved scrolling and transitions */}
+      <style jsx global>{`
+        /* Prevent layout thrashing with containment */
+        .contain-layout {
+          contain: layout;
+        }
+        
+        /* Ensure smooth transitions */
+        html {
+          scroll-behavior: smooth;
+        }
+        
+        /* For intersection observer animations */
+        @media (prefers-reduced-motion: no-preference) {
+          .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+          }
+          
+          .fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </main>
   );
 }
