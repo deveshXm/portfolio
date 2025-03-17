@@ -45,6 +45,12 @@ module.exports = {
       },
       animation: {
         'grain': 'grain 8s steps(10) infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'fadeIn': 'fadeIn 1.2s ease-out forwards',
+        'pulse': 'pulse 3s ease-in-out infinite',
+        'marquee': 'marquee 25s linear infinite',
+        'marquee2': 'marquee2 25s linear infinite',
+        'spinSlow': 'spin 8s linear infinite',
       },
       keyframes: {
         grain: {
@@ -58,6 +64,26 @@ module.exports = {
           '70%': { transform: 'translate(0%, 15%)' },
           '80%': { transform: 'translate(3%, 35%)' },
           '90%': { transform: 'translate(-10%, 10%)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        pulse: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.05)' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        marquee2: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' },
         },
       },
       transitionDuration: {

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Inter, Playfair_Display } from 'next/font/google';
+import PageTransition from '@/components/PageTransition';
+import CustomCursor from '@/components/CustomCursor';
 
 // Use Google Fonts instead of local fonts for now
 const sans = Inter({
@@ -29,7 +31,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body className="min-h-screen antialiased font-sans">
-        {children}
+        <CustomCursor />
+        <PageTransition>
+          {children}
+        </PageTransition>
       </body>
     </html>
   );

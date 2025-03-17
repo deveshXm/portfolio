@@ -6,27 +6,29 @@ import Footer from '../components/Footer';
 import MotionMain from '../components/MotionMain';
 
 export default function Home() {
-  // Ensure no scrolling issues
+  // Basic setup for page
   useEffect(() => {
     // Wait for DOM to be ready
     if (typeof window !== 'undefined') {
       // Reset initial scroll position
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-      }, 100);
+      window.scrollTo(0, 0);
+      
+      // Set basic scroll behavior
+      document.documentElement.style.scrollBehavior = 'smooth';
+      
+      // Return cleanup function
+      return () => {
+        // Ensure body is scrollable on unmount
+        if (document.body) {
+          document.body.style.overflow = 'auto';
+        }
+        document.documentElement.style.scrollBehavior = '';
+      };
     }
-    
-    // Return cleanup function
-    return () => {
-      // Ensure body is scrollable on unmount
-      if (document.body) {
-        document.body.style.overflow = 'auto';
-      }
-    };
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative overflow-x-hidden min-h-screen bg-background">
       <Header />
       <MotionMain />
       <Footer />

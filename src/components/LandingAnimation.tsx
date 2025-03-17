@@ -32,7 +32,7 @@ export default function LandingAnimation({ name }: LandingAnimationProps) {
       // Add subtle accent lines to random characters
       if (index === 1 || index === characters.length - 1) {
         const line = document.createElement('div');
-        line.className = 'absolute -bottom-2 left-0 w-full h-[1px] bg-accent opacity-0';
+        line.className = 'absolute -bottom-2 left-0 w-full h-[1px] bg-black opacity-0';
         span.appendChild(line);
         
         gsap.to(line, {

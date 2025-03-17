@@ -139,7 +139,7 @@ export default function Footer() {
       </div>
       
       {/* Visual elements */}
-      <div className="absolute bottom-40 right-[10%] w-1 h-1 rounded-full bg-accent animate-pulse"></div>
+      <div className="absolute bottom-40 right-[10%] w-1 h-1 rounded-full bg-white/40 animate-pulse"></div>
       <div className="absolute top-20 left-[25%] w-2 h-2 rounded-full bg-white/20"></div>
     </footer>
   );

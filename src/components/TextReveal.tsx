@@ -2,11 +2,14 @@
 
 import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-// Register GSAP plugins
+// Safely import ScrollTrigger without causing build errors
+let ScrollTrigger: any;
 if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
+  import('gsap/dist/ScrollTrigger').then(module => {
+    ScrollTrigger = module.ScrollTrigger;
+    gsap.registerPlugin(ScrollTrigger);
+  });
 }
 
 interface TextRevealProps {
@@ -37,33 +40,67 @@ export default function TextReveal({
   useEffect(() => {
     if (!textRef.current) return;
     
-    // Initialize text to be hidden
+    // Initialize text to be hidden immediately
     gsap.set(textRef.current, { 
       y: y, 
       opacity: 0 
     });
     
-    // Create animation timeline
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: textRef.current,
-        start: triggerPosition,
-        toggleActions: once ? "play none none none" : "play none none reset"
-      }
-    });
+    let tl: gsap.core.Timeline;
     
-    // Animate text in
-    tl.to(textRef.current, {
-      y: 0,
-      opacity: 1,
-      duration: duration,
-      ease: "power3.out",
-      delay: delay
-    });
+    // Check if we're running on the client
+    if (typeof window !== 'undefined') {
+      // Create a simple animation without ScrollTrigger first as fallback
+      tl = gsap.timeline();
+      tl.to(textRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: duration,
+        ease: "power3.out",
+        delay: delay
+      });
+      
+      // Try to set up ScrollTrigger if available
+      const setupScrollTrigger = async () => {
+        if (!ScrollTrigger) {
+          try {
+            const module = await import('gsap/dist/ScrollTrigger');
+            ScrollTrigger = module.ScrollTrigger;
+            gsap.registerPlugin(ScrollTrigger);
+          } catch (error) {
+            console.warn("ScrollTrigger import failed", error);
+            return; // Use the simple animation instead
+          }
+        }
+        
+        // Kill the simple animation if ScrollTrigger is available
+        if (tl) tl.kill();
+        
+        // Create a new timeline with ScrollTrigger
+        tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: textRef.current,
+            start: triggerPosition,
+            toggleActions: once ? "play none none none" : "play none none reset"
+          }
+        });
+        
+        // Animate text in with ScrollTrigger
+        tl.to(textRef.current, {
+          y: 0,
+          opacity: 1,
+          duration: duration,
+          ease: "power3.out",
+          delay: delay
+        });
+      };
+      
+      setupScrollTrigger();
+    }
     
     // Cleanup function
     return () => {
-      tl.kill();
+      if (tl) tl.kill();
     };
   }, [delay, duration, once, stagger, triggerPosition, y]);
 

@@ -7,6 +7,7 @@ import Link from 'next/link';
 import TextReveal from './TextReveal';
 import MagneticButton from './MagneticButton';
 import HorizontalGallery from './HorizontalGallery';
+import HorizontalScroll from './HorizontalScroll';
 
 // Define the project type for TypeScript
 interface FeaturedProject {
@@ -104,7 +105,7 @@ export default function MotionMain() {
   }, []);
   
   return (
-    <main className="will-change-transform">
+    <main className="will-change-transform overflow-hidden">
       {/* Hero Section */}
       <section ref={heroRef} className="min-h-screen flex flex-col justify-center pt-32 pb-28 md:pt-40 md:pb-40 overflow-hidden">
         <div className="pp-asymmetric-container">
@@ -142,7 +143,7 @@ export default function MotionMain() {
               
               <div className="hidden md:block">
                 <div className="pl-[10%] pt-[30%] relative">
-                  <div className="absolute top-0 right-0 w-16 h-16 rounded-full bg-accent opacity-20 animate-pulse"></div>
+                  <div className="absolute top-0 right-0 w-16 h-16 rounded-full bg-black opacity-10 animate-pulse"></div>
                   <div className="pp-text-micro text-text/50">Based in SF</div>
                   <div className="mt-6 h-[1px] w-16 bg-text/20"></div>
                 </div>
@@ -162,14 +163,43 @@ export default function MotionMain() {
         </div>
       </section>
       
-      {/* Featured Projects Gallery (Grid Layout) */}
+      {/* Traditional Gallery */}
       <HorizontalGallery projects={featuredProjects} />
       
-      {/* Section transition */}
-      <div className="h-20 md:h-40 bg-gradient-to-b from-background to-black"></div>
+      {/* Work Section Heading */}
+      <div className="pp-container py-16 md:py-20">
+        <div className="mb-16">
+          <h2 className="pp-text-4xl md:pp-text-5xl font-serif tracking-tight mb-4">Work</h2>
+          <p className="pp-text-lg text-text/70">Selected projects from my portfolio</p>
+        </div>
+      </div>
+      
+      {/* Horizontal scroll section */}
+      <HorizontalScroll />
+      
+      {/* Divider Section with Marquee */}
+      <section className="py-20 md:py-32 overflow-hidden bg-gradient-to-b from-background via-background to-black">
+        <div className="relative w-full overflow-hidden py-20 md:py-24 border-t border-b border-text/10">
+          {/* Marquee animation */}
+          <div className="whitespace-nowrap inline-block animate-marquee">
+            <span className="text-7xl md:text-9xl font-serif tracking-tighter text-text/5 mx-4">Design</span>
+            <span className="text-7xl md:text-9xl font-serif tracking-tighter text-text/5 mx-4">Development</span>
+            <span className="text-7xl md:text-9xl font-serif tracking-tighter text-text/5 mx-4">Typography</span>
+            <span className="text-7xl md:text-9xl font-serif tracking-tighter text-text/5 mx-4">Branding</span>
+            <span className="text-7xl md:text-9xl font-serif tracking-tighter text-text/5 mx-4">UI/UX</span>
+          </div>
+          <div className="absolute top-0 left-0 whitespace-nowrap inline-block animate-marquee2">
+            <span className="text-7xl md:text-9xl font-serif tracking-tighter text-text/5 mx-4">Design</span>
+            <span className="text-7xl md:text-9xl font-serif tracking-tighter text-text/5 mx-4">Development</span>
+            <span className="text-7xl md:text-9xl font-serif tracking-tighter text-text/5 mx-4">Typography</span>
+            <span className="text-7xl md:text-9xl font-serif tracking-tighter text-text/5 mx-4">Branding</span>
+            <span className="text-7xl md:text-9xl font-serif tracking-tighter text-text/5 mx-4">UI/UX</span>
+          </div>
+        </div>
+      </section>
       
       {/* About Section */}
-      <section className="py-32 bg-black text-white">
+      <section className="py-40 md:py-52 bg-black text-white">
         <div className="pp-container">
           <div className="pp-grid">
             <div className="col-span-4 md:col-span-6">
@@ -215,9 +245,9 @@ export default function MotionMain() {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
               >
-                {/* Replace with actual image */}
-                <div className="absolute inset-0 flex items-center justify-center text-white/30">
-                  [Portrait Image]
+                {/* Use the test image */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <img src="/test.png" alt="Portrait" className="object-cover w-full h-full opacity-80" />
                 </div>
               </motion.div>
             </div>
@@ -228,31 +258,52 @@ export default function MotionMain() {
       {/* Section transition */}
       <div className="h-20 md:h-40 bg-gradient-to-b from-black to-background"></div>
       
-      {/* Contact Section */}
+      {/* Contact Section with asymmetric layout */}
       <section className="py-32">
         <div className="pp-container">
-          <div className="flex flex-col items-center text-center max-w-[900px] mx-auto">
-            <TextReveal 
-              as="h2" 
-              className="pp-text-5xl md:pp-text-6xl font-serif tracking-tightest mb-10"
-            >
-              Let's create something amazing together
-            </TextReveal>
+          <div className="pp-grid">
+            <div className="col-span-4 md:col-span-7">
+              <TextReveal 
+                as="h2" 
+                className="pp-text-5xl md:pp-text-6xl font-serif tracking-tightest mb-10"
+              >
+                Let's create something amazing together
+              </TextReveal>
+              
+              <TextReveal 
+                as="p" 
+                className="pp-text-lg text-text/70 mb-12 max-w-[600px]"
+                delay={0.2}
+              >
+                Have a project in mind? I'd love to hear about it. Let's discuss how we can work together to bring your ideas to life.
+              </TextReveal>
+              
+              <MagneticButton 
+                href="/contact" 
+                cursorText="Contact"
+              >
+                Get in Touch
+              </MagneticButton>
+            </div>
             
-            <TextReveal 
-              as="p" 
-              className="pp-text-lg text-text/70 mb-12 max-w-[600px]"
-              delay={0.2}
-            >
-              Have a project in mind? I'd love to hear about it. Let's discuss how we can work together to bring your ideas to life.
-            </TextReveal>
-            
-            <MagneticButton 
-              href="/contact" 
-              cursorText="Contact"
-            >
-              Get in Touch
-            </MagneticButton>
+            <div className="col-span-4 md:col-span-4 md:col-start-9 mt-16 md:mt-0">
+              <div className="p-8 border border-text/10 bg-background relative overflow-hidden group">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-5 bg-black transition-opacity duration-1000 pointer-events-none"></div>
+                <h3 className="pp-text-micro mb-6 relative z-10">Contact Details</h3>
+                <a 
+                  href="mailto:hello@yoda.design"
+                  className="pp-text-md block mb-4 text-text/70 hover:text-text transition-colors duration-300 relative z-10"
+                  data-cursor-text="Email"
+                >
+                  hello@yoda.design
+                </a>
+                <div className="flex gap-4 mt-8 relative z-10">
+                  <a href="#" className="w-8 h-8 flex items-center justify-center border border-text/10 text-text/50 hover:text-text hover:border-text/30 transition-colors duration-300" data-cursor-text="Tw">Tw</a>
+                  <a href="#" className="w-8 h-8 flex items-center justify-center border border-text/10 text-text/50 hover:text-text hover:border-text/30 transition-colors duration-300" data-cursor-text="Ig">Ig</a>
+                  <a href="#" className="w-8 h-8 flex items-center justify-center border border-text/10 text-text/50 hover:text-text hover:border-text/30 transition-colors duration-300" data-cursor-text="Li">Li</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

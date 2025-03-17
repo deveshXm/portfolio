@@ -89,7 +89,6 @@ export default function Header() {
           <Link 
             href="/" 
             className="text-lg font-sans font-medium tracking-tighter text-white"
-            data-cursor-text="Home"
           >
             YODA
           </Link>
@@ -104,7 +103,6 @@ export default function Header() {
             className="relative z-50 w-10 h-10 md:hidden"
             onClick={toggleMenu}
             aria-label="Toggle menu"
-            data-cursor-text={isMenuOpen ? "Close" : "Menu"}
           >
             <div className="flex flex-col justify-center items-end h-full w-full">
               <span 
@@ -160,7 +158,6 @@ function NavLink({ href, children }: { href: string, children: React.ReactNode }
     <Link 
       href={href} 
       className="pp-text-micro text-white relative overflow-hidden group"
-      data-cursor-text={children as string}
     >
       <span className="block">{children}</span>
       <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-400 group-hover:w-full"></span>
@@ -174,7 +171,6 @@ function MobileNavLink({ href, children, onClick }: { href: string, children: Re
       href={href} 
       className="pp-text-5xl md:pp-text-7xl font-serif tracking-tightest block opacity-0"
       onClick={onClick}
-      data-cursor-text={children as string}
     >
       <div className="relative overflow-hidden group">
         <motion.span

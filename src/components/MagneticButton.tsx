@@ -75,8 +75,18 @@ export default function MagneticButton({
         className={`${buttonClass} group`}
         data-cursor-text={cursorText}
       >
-        <span className={contentClass}>{children}</span>
+        <span className={contentClass}>
+          <span className="inline-block relative z-10">
+            {children}
+            <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-current group-hover:w-full transition-all duration-300 ease-in-out"></span>
+          </span>
+          <span className="ml-2 inline-block relative z-10 group-hover:translate-x-1 transition-transform duration-300 ease-in-out">
+            →
+          </span>
+        </span>
         <span className={bgClass}></span>
+        
+        {/* Removed decorative border animations */}
       </div>
     </div>
   );

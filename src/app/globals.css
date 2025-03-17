@@ -27,6 +27,8 @@
     color: var(--color-text);
     overflow-x: hidden;
     position: relative;
+    width: 100%;
+    min-height: 100vh;
   }
 
   body::after {
@@ -167,5 +169,80 @@
 
   .pp-magnetic-btn {
     @apply relative inline-flex items-center justify-center;
+  }
+  
+  /* Enhanced animations */
+  .pp-hover-float {
+    @apply transition-transform duration-300 ease-out;
+  }
+  
+  .pp-hover-float:hover {
+    @apply -translate-y-1;
+  }
+  
+  .pp-hover-lift {
+    @apply transform-gpu transition-all duration-700 ease-out;
+  }
+  
+  .pp-hover-lift:hover {
+    @apply -translate-y-2 shadow-xl;
+  }
+  
+  .pp-reveal-line {
+    @apply relative overflow-hidden;
+  }
+  
+  .pp-reveal-line::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-[1px] bg-current transition-all duration-500 ease-out;
+  }
+  
+  .pp-reveal-line:hover::after {
+    @apply w-full;
+  }
+  
+  .pp-grid-asymmetric {
+    @apply grid grid-cols-12 gap-4 md:gap-6;
+  }
+  
+  /* Parallax classes */
+  .pp-parallax-slow {
+    @apply will-change-transform;
+    transform: translateZ(0);
+  }
+  
+  .pp-parallax-medium {
+    @apply will-change-transform;
+    transform: translateZ(0);
+  }
+  
+  .pp-parallax-fast {
+    @apply will-change-transform;
+    transform: translateZ(0);
+  }
+  
+  /* Horizontal scroll styles */
+  .will-change-transform {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+    transform: translate3d(0, 0, 0);
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+  
+  /* Indicator animation */
+  @keyframes indicator-fill {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  
+  .indicator.active {
+    animation: indicator-fill 0.3s forwards ease-out;
+  }
+  
+  /* Prevent content selection during scroll */
+  .fixed {
+    user-select: none;
   }
 }
