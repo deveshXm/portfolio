@@ -3,255 +3,76 @@
 @tailwind utilities;
 
 :root {
-  --background: #fff;
-  --text: #000;
-  --border: #000;
-  --pattern-size: 8px;
+  --color-background: #ffffff;
+  --color-text: #000000;
+  --color-accent: #ff5c00;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@layer base {
+  html {
+    font-feature-settings: "liga" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-background);
+  }
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  font-family: "Chicago", "ChicagoFLF", monospace;
-  background-color: var(--background);
-  color: var(--text);
-  overflow: hidden;
-}
+@layer components {
+  .pp-container {
+    @apply w-full max-w-[1440px] mx-auto px-4 md:px-10;
+  }
 
-/* Macintosh pattern background */
-.pattern-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(45deg, #000 25%, transparent 25%),
-    linear-gradient(-45deg, #000 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #000 75%),
-    linear-gradient(-45deg, transparent 75%, #000 75%);
-  background-size: 
-    var(--pattern-size) var(--pattern-size), 
-    var(--pattern-size) var(--pattern-size),
-    var(--pattern-size) var(--pattern-size),
-    var(--pattern-size) var(--pattern-size);
-  background-position: 
-    0 0, 
-    0 calc(var(--pattern-size)/2),
-    calc(var(--pattern-size)/2) calc(-1 * var(--pattern-size)/2),
-    calc(-1 * var(--pattern-size)/2) 0px;
-  opacity: 0.04;
-  z-index: -1;
-}
+  .pp-text-xs {
+    @apply text-[10px] leading-tight;
+  }
 
-.mac-window {
-  width: 640px;
-  max-width: 90%;
-  height: 480px;
-  max-height: 90vh;
-  background-color: var(--background);
-  border: 2px solid var(--border);
-  box-shadow: 4px 4px 0 #000;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: "Chicago", "ChicagoFLF", monospace;
-  overflow: hidden;
-}
+  .pp-text-sm {
+    @apply text-xs leading-tight;
+  }
 
-.title-bar {
-  background-color: var(--background);
-  border-bottom: 2px solid var(--border);
-  padding: 4px 8px;
-  text-align: center;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-}
+  .pp-text-md {
+    @apply text-sm leading-tight;
+  }
 
-.title-text {
-  flex: 1;
-  text-align: center;
-}
+  .pp-text-lg {
+    @apply text-lg leading-tight;
+  }
 
-.window-controls {
-  display: flex;
-  gap: 6px;
-}
+  .pp-text-xl {
+    @apply text-xl leading-tight;
+  }
 
-.control-box {
-  width: 12px;
-  height: 12px;
-  border: 1px solid var(--border);
-}
+  .pp-text-2xl {
+    @apply text-2xl leading-tight;
+  }
 
-.control-close {
-  position: relative;
-}
+  .pp-text-3xl {
+    @apply text-3xl leading-tight md:text-[38px];
+  }
 
-.control-close::before,
-.control-close::after {
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 2px;
-  background-color: var(--border);
-  top: 4px;
-  left: 1px;
-}
+  .pp-text-4xl {
+    @apply text-[38px] leading-tight md:text-[54px];
+  }
 
-.control-close::before {
-  transform: rotate(45deg);
-}
+  .pp-text-5xl {
+    @apply text-[54px] leading-tight md:text-[68px];
+  }
 
-.control-close::after {
-  transform: rotate(-45deg);
-}
+  .pp-text-6xl {
+    @apply text-[68px] leading-[1.05] md:text-[86px];
+  }
 
-.window-content {
-  flex: 1;
-  padding: 8px;
-  font-size: 14px;
-  line-height: 1.3;
-  overflow-y: auto;
-}
-
-.message-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.message {
-  margin-bottom: 8px;
-}
-
-.message-sender {
-  font-weight: bold;
-  margin-bottom: 2px;
-}
-
-.message.user .message-sender {
-  text-align: right;
-}
-
-.message.user .message-content {
-  text-align: right;
-}
-
-.message-content {
-  font-family: Monaco, monospace;
-  white-space: pre-line;
-}
-
-.typing-indicator {
-  display: inline-block;
-  width: 12px;
-  height: 14px;
-  background-color: #000;
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.input-area {
-  border-top: 2px solid var(--border);
-  padding: 8px;
-  display: flex;
-}
-
-.input-field {
-  width: 100%;
-  border: 1px solid var(--border);
-  padding: 4px 8px;
-  font-family: Monaco, monospace;
-  font-size: 14px;
-  background-color: #fff;
-}
-
-.input-field:focus {
-  outline: none;
-}
-
-/* Classic Mac button style */
-.mac-button {
-  border: 2px solid var(--border);
-  border-radius: 0;
-  background-color: var(--background);
-  padding: 4px 8px;
-  font-family: "Chicago", "ChicagoFLF", monospace;
-  font-size: 12px;
-  cursor: pointer;
-  margin-left: 8px;
-}
-
-.mac-button:active {
-  background-color: #000;
-  color: #fff;
-}
-
-/* Removed menu bar styles */
-
-/* Contact links */
-.page-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 12px;
-  background-color: var(--background);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.contact-links {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 8px;
-  flex-wrap: wrap;
-}
-
-.contact-links a {
-  margin: 0 8px;
-  color: var(--text);
-  text-decoration: none;
-}
-
-.contact-links a:hover {
-  text-decoration: underline;
-}
-
-.copyright {
-  font-size: 10px;
-  color: #666;
-  text-align: center;
-}
-
-/* ASCII art */
-.ascii-art {
-  font-family: monospace;
-  white-space: pre;
-  line-height: 1;
-  text-align: center;
-  font-size: 10px;
-  margin-bottom: 16px;
-  overflow-x: auto;
-  max-width: 100%;
+  .pp-grid {
+    @apply grid grid-cols-4 gap-4 md:grid-cols-12;
+  }
 }

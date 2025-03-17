@@ -1,28 +1,26 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next';
+import './globals.css';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
-  title: "Devesh Meena | Applied AI Engineer",
-  description: "Applied AI Engineer at Orca AI - Portfolio & Interactive AI Assistant",
-  icons: {
-    icon: '/ada-icon.svg'
-  },
+  title: 'YODA — Designer & Developer',
+  description: 'Portfolio of YODA, designer and developer',
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>{children}</body>
+    <html lang="en" className={inter.variable}>
+      <body className="min-h-screen antialiased font-sans">{children}</body>
     </html>
   );
 }
