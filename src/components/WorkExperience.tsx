@@ -148,10 +148,21 @@ const WorkExperience = () => {
           {/* Vertical line */}
           <div className="absolute left-[8%] md:left-[8%] top-0 bottom-0 w-[1px] bg-white/5 z-10"></div>
           
+          {/* Decorative grid lines */}
+          <div className="absolute left-[40%] top-0 bottom-0 w-[1px] bg-white/[0.02] hidden md:block"></div>
+          <div className="absolute left-[65%] top-0 bottom-0 w-[1px] bg-white/[0.02] hidden md:block"></div>
+          <div className="absolute left-0 right-0 top-[25%] h-[1px] bg-white/[0.02] hidden md:block"></div>
+          <div className="absolute left-0 right-0 top-[75%] h-[1px] bg-white/[0.02] hidden md:block"></div>
+          
+          {/* No global background company names - we'll add them to each card directly */}
+          
           {/* Experience items with staggered layout */}
           <div className="space-y-16 md:space-y-24">
             <AnimatePresence>
               {visibleExperiences.map((item, idx) => {
+                // Asymmetric layout with different card widths and positions
+                const isEven = idx % 2 === 0;
+                
                 return (
                   <motion.div
                     id={`experience-${item.id}`}
@@ -175,6 +186,21 @@ const WorkExperience = () => {
                       selectedId === item.id ? 'z-10' : 'z-0'
                     }`}
                   >
+                    {/* Large company name behind this specific experience - not inside the card */}
+                    <div 
+                      className={`absolute hidden md:block ${
+                        isEven ? 'right-[20%]' : 'left-[20%]'
+                      }`} 
+                      style={{
+                        top: isEven ? '-50px' : '-30px',
+                        zIndex: -1,
+                        pointerEvents: 'none'
+                      }}
+                    >
+                      <div className="font-serif font-bold uppercase tracking-tighter whitespace-nowrap text-[220px] text-white/[0.012]">
+                        {item.company.split(' ')[0]}
+                      </div>
+                    </div>
                     {/* Year marker for this experience */}
                     <div 
                       className="absolute left-[8%] md:left-[8%] transform -translate-x-1/2 text-xs font-mono text-white/40 z-20"
@@ -186,18 +212,45 @@ const WorkExperience = () => {
                     {/* Circle connector */}
                     <div className="absolute left-[8%] md:left-[8%] top-[18px] w-3 h-3 rounded-full bg-white/10 border border-white/20 transform -translate-x-1/2 z-20"></div>
                     
-                    {/* Line from circle to content */}
-                    <div className="absolute top-[22px] left-[10%] md:left-[10%] w-[15%] md:w-[10%] h-[1px] bg-white/10 z-10"></div>
+                    {/* Line from circle to content - varies by position */}
+                    <div className={`absolute top-[22px] h-[1px] bg-white/10 z-10 ${
+                      isEven 
+                        ? 'left-[10%] w-[6%]' 
+                        : 'left-[10%] md:left-[10%] w-[40%] md:w-[25%]'
+                    }`}></div>
                     
-                    {/* Content area layout */}
-                    <div className="col-span-10 col-start-3 md:col-span-8 md:col-start-3">
-                      {/* Experience card with high-end design aesthetic */}
+                    {/* Decorative elements in empty spaces */}
+                    {isEven ? (
+                      <div className="hidden md:block absolute right-[15%] top-[60px] w-[10%] aspect-square">
+                        <div className="relative w-full h-full">
+                          <div className="absolute inset-0 bg-white/5 rounded-sm transform rotate-45 opacity-20"></div>
+                          <div className="absolute inset-[20%] border border-white/10 rounded-full"></div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="hidden md:block absolute left-[25%] top-[40px] w-[8%] aspect-square">
+                        <div className="w-full h-full border-t border-l border-white/10 rounded-tl-sm"></div>
+                      </div>
+                    )}
+                    
+                    {/* Content area with dramatically asymmetric layout */}
+                    <div className={`col-span-10 relative ${
+                      isEven 
+                        ? 'col-start-3 md:col-span-4 md:col-start-3' 
+                        : 'col-start-3 md:col-span-5 md:col-start-7'
+                    }`}>
+                        {/* Experience card with high-end design aesthetic */}
                       <motion.div
                         className={`relative overflow-hidden backdrop-blur-sm border rounded-sm ${
                           selectedId === item.id 
                             ? 'border-white/20 shadow-lg' 
                             : 'border-white/5'
                         }`}
+                        style={{
+                          background: isEven 
+                            ? 'linear-gradient(220deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%)' 
+                            : 'linear-gradient(130deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%)'
+                        }}
                         whileHover={{ 
                           borderColor: 'rgba(255, 255, 255, 0.15)', 
                           transition: { duration: 0.3 } 
