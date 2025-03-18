@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 interface PageTransitionProps {
   children: ReactNode;
@@ -11,55 +11,46 @@ interface PageTransitionProps {
 export default function PageTransition({ children }: PageTransitionProps) {
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   
-  // Handle route change events
+  // Track navigation events
   useEffect(() => {
-    const handleRouteChangeStart = () => {
-      setIsLoading(true);
-    };
+    // Scroll to top on page load/navigation
+    window.scrollTo(0, 0);
     
-    const handleRouteChangeComplete = () => {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 600); // Match transition duration
-    };
+    // Handle loading state
+    setIsLoading(true);
     
-    // Add event listeners for route changes
-    window.addEventListener('beforeunload', handleRouteChangeStart);
+    // Reset loading state after short delay
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
     
-    // Clean up event listeners
     return () => {
-      window.removeEventListener('beforeunload', handleRouteChangeStart);
+      clearTimeout(timer);
     };
-  }, []);
+  }, [pathname]);
   
-  // Animation variants
+  // Animation variants with shorter, smoother transitions
   const pageVariants = {
     initial: {
       opacity: 0,
-      y: 20,
-      transition: {
-        type: "tween",
-        ease: [0.22, 1, 0.36, 1]
-      }
+      y: 10,
     },
     animate: {
       opacity: 1,
       y: 0,
       transition: {
-        type: "tween",
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1],
-        staggerChildren: 0.05
+        duration: 0.3,
+        ease: [0.25, 0.1, 0.25, 1.0],
       }
     },
     exit: {
       opacity: 0,
-      y: -20,
+      y: -10,
       transition: {
-        type: "tween",
-        duration: 0.4,
-        ease: [0.22, 1, 0.36, 1]
+        duration: 0.2,
+        ease: [0.25, 0.1, 0.25, 1.0],
       }
     }
   };
@@ -72,15 +63,14 @@ export default function PageTransition({ children }: PageTransitionProps) {
     animate: {
       scaleX: 1,
       transition: {
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1],
+        duration: 0.5,
+        ease: [0.25, 0.1, 0.25, 1.0],
       },
     },
     exit: {
-      scaleX: 0,
+      opacity: 0,
       transition: {
-        duration: 0.4,
-        ease: [0.22, 1, 0.36, 1],
+        duration: 0.2,
       },
     },
   };
@@ -88,33 +78,29 @@ export default function PageTransition({ children }: PageTransitionProps) {
   return (
     <>
       {/* Loading indicator */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {isLoading && (
           <motion.div
-            className="fixed top-0 left-0 right-0 z-[9999] h-1 bg-accent origin-left transform-gpu"
+            className="fixed top-0 left-0 right-0 z-[9999] h-1 bg-white/40 origin-left"
             variants={loadingVariants}
             initial="initial"
             animate="animate"
             exit="exit"
-            layoutId="loading-bar"
           />
         )}
       </AnimatePresence>
       
       {/* Page content with transition */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={pathname}
-          variants={pageVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          className="will-change-transform transform-gpu"
-          layoutId="page-content"
-        >
-          {children}
-        </motion.div>
-      </AnimatePresence>
+      <motion.div
+        key={pathname}
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        className="will-change-transform"
+      >
+        {children}
+      </motion.div>
     </>
   );
 }

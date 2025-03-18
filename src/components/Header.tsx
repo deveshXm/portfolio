@@ -94,42 +94,56 @@ export default function Header() {
             
             {/* Main Navigation */}
             <ul>
-              {navigation.main.map((item, index) => (
-                <li key={index} className="mb-6">
-                  <a 
-                    href="#"
-                    className="pp-text-5xl font-serif tracking-tightest text-white block"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      toggleMenu();
-                      
-                      // Get section mapping
-                      const sectionId = item.toLowerCase();
-                      const sectionMap: Record<string, string> = {
-                        '': 'hero-section',
-                        'work': 'featured-section', 
-                        'about': 'about-section',
-                        'contact': 'contact-section'
-                      };
-                      
-                      const targetId = sectionMap[sectionId] || sectionId;
-                      
-                      // Wait for menu to close, then scroll
-                      setTimeout(() => {
-                        const targetElement = document.getElementById(targetId);
-                        if (targetElement) {
-                          window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                          });
-                        }
-                      }, 300);
-                    }}
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              {navigation.main.map((item, index) => {
+                const isBlogsLink = item.toLowerCase() === 'blogs';
+                
+                return (
+                  <li key={index} className="mb-6">
+                    {isBlogsLink ? (
+                      <Link 
+                        href="/blogs"
+                        className="pp-text-5xl font-serif tracking-tightest text-white block"
+                        onClick={() => toggleMenu()}
+                      >
+                        {item}
+                      </Link>
+                    ) : (
+                      <a 
+                        href="#"
+                        className="pp-text-5xl font-serif tracking-tightest text-white block"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          toggleMenu();
+                          
+                          // Get section mapping
+                          const sectionId = item.toLowerCase();
+                          const sectionMap: Record<string, string> = {
+                            '': 'hero-section',
+                            'work': 'featured-section', 
+                            'about': 'about-section',
+                            'contact': 'contact-section'
+                          };
+                          
+                          const targetId = sectionMap[sectionId] || sectionId;
+                          
+                          // Wait for menu to close, then scroll
+                          setTimeout(() => {
+                            const targetElement = document.getElementById(targetId);
+                            if (targetElement) {
+                              window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                              });
+                            }
+                          }, 300);
+                        }}
+                      >
+                        {item}
+                      </a>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
             
             {/* Contact Section */}
@@ -165,7 +179,15 @@ export default function Header() {
 }
 
 function NavLink({ href, children }: { href: string, children: React.ReactNode }) {
+  // Check if the href is for the blogs page
+  const isBlogsLink = href.toLowerCase() === '/blogs';
+  
   const handleClick = (e: React.MouseEvent) => {
+    // For blogs link, don't prevent default to allow normal navigation
+    if (isBlogsLink) {
+      return;
+    }
+    
     e.preventDefault();
     
     // Get the section id from href
@@ -191,6 +213,20 @@ function NavLink({ href, children }: { href: string, children: React.ReactNode }
     }
   };
   
+  // If it's the blogs link, use Next's Link component
+  if (isBlogsLink) {
+    return (
+      <Link 
+        href={href}
+        className="pp-text-micro text-white relative overflow-hidden group cursor-pointer"
+      >
+        <span className="block">{children}</span>
+        <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-400 group-hover:w-full"></span>
+      </Link>
+    );
+  }
+  
+  // For other links, use the traditional anchor with smooth scroll
   return (
     <a 
       href={href}

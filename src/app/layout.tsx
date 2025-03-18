@@ -21,6 +21,13 @@ const serif = Playfair_Display({
 
 const { meta } = portfolioData;
 
+// Add viewport export for theme color
+export const viewport = {
+  themeColor: meta.themeColor,
+  width: 'device-width',
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   title: meta.title,
   description: meta.description,
@@ -59,7 +66,6 @@ export const metadata: Metadata = {
     creator: meta.twitterHandle,
     images: [meta.ogImage],
   },
-  themeColor: meta.themeColor,
   icons: {
     icon: [
       { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
@@ -110,8 +116,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta httpEquiv="Content-Security-Policy" content="transform-box: view-box; will-change: transform;" />
       </head>
       <body className="min-h-screen antialiased font-sans">
