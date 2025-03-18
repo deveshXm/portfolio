@@ -258,4 +258,9 @@
   .fixed {
     user-select: none;
   }
+  
+  /* Animation performance optimization classes */
+  .animate-transform {
+    will-change: transform;
+  }
 }

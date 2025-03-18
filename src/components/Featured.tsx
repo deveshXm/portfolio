@@ -85,7 +85,8 @@ export default function FeaturedGrid({ projects }: FeaturedGridProps) {
         {/* Project grid with decorative elements */}
         <div 
           ref={containerRef}
-          className="grid grid-cols-1 sm:grid-cols-2 md:pp-grid relative gap-6 md:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-12 relative gap-6 md:gap-8"
+          style={{ gridAutoRows: 'auto' }} /* Ensure grid rows adjust to content height */
         >
           {/* Grid background pattern */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] opacity-20 pointer-events-none"></div>
@@ -108,12 +109,61 @@ export default function FeaturedGrid({ projects }: FeaturedGridProps) {
 }
 
 function ProjectCard({ project, index }: { project: Project, index: number }) {
-  // Adjust card size based on screen size and index
-  const isLarge = index === 0 || index === 3;
+  // Create asymmetric layout with varied sizes and aspect ratios but ensure they fill space properly
+  // For mobile, make all cards the same aspect ratio and size
+  const getCardStyle = () => {
+    // For a 4-item layout in a 12-column grid with asymmetric but balanced layout
+    const position = index % 4;
+    
+    switch (position) {
+      case 0: // First item - larger, wide aspect ratio (only on desktop)
+        return {
+          size: 'col-span-1 sm:col-span-1 md:col-span-8', // Full width on mobile, 8/12 on desktop
+          aspect: 'aspect-[4/3] md:aspect-[16/9]', // Uniform 4:3 on mobile, wide on desktop
+          margin: 'mb-6', // Consistent margin on all devices
+          order: 'order-none md:order-1', // Natural order on mobile, specific on desktop
+          custom: '' // No additional customizations
+        };
+      case 1: // Second item - smaller, tall aspect ratio (only on desktop)
+        return {
+          size: 'col-span-1 sm:col-span-1 md:col-span-4', // Full width on mobile, 4/12 on desktop
+          aspect: 'aspect-[4/3] md:aspect-[4/5]', // Uniform 4:3 on mobile, tall on desktop
+          margin: 'mb-6', // Consistent margin on all devices
+          order: 'order-none md:order-2', // Natural order on mobile, specific on desktop
+          custom: 'md:mt-12' // Push down on desktop only
+        };
+      case 2: // Third item - smaller, square aspect ratio (only on desktop)
+        return {
+          size: 'col-span-1 sm:col-span-1 md:col-span-4', // Full width on mobile, 4/12 on desktop
+          aspect: 'aspect-[4/3] md:aspect-square', // Uniform 4:3 on mobile, square on desktop
+          margin: 'mb-6', // Consistent margin on all devices
+          order: 'order-none md:order-3', // Natural order on mobile, specific on desktop
+          custom: 'md:mt-4' // Pull up on desktop only
+        };
+      case 3: // Fourth item - larger, cinema aspect ratio (only on desktop)
+        return {
+          size: 'col-span-1 sm:col-span-1 md:col-span-8', // Full width on mobile, 8/12 on desktop
+          aspect: 'aspect-[4/3] md:aspect-[21/9]', // Uniform 4:3 on mobile, ultra-wide on desktop
+          margin: 'mb-6', // Consistent margin on all devices
+          order: 'order-none md:order-4', // Natural order on mobile, specific on desktop
+          custom: '' // No additional customizations
+        };
+      default:
+        return {
+          size: 'col-span-1 sm:col-span-1 md:col-span-6',
+          aspect: 'aspect-[4/3] md:aspect-[16/9]', // Uniform 4:3 on mobile, wide on desktop
+          margin: 'mb-6',
+          order: 'order-none',
+          custom: ''
+        };
+    }
+  };
+
+  const style = getCardStyle();
 
   return (
     <motion.div
-      className={`${isLarge ? 'col-span-1 sm:col-span-2 md:col-span-8' : 'col-span-1 sm:col-span-1 md:col-span-4'} mb-8 sm:mb-12 md:mb-16`}
+      className={`${style.size} ${style.margin} ${style.order} ${style.custom}`}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -130,7 +180,7 @@ function ProjectCard({ project, index }: { project: Project, index: number }) {
         className="block group cursor-pointer"
         data-cursor-text="View"
       >
-        <div className="relative aspect-[16/9] overflow-hidden bg-black bg-opacity-5 mb-4 sm:mb-6 border border-white/5 group-hover:border-white/20 transition-colors duration-500">
+        <div className={`relative ${style.aspect} overflow-hidden bg-black bg-opacity-5 mb-4 sm:mb-6 border border-white/5 group-hover:border-white/20 transition-colors duration-500`}>
           {/* Project image placeholder */}
           <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
             <img 
