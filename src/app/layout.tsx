@@ -59,7 +59,6 @@ export const metadata: Metadata = {
     images: [meta.ogImage],
   },
   themeColor: meta.themeColor,
-  manifest: '/manifest.json',
   icons: {
     icon: [
       { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
