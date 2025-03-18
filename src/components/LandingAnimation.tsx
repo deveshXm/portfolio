@@ -72,7 +72,11 @@ export default function LandingAnimation({ name }: LandingAnimationProps) {
       stagger: 0.15,
       force3D: true,
       onComplete: function() {
-        setTimeout(() => setShowNavigation(true), 1200);
+        setTimeout(() => {
+          setShowNavigation(true);
+          // Register scroll handler only after initial animations complete
+          registerScrollHandler();
+        }, 1200);
         return null; // Ensure void return type
       }
     });
@@ -94,21 +98,37 @@ export default function LandingAnimation({ name }: LandingAnimationProps) {
       });
     }, 1000/60);
     
-    // Throttle scroll handler
-    const handleScroll = throttle(() => {
-      const scrollY = window.scrollY;
+    // Improved scroll handler with requestAnimationFrame
+    let ticking = false;
+    let scrollY = 0;
+    
+    const updateScrollAnimation = () => {
       gsap.to(spans, {
         y: scrollY * 0.2,
         opacity: 1 - (scrollY * 0.002),
         stagger: 0.02,
         duration: 0.3,
         ease: "power1.out",
-        force3D: true
+        force3D: true,
+        overwrite: "auto"
       });
-    }, 1000/60);
+      ticking = false;
+    };
+    
+    const handleScroll = () => {
+      scrollY = window.scrollY;
+      if (!ticking) {
+        requestAnimationFrame(updateScrollAnimation);
+        ticking = true;
+      }
+    };
+    
+    // Register scroll handler separately to delay its activation
+    const registerScrollHandler = () => {
+      window.addEventListener('scroll', handleScroll);
+    };
     
     window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('scroll', handleScroll);
     
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
