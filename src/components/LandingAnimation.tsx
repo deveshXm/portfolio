@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import gsap from 'gsap';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { throttle } from 'lodash';
 
 interface LandingAnimationProps {
@@ -13,6 +12,11 @@ export default function LandingAnimation({ name }: LandingAnimationProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const [showNavigation, setShowNavigation] = useState(false);
+  
+  // Setup scroll animation values
+  const { scrollY } = useScroll();
+  const backgroundScale = useTransform(scrollY, [0, 1000], [1, 1.15]);
+  const backgroundOpacity = useTransform(scrollY, [0, 500], [0.3, 0.15]);
 
   useEffect(() => {
     if (!textRef.current) return;
@@ -208,65 +212,28 @@ export default function LandingAnimation({ name }: LandingAnimationProps) {
         </AnimatePresence>
       </div>
       
-      {/* Abstract background elements - enhanced with more subtle elements */}
-      <div className="absolute inset-0 z-0 opacity-20">
-        <motion.div 
-          className="absolute top-1/4 left-1/4 w-[35vw] h-[35vw] bg-gradient-to-r from-[#0f0f0f] to-[#171717] rounded-full blur-md"
-          animate={{ 
-            x: [0, 20, -10, 0],
-            y: [0, -10, 30, 0],
-            scale: [1, 1.1, 0.9, 1]
-          }}
-          transition={{ 
-            duration: 30, 
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
-        />
-        <motion.div 
-          className="absolute top-2/3 right-1/3 w-[28vw] h-[28vw] bg-gradient-to-l from-[#1a1a1a] to-[#0c0c0c] rounded-full blur-md"
-          animate={{ 
-            x: [0, -30, 15, 0],
-            y: [0, 20, -20, 0],
-            scale: [1, 0.8, 1.2, 1]
-          }}
-          transition={{ 
-            duration: 35, 
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
-        />
-        <motion.div 
-          className="absolute top-1/2 right-1/4 w-[18vw] h-[18vw] bg-gradient-to-t from-[#151515] to-[#090909] rounded-full blur-sm"
-          animate={{ 
-            x: [0, 40, -20, 0],
-            y: [0, -30, 10, 0],
-            scale: [1, 1.3, 0.7, 1]
-          }}
-          transition={{ 
-            duration: 32, 
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
-        />
-        
-        {/* Additional subtle elements */}
-        <motion.div 
-          className="absolute bottom-1/4 left-1/3 w-[12vw] h-[12vw] bg-gradient-to-br from-[#131313] to-[#0b0b0b] rounded-full blur-sm"
-          animate={{ 
-            x: [0, -20, 10, 0],
-            y: [0, 15, -10, 0],
-            scale: [1, 1.2, 0.9, 1]
-          }}
-          transition={{ 
-            duration: 28, 
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
-        />
-        
+      {/* Background image with scroll animation */}
+      <motion.div 
+        className="absolute inset-0 z-0 overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/classical-painting.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          transformOrigin: "center",
+          scale: backgroundScale,
+          opacity: backgroundOpacity
+        }}
+      >
         {/* Noise texture overlay */}
-        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-5 mix-blend-overlay"></div>
+        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay"></div>
+      </motion.div>
+      
+      {/* Abstract background elements - kept behind image */}
+      <div className="absolute inset-0 z-[-1] opacity-20">
+        <div className="absolute top-1/4 left-1/4 w-[35vw] h-[35vw] bg-gradient-to-r from-[#0f0f0f] to-[#171717] rounded-full blur-md" />
+        <div className="absolute top-2/3 right-1/3 w-[28vw] h-[28vw] bg-gradient-to-l from-[#1a1a1a] to-[#0c0c0c] rounded-full blur-md" />
+        <div className="absolute top-1/2 right-1/4 w-[18vw] h-[18vw] bg-gradient-to-t from-[#151515] to-[#090909] rounded-full blur-sm" />
+        <div className="absolute bottom-1/4 left-1/3 w-[12vw] h-[12vw] bg-gradient-to-br from-[#131313] to-[#0b0b0b] rounded-full blur-sm" />
       </div>
       
       {/* Electric lime accent elements - more elements for fashion-forward look */}
