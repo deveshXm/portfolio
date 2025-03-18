@@ -38,24 +38,30 @@ export default function PageTransition({ children }: PageTransitionProps) {
     initial: {
       opacity: 0,
       y: 20,
+      transition: {
+        type: "tween",
+        ease: [0.22, 1, 0.36, 1]
+      }
     },
     animate: {
       opacity: 1,
       y: 0,
       transition: {
+        type: "tween",
         duration: 0.6,
         ease: [0.22, 1, 0.36, 1],
-        staggerChildren: 0.05,
-      },
+        staggerChildren: 0.05
+      }
     },
     exit: {
       opacity: 0,
       y: -20,
       transition: {
+        type: "tween",
         duration: 0.4,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    },
+        ease: [0.22, 1, 0.36, 1]
+      }
+    }
   };
   
   // Loading variants
@@ -85,11 +91,12 @@ export default function PageTransition({ children }: PageTransitionProps) {
       <AnimatePresence mode="wait">
         {isLoading && (
           <motion.div
-            className="fixed top-0 left-0 right-0 z-[9999] h-1 bg-accent origin-left"
+            className="fixed top-0 left-0 right-0 z-[9999] h-1 bg-accent origin-left transform-gpu"
             variants={loadingVariants}
             initial="initial"
             animate="animate"
             exit="exit"
+            layoutId="loading-bar"
           />
         )}
       </AnimatePresence>
@@ -102,7 +109,8 @@ export default function PageTransition({ children }: PageTransitionProps) {
           initial="initial"
           animate="animate"
           exit="exit"
-          className="will-change-transform"
+          className="will-change-transform transform-gpu"
+          layoutId="page-content"
         >
           {children}
         </motion.div>

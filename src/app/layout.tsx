@@ -108,6 +108,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <meta httpEquiv="Content-Security-Policy" content="transform-box: view-box; will-change: transform;" />
       </head>
       <body className="min-h-screen antialiased font-sans">
         <PageTransition>

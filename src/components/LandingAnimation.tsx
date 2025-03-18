@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
+import { throttle } from 'lodash';
 
 interface LandingAnimationProps {
   name: string;
@@ -13,21 +14,28 @@ export default function LandingAnimation({ name }: LandingAnimationProps) {
   const textRef = useRef<HTMLHeadingElement>(null);
   const [showNavigation, setShowNavigation] = useState(false);
 
-  // Split text into characters for animation
   useEffect(() => {
     if (!textRef.current) return;
     
-    const text = textRef.current;
+    // Force GPU acceleration
+    gsap.set(containerRef.current, {
+      willChange: "transform",
+      backfaceVisibility: "hidden",
+      perspective: 1000,
+      transformStyle: "preserve-3d"
+    });
+    
+    // Batch DOM operations
+    const fragment = document.createDocumentFragment();
     const characters = name.split('');
-    text.innerHTML = '';
     
     characters.forEach((char, index) => {
       const span = document.createElement('span');
       span.textContent = char === ' ' ? '\u00A0' : char;
-      span.className = 'inline-block relative';
+      span.className = 'inline-block relative transform-gpu';
       span.style.opacity = '0';
       span.style.transform = 'translateY(20px) rotate(5deg)';
-      text.appendChild(span);
+      fragment.appendChild(span);
       
       // Add subtle accent lines to random characters
       if (index === 1 || index === characters.length - 1) {
@@ -45,59 +53,59 @@ export default function LandingAnimation({ name }: LandingAnimationProps) {
       }
     });
     
-    // Initial animation - reveal text
-    const spans = text.querySelectorAll('span');
-    gsap.to(spans, {
+    textRef.current.innerHTML = '';
+    textRef.current.appendChild(fragment);
+    
+    // Optimize animation timeline
+    const tl = gsap.timeline({
+      defaults: {
+        ease: "power4.out",
+        duration: 1.8
+      }
+    });
+    
+    const spans = textRef.current.querySelectorAll('span');
+    tl.to(spans, {
       opacity: 1,
       y: 0,
       rotate: 0,
       stagger: 0.15,
-      duration: 1.8,
-      ease: 'power4.out',
-      delay: 0.5,
-      onComplete: () => {
-        setTimeout(() => {
-          setShowNavigation(true);
-        }, 1200);
+      force3D: true,
+      onComplete: function() {
+        setTimeout(() => setShowNavigation(true), 1200);
+        return null; // Ensure void return type
       }
     });
     
-    // Mouse move effect - more pronounced and with perspective
-    const handleMouseMove = (e: MouseEvent) => {
+    // Throttle mouse move handler
+    const handleMouseMove = throttle((e: MouseEvent) => {
       const { clientX, clientY } = e;
-      const xPos = (clientX / window.innerWidth - 0.5) * 60;
-      const yPos = (clientY / window.innerHeight - 0.5) * 30;
-      
-      // Add perspective to container
-      if (containerRef.current) {
-        gsap.to(containerRef.current, {
-          perspective: '1000px',
-          duration: 0.8
-        });
-      }
+      const xPos = (clientX / window.innerWidth - 0.5) * 30;
+      const yPos = (clientY / window.innerHeight - 0.5) * 15;
       
       gsap.to(spans, {
-        x: (i) => (i % 2 === 0 ? xPos * 0.8 : xPos * -0.5),
-        y: (i) => (i % 3 === 0 ? yPos * 0.5 : yPos * -0.3),
-        rotateX: yPos * 0.3,
-        rotateY: xPos * 0.3,
-        duration: 1.2,
-        ease: 'power2.out',
+        x: (i) => (i % 2 === 0 ? xPos * 0.5 : xPos * -0.3),
+        y: (i) => (i % 3 === 0 ? yPos * 0.3 : yPos * -0.2),
+        rotateX: yPos * 0.2,
+        rotateY: xPos * 0.2,
+        duration: 0.8,
+        ease: "power2.out",
+        force3D: true
       });
-    };
+    }, 1000/60);
     
-    // Scroll effect
-    const handleScroll = () => {
+    // Throttle scroll handler
+    const handleScroll = throttle(() => {
       const scrollY = window.scrollY;
-      
       gsap.to(spans, {
-        y: scrollY * 0.4,
-        opacity: 1 - (scrollY * 0.003),
-        stagger: 0.03,
-        duration: 0.5,
-        ease: 'power1.out'
+        y: scrollY * 0.2,
+        opacity: 1 - (scrollY * 0.002),
+        stagger: 0.02,
+        duration: 0.3,
+        ease: "power1.out",
+        force3D: true
       });
-    };
+    }, 1000/60);
     
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('scroll', handleScroll);
@@ -105,6 +113,7 @@ export default function LandingAnimation({ name }: LandingAnimationProps) {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
+      tl.kill();
     };
   }, [name]);
   
@@ -117,10 +126,10 @@ export default function LandingAnimation({ name }: LandingAnimationProps) {
   return (
     <div 
       ref={containerRef}
-      className="relative h-screen w-screen flex items-center justify-center bg-[#0a0a0a] overflow-hidden"
+      className="relative h-screen w-screen flex items-center justify-center bg-[#0a0a0a] overflow-hidden transform-gpu"
     >
       {/* Main content with asymmetric layout */}
-      <div className="relative z-10 flex flex-col w-full h-full">
+      <div className="relative z-10 flex flex-col w-full h-full transform-gpu">
         <div className="flex-1 flex items-center justify-center">
           <motion.div 
             initial={{ opacity: 0 }}
