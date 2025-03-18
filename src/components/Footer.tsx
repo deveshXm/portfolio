@@ -75,11 +75,18 @@ export default function Footer() {
           <div className="col-span-4 md:col-span-2 md:col-start-7 mt-12 md:mt-0 footer-animate">
             <h4 className="pp-text-micro mb-6">Navigate</h4>
             <ul ref={linksRef} className="flex flex-col gap-4">
-              {navigation.main.map((item, index) => (
-                <li key={index}>
-                  <FooterLink href={`/${item.toLowerCase()}`}>{item}</FooterLink>
-                </li>
-              ))}
+              <li>
+                <FooterLink href="/#">Home</FooterLink>
+              </li>
+              <li>
+                <FooterLink href="/#featured-section">Projects</FooterLink>
+              </li>
+              <li>
+                <FooterLink href="/#about-section">About</FooterLink>
+              </li>
+              <li>
+                <FooterLink href="/#contact-section">Contact</FooterLink>
+              </li>
             </ul>
           </div>
           
@@ -115,11 +122,10 @@ export default function Footer() {
               </li>
               <li>
                 <FooterLink 
-                  href={personal.contact.calendly} 
-                  target="_blank"
-                  data-cursor-text="Calendly"
+                  href={`mailto:${personal.contact.email}`}
+                  data-cursor-text="Email"
                 >
-                  Calendly
+                  Email
                 </FooterLink>
               </li>
             </ul>
@@ -129,24 +135,47 @@ export default function Footer() {
             <h4 className="pp-text-micro mb-6">Get in Touch</h4>
             <a 
               href={`mailto:${personal.contact.email}`} 
-              className="pp-text-lg font-serif tracking-tighter text-white pp-link-hover inline-block"
+              className="pp-text-lg font-serif tracking-tighter text-white pp-link-hover inline-block mb-4"
               data-cursor-text="Email"
             >
               {personal.contact.email}
             </a>
+            <div className="mt-6 flex flex-col gap-3">
+              <a 
+                href={personal.contact.calendly} 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-white/60 hover:text-white/80 pp-link-hover inline-block"
+                data-cursor-text="Schedule"
+              >
+                Schedule a meeting
+              </a>
+              <a 
+                href="/#contact-section" 
+                className="text-sm text-white/60 hover:text-white/80 pp-link-hover inline-block"
+                data-cursor-text="More"
+              >
+                Contact options
+              </a>
+            </div>
           </div>
           
           <div className="col-span-full mt-32 footer-animate">
             <div className="h-px w-full bg-white/10 mb-8"></div>
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
               <p className="pp-text-xs text-white/40">
-                © {currentYear} {personal.name}. All rights reserved.
+                © {currentYear} <a href="/#" className="hover:text-white/60 transition-colors">{personal.name}</a>. All rights reserved.
               </p>
               
-              <p className="pp-text-xs text-white/40 flex items-center gap-2">
-                <span className="inline-block w-3 h-3 rounded-full bg-white/40"></span>
-                {branding.tagline}
-              </p>
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+                <p className="pp-text-xs text-white/40 flex items-center gap-2">
+                  <span className="inline-block w-3 h-3 rounded-full bg-white/40"></span>
+                  {branding.tagline}
+                </p>
+                <a href="/#" className="pp-text-xs text-white/40 hover:text-white/60 transition-colors">
+                  Back to Top
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -12,11 +12,13 @@
     "@google/generative-ai": "^0.23.0",
     "framer-motion": "^12.4.10",
     "gsap": "^3.12.7",
+    "lodash": "^4.17.21",
     "next": "15.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.16",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

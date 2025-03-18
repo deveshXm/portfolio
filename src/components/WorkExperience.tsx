@@ -68,7 +68,6 @@ const WorkExperience = () => {
             {/* Decorative elements */}
             <div className="absolute -left-4 top-1/2 -translate-y-1/2 hidden md:block">
               <div className="rotate-90 origin-center">
-                <span className="text-xs tracking-widest text-white/40 uppercase">Timeline</span>
                 <span className="inline-block w-8 h-[1px] bg-white/20 ml-3 align-middle"></span>
               </div>
             </div>

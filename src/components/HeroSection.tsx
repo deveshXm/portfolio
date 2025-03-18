@@ -6,6 +6,7 @@ import { gsap } from 'gsap';
 import TextReveal from './TextReveal';
 import MagneticButton from './MagneticButton';
 import portfolioData from '../data/portfolio.json';
+import { throttle } from 'lodash';
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -17,11 +18,10 @@ export default function HeroSection() {
   useEffect(() => {
     if (!paintingRef.current) return;
     
-    // Basic parallax effect on scroll
-    const handleScroll = () => {
+    const handleScroll = throttle(() => {
       if (!paintingRef.current) return;
       const scrollPos = window.scrollY;
-      const scrollFactor = 0.15; // Adjust the parallax intensity
+      const scrollFactor = 0.15;
       
       gsap.to(paintingRef.current, {
         y: scrollPos * scrollFactor,
@@ -29,13 +29,11 @@ export default function HeroSection() {
         duration: 0.5,
         ease: "power1.out"
       });
-    };
-    
+    }, 30); // roughly 60 fps
+  
     window.addEventListener('scroll', handleScroll);
     
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
   return (
@@ -48,7 +46,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div 
           ref={paintingRef}
-          className="absolute inset-0 w-[120%] h-[120%] -left-[10%] -top-[10%]"
+          className="animate-transform absolute inset-0 w-[120%] h-[120%] -left-[10%] -top-[10%]"
         >
           {/* Wanderer Above the Sea of Fog by Caspar David Friedrich - First layer */}
           <div className="w-full h-full bg-cover bg-center mix-blend-overlay"
