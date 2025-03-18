@@ -3,6 +3,7 @@ import './globals.css';
 import { Inter, Playfair_Display } from 'next/font/google';
 import PageTransition from '@/components/PageTransition';
 import portfolioData from '@/data/portfolio.json';
+import { Analytics } from '@vercel/analytics/next';
 
 // Use Google Fonts instead of local fonts for now
 const sans = Inter({
@@ -117,6 +118,7 @@ export default function RootLayout({
         <PageTransition>
           {children}
         </PageTransition>
+        <Analytics />
       </body>
     </html>
   );
