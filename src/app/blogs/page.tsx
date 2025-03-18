@@ -18,7 +18,6 @@ export const viewport = {
   themeColor: '#0a0a0a',
 };
 
-export const revalidate = 3600; // Revalidate at most every hour
 
 interface BlogsPageProps {}
 

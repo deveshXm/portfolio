@@ -98,6 +98,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
         animate="animate"
         exit="exit"
         className="will-change-transform"
+        style={{ userSelect: 'auto' }}
       >
         {children}
       </motion.div>

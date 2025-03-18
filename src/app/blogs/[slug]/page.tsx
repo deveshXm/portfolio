@@ -11,7 +11,8 @@ export async function generateMetadata(
   { params }: { params: { slug: string } }
 ): Promise<Metadata> {
   // For static generation, only use the slug parameter
-  const post = await getBlogPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
   
   if (!post) {
     return {
@@ -42,7 +43,6 @@ export async function generateStaticParams() {
   }));
 }
 
-export const revalidate = 3600; // Revalidate at most every hour
 
 export default async function BlogPostPage({ 
   params
@@ -50,7 +50,8 @@ export default async function BlogPostPage({
   params: { slug: string }
 }) {
   // For static generation, only use the slug parameter
-  const post = await getBlogPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
   
   if (!post) {
     notFound();
@@ -127,10 +128,22 @@ export default async function BlogPostPage({
             <div className="pp-container">
               <div className="grid grid-cols-4 md:grid-cols-12 gap-6 md:gap-8">
                 <div className="col-span-4 md:col-span-8 md:col-start-3">
-                  <article className="prose prose-invert prose-lg max-w-none">
-                    <ReactMarkdown>
-                      {post.content}
-                    </ReactMarkdown>
+                  <article 
+                    className="prose prose-invert prose-lg max-w-none relative" 
+                    style={{ 
+                      userSelect: 'text',
+                      pointerEvents: 'auto',
+                      position: 'relative',
+                      zIndex: 50
+                    }}
+                  >
+                    <div className="pointer-events-auto">
+                      <ReactMarkdown components={{
+                        a: ({node, ...props}) => <a {...props} className="text-blue-400 hover:underline pointer-events-auto" />
+                      }}>
+                        {post.content}
+                      </ReactMarkdown>
+                    </div>
                   </article>
                 </div>
               </div>

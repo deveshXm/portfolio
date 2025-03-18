@@ -1,13 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static exports for production builds only
-  output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
-  
-  // Optimization settings
+  // Image configuration
   images: {
-    unoptimized: true, // For static exports
+    loader: 'default',
+    domains: [],
   },
   
+  // Optimization settings
   experimental: {
     optimizePackageImports: ['framer-motion', 'gsap', 'lodash'],
   },
@@ -17,8 +16,8 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   
-  // Make sure we're not using dynamic features in static export
-  staticPageGenerationTimeout: 120,
+  // Disable source maps in production
+  productionBrowserSourceMaps: false,
 };
 
 module.exports = nextConfig;

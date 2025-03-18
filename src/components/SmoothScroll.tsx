@@ -50,7 +50,7 @@ export default function SmoothScroll({
           left: 0,
           width: '100%',
           height: '100%',
-          zIndex: 0, // Behind content
+          zIndex: -1, // Behind content
           mixBlendMode: 'color',
           opacity: 0.05,
           backgroundColor: '#e0d6a9',
@@ -67,7 +67,7 @@ export default function SmoothScroll({
           left: 0,
           width: '100%',
           height: '100%',
-          zIndex: 0, // Behind content
+          zIndex: -1, // Behind content
           opacity: 0.08,
           backgroundImage: 'url("/noise.png")',
           mixBlendMode: 'multiply',
