@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Inter, Playfair_Display } from 'next/font/google';
 import PageTransition from '@/components/PageTransition';
+import SmoothScroll from '@/components/SmoothScroll';
 import portfolioData from '@/data/portfolio.json';
 import { Analytics } from '@vercel/analytics/next';
 
@@ -114,9 +115,11 @@ export default function RootLayout({
         <meta httpEquiv="Content-Security-Policy" content="transform-box: view-box; will-change: transform;" />
       </head>
       <body className="min-h-screen antialiased font-sans">
-        <PageTransition>
-          {children}
-        </PageTransition>
+        <SmoothScroll>
+          <PageTransition>
+            {children}
+          </PageTransition>
+        </SmoothScroll>
         <Analytics />
       </body>
     </html>

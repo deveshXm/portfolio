@@ -245,11 +245,11 @@ function ProjectCard({ project, index }: { project: Project, index: number }) {
           
           {/* Animated arrow button */}
           <div className="col-span-1 flex justify-end items-start">
-            <div className="relative mt-2 overflow-hidden">
-              <span className="block w-8 h-8 sm:w-10 sm:h-10 border border-white/10 rounded-full flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/30 transition-all duration-300">
+            <div className="relative mt-2">
+              <span className="block w-8 h-8 sm:w-10 sm:h-10 border border-white/10 rounded-full flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/30 transition-all duration-300 overflow-visible">
                 <svg 
-                  width="14" 
-                  height="14" 
+                  width="12" 
+                  height="12" 
                   viewBox="0 0 16 16" 
                   fill="none" 
                   xmlns="http://www.w3.org/2000/svg"
