@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getAllBlogPosts, getBlogPostBySlug } from '@/utils/airtable';
+import { getAllBlogPosts, getBlogPostBySlug, getBlogPostById, BlogPost } from '@/utils/airtable';
 import ReactMarkdown from 'react-markdown';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -10,9 +10,8 @@ import PageTransition from '@/components/PageTransition';
 export async function generateMetadata(
   { params }: { params: { slug: string } }
 ): Promise<Metadata> {
-  // Ensure params.slug is used in an async context
-  const slug = params.slug;
-  const post = await getBlogPostBySlug(slug);
+  // For static generation, only use the slug parameter
+  const post = await getBlogPostBySlug(params.slug);
   
   if (!post) {
     return {
@@ -45,7 +44,12 @@ export async function generateStaticParams() {
 
 export const revalidate = 3600; // Revalidate at most every hour
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage({ 
+  params
+}: { 
+  params: { slug: string }
+}) {
+  // For static generation, only use the slug parameter
   const post = await getBlogPostBySlug(params.slug);
   
   if (!post) {
@@ -67,20 +71,20 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         <Header />
         <main className="pt-32 pb-20">
           {/* Blog Post Header */}
-          <section className="py-10 md:py-16 mb-8 md:mb-16 relative">
+          <section className="py-10 md:py-16 mb-8 md:mb-16">
             {/* Background Elements */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.03)_0%,transparent_60%)]"></div>
             <div className="absolute left-0 top-0 w-[30%] h-[1px] bg-white/5"></div>
             <div className="absolute right-0 bottom-0 w-[30%] h-[1px] bg-white/5"></div>
             
-            <div className="pp-container">
+            <div className="pp-container relative z-30">
               <div className="grid grid-cols-4 md:grid-cols-12 gap-6 md:gap-8">
                 <div className="col-span-4 md:col-span-8 md:col-start-3">
                   {/* Back Link */}
                   <a 
                     href="/blogs" 
-                    className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white mb-10 transition-colors relative z-10 cursor-pointer"
-                    style={{ position: 'relative', zIndex: 50 }}
+                    className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white mb-10 transition-colors relative cursor-pointer"
+                    style={{ position: 'relative', zIndex: 30 }}
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -104,8 +108,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                       href={post.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white mb-8 border-b border-white/20 pb-1 transition-colors cursor-pointer relative z-10"
-                      style={{ position: 'relative', zIndex: 50 }}
+                      className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white mb-8 border-b border-white/20 pb-1 transition-colors cursor-pointer relative"
+                      style={{ position: 'relative', zIndex: 30 }}
                     >
                       <span className="pointer-events-auto">Original Source</span>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="pointer-events-auto">
@@ -140,8 +144,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 <div className="col-span-4 md:col-span-8 md:col-start-3 flex justify-center">
                   <a
                     href="/blogs"
-                    className="px-8 py-3 text-sm uppercase tracking-wider text-white/70 hover:text-white border border-white/10 hover:border-white/20 transition-all inline-block relative z-10 cursor-pointer"
-                    style={{ position: 'relative', zIndex: 50 }}
+                    className="px-8 py-3 text-sm uppercase tracking-wider text-white/70 hover:text-white border border-white/10 hover:border-white/20 transition-all inline-block relative cursor-pointer"
+                    style={{ position: 'relative', zIndex: 30 }}
                   >
                     <span className="pointer-events-auto">Back to All Articles</span>
                   </a>

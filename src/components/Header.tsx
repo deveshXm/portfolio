@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 import { gsap } from 'gsap';
 import { motion } from 'framer-motion';
@@ -12,6 +13,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const navLinksRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
   
   const { personal, social, navigation } = portfolioData;
   
@@ -49,20 +51,20 @@ export default function Header() {
   return (
     <>
       <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-800
-          ${scrolled ? 'py-4 bg-background/80 backdrop-blur-md border-b border-white/5' : 'py-8'}`}
+        className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-800
+          ${scrolled ? 'py-4 bg-background/80 backdrop-blur-md' : 'py-8'}`}
       >
         <div className="pp-container flex items-center justify-between">
           <Link 
             href="/" 
-            className="text-lg font-sans font-medium tracking-tighter text-white"
+            className="text-2xl font-serif tracking-tightest text-white"
           >
             {personal.name.split(' ')[0]}
           </Link>
           
           <nav className="hidden md:flex items-center gap-12">
             {navigation.main.map((item, index) => (
-              <NavLink key={index} href={`/${item.toLowerCase()}`}>{item}</NavLink>
+              <NavLink key={index} href={`/${item.toLowerCase()}`} pathname={pathname}>{item}</NavLink>
             ))}
           </nav>
           
@@ -102,6 +104,14 @@ export default function Header() {
                     {isBlogsLink ? (
                       <Link 
                         href="/blogs"
+                        className="pp-text-5xl font-serif tracking-tightest text-white block"
+                        onClick={() => toggleMenu()}
+                      >
+                        {item}
+                      </Link>
+                    ) : pathname.startsWith('/blogs') ? (
+                      <Link
+                        href={item.toLowerCase() === '' ? '/' : `/#${item.toLowerCase()}`}
                         className="pp-text-5xl font-serif tracking-tightest text-white block"
                         onClick={() => toggleMenu()}
                       >
@@ -178,12 +188,18 @@ export default function Header() {
   );
 }
 
-function NavLink({ href, children }: { href: string, children: React.ReactNode }) {
-  // Check if the href is for the blogs page
+function NavLink({ href, pathname, children }: { href: string, pathname: string, children: React.ReactNode }) {
+  // Check if the href is for the blogs page or if we're currently on the blogs page
   const isBlogsLink = href.toLowerCase() === '/blogs';
+  const isOnBlogsPage = pathname.startsWith('/blogs');
   
   const handleClick = (e: React.MouseEvent) => {
-    // For blogs link, don't prevent default to allow normal navigation
+    // If we're on the blogs page and this isn't the blogs link, navigate to home page with anchor
+    if (isOnBlogsPage && !isBlogsLink) {
+      return; // Let the link navigate normally to '/' with the anchor
+    }
+    
+    // For blogs link or if we're already on blogs page, don't prevent default
     if (isBlogsLink) {
       return;
     }
@@ -218,23 +234,33 @@ function NavLink({ href, children }: { href: string, children: React.ReactNode }
     return (
       <Link 
         href={href}
-        className="pp-text-micro text-white relative overflow-hidden group cursor-pointer"
+        className="pp-text-micro text-white cursor-pointer"
       >
         <span className="block">{children}</span>
-        <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-400 group-hover:w-full"></span>
       </Link>
     );
   }
   
-  // For other links, use the traditional anchor with smooth scroll
+  // If we're on the blogs page, link directly to the home page with the anchor
+  if (isOnBlogsPage) {
+    return (
+      <Link
+        href={`/${href.replace('/', '')}` === '/' ? '/' : `/#${href.replace('/', '')}`}
+        className="pp-text-micro text-white cursor-pointer"
+      >
+        <span className="block">{children}</span>
+      </Link>
+    );
+  }
+  
+  // For other links when on home page, use the traditional anchor with smooth scroll
   return (
     <a 
       href={href}
       onClick={handleClick}
-      className="pp-text-micro text-white relative overflow-hidden group cursor-pointer"
+      className="pp-text-micro text-white cursor-pointer"
     >
       <span className="block">{children}</span>
-      <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-400 group-hover:w-full"></span>
     </a>
   );
 }
@@ -246,12 +272,11 @@ function SocialLink({ href, label }: { href: string, label: string }) {
       href={href} 
       target="_blank" 
       rel="noopener noreferrer"
-      className="pp-text-sm font-sans uppercase tracking-widest relative overflow-hidden group text-white"
+      className="pp-text-sm font-sans uppercase tracking-widest text-white"
       data-cursor-text={label}
       style={{ opacity: 1 }}
     >
       <span className="block">{label}</span>
-      <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-text transition-all duration-400 group-hover:w-full"></span>
     </a>
   );
 }

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Metadata } from 'next';
 import { getAllBlogPosts } from '@/utils/airtable';
 import Header from '@/components/Header';
@@ -19,10 +20,15 @@ export const viewport = {
 
 export const revalidate = 3600; // Revalidate at most every hour
 
-export default async function BlogsPage() {
-  const posts = await getAllBlogPosts();
+interface BlogsPageProps {}
 
-  return (
+export default async function BlogsPage() {
+  try {
+    // For static export, just get all posts
+    const posts = await getAllBlogPosts();
+    const totalPosts = posts.length;
+    
+    return (
     <PageTransition>
       <div className="relative overflow-x-hidden min-h-screen bg-background">
         <Header />
@@ -52,7 +58,7 @@ export default async function BlogsPage() {
                     <div className="h-[1px] w-full bg-white/10 my-4"></div>
                     <div className="flex justify-between text-xs text-white/40">
                       <span>New posts weekly</span>
-                      <span>{posts.length} articles</span>
+                      <span>{totalPosts} articles</span>
                     </div>
                   </div>
                 </div>
@@ -64,11 +70,15 @@ export default async function BlogsPage() {
           <section className="py-10">
             <div className="pp-container">
               {posts.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-                  {posts.map((post) => (
-                    <BlogCard key={post.id} post={post} />
-                  ))}
-                </div>
+                <>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                    {posts.map((post) => (
+                      <BlogCard key={post.id} post={post} />
+                    ))}
+                  </div>
+                  
+                  {/* Removed pagination for static export */}
+                </>
               ) : (
                 <div className="text-center py-20">
                   <h3 className="pp-text-2xl font-serif tracking-tight mb-4">Coming Soon</h3>
@@ -88,5 +98,36 @@ export default async function BlogsPage() {
         <Footer />
       </div>
     </PageTransition>
-  );
+    );
+  } catch (error) {
+    console.error("Error fetching blog posts:", error);
+    
+    // Return a fallback UI in case of error
+    return (
+      <PageTransition>
+        <div className="relative overflow-x-hidden min-h-screen bg-background">
+          <Header />
+          <main className="pt-32 pb-20">
+            <div className="pp-container">
+              <div className="text-center py-20">
+                <h3 className="pp-text-2xl font-serif tracking-tight mb-4">
+                  Unable to load blog posts
+                </h3>
+                <p className="text-white/60 mb-4">
+                  There was an error loading the blog posts. Please try again later.
+                </p>
+                <a 
+                  href="/blogs"
+                  className="inline-block px-6 py-3 mt-4 text-sm border border-white/10 hover:border-white/30 text-white/70 hover:text-white transition-colors"
+                >
+                  Refresh
+                </a>
+              </div>
+            </div>
+          </main>
+          <Footer />
+        </div>
+      </PageTransition>
+    );
+  }
 }
